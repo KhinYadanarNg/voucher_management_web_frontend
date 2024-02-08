@@ -3,22 +3,21 @@
 @tailwind utilities;
 
 .logintext__input {
-    @apply  h-[35px] w-[250px] pl-10 outline-none cursor-pointer text-sm border-2 border-black  focus:border-black
-   ;
-  }
-  
-  .wrapper {
-    @apply flex flex-col items-center justify-center;
-  }
-  
-  .authentication__btn {
-    @apply flex flex-row relative justify-center items-center py-3 px-6 outline h-[35px] w-[250px] bg-orange-500;
-  }
+  @apply h-[35px] w-[250px] pl-10 outline-none cursor-pointer text-sm border-2 border-black focus:border-black;
+}
 
-  .registration__input {
-    @apply justify-items-start pt-5;
-  }
-  
-  .customfilter__btn {
-    @apply flex justify-between outline-none border-2 pt-1 px-2 border-black h-[35px] w-[250px];
-  }
+.wrapper {
+  @apply flex flex-col items-center justify-center;
+}
+
+.authentication__btn {
+  @apply flex flex-row relative justify-center items-center py-3 px-6 outline h-[35px] w-[250px] bg-orange-500;
+}
+
+.registration__input {
+  @apply justify-items-start pt-5;
+}
+
+.customfilter__btn {
+  @apply flex justify-between outline-none border-2 pt-1 px-2 border-black h-[35px] w-[250px];
+}

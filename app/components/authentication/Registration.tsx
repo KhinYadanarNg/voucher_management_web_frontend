@@ -19,7 +19,7 @@ const Registration = () => {
 
     const signUp = () => {
 
-        if (isEmpty()){ return ;}
+        if (isEmpty()) { return; }
 
         if (!isValidateEmail(email)) {
             alert('Please provide valid email');

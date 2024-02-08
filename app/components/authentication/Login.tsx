@@ -10,12 +10,12 @@ const Login = () => {
     const isValidEmail = isValidateEmail(email);
     const hasPasswordWhiteSpace = hasWhiteSpace(password);
     if (!isValidEmail) {
-        alert("Please provide valid email");
+      alert("Please provide valid email");
     }
     if (password.length > 0 && !hasPasswordWhiteSpace) {
 
     } else {
-           alert("please provide valid password")
+      alert("please provide valid password")
     }
   }
 
