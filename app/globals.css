@@ -14,3 +14,11 @@
   .authentication__btn {
     @apply flex flex-row relative justify-center items-center py-3 px-6 outline h-[35px] w-[250px] bg-orange-500;
   }
+
+  .registration__input {
+    @apply justify-items-start pt-5;
+  }
+  
+  .customfilter__btn {
+    @apply flex justify-between outline-none border-2 pt-1 px-2 border-black h-[35px] w-[250px];
+  }
