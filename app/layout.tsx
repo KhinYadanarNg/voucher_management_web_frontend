@@ -5,7 +5,7 @@ import NavBar from './components/common/NavBar'
 
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400','800']
+  weight: ['400', '800']
 })
 
 export const metadata: Metadata = {
@@ -20,13 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    <body className={poppins.className}>
-      <div className='flex flex-col min-h-screen'>
-        <NavBar/>
-        <main className='flex-grow'>{children}</main>
-      </div>
+      <body className={poppins.className}>
+        <div className='flex flex-col min-h-screen'>
+          <NavBar />
+          <main className='flex-grow'>{children}</main>
+        </div>
 
-    </body>
-  </html>
+      </body>
+    </html>
   )
 }
