@@ -21,3 +21,19 @@
 .customfilter__btn {
   @apply flex justify-between outline-none border-2 pt-1 px-2 border-black h-[35px] w-[250px];
 }
+
+.progressBar {
+  @apply w-44 h-1 bg-slate-200;
+}
+
+.progressBarFill {
+  @apply h-full bg-orange-500;
+}
+
+.home__error-container {
+  @apply mt-16 flex justify-center items-center flex-col gap-2;
+}
+
+.home__campaigns-wrapper {
+  @apply grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14 px-10;
+}
