@@ -1,19 +1,24 @@
 "use client";
 import { hasWhiteSpace, isValidateEmail } from '@/utils';
 import React, { useState } from 'react'
+import { useRouter } from "next/navigation";
+
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
   const logIn = () => {
     const isValidEmail = isValidateEmail(email);
     const hasPasswordWhiteSpace = hasWhiteSpace(password);
     if (!isValidEmail) {
       alert("Please provide valid email");
+      return;
     }
     if (password.length > 0 && !hasPasswordWhiteSpace) {
-
+      router.push('/');
     } else {
       alert("please provide valid password")
     }

@@ -1,8 +1,8 @@
 "use client";
-import { Listbox, Transition } from '@headlessui/react'
 import React, { Fragment, useState } from 'react'
 import CustomListBox from '../common/CustomListBox';
 import { hasWhiteSpace, isValidateEmail } from '@/utils';
+import { useRouter } from 'next/navigation';
 
 const Registration = () => {
 
@@ -16,15 +16,16 @@ const Registration = () => {
     const [password, setPassword] = useState('');
     const [confirmedPassword, setConfirmedPassword] = useState('');
     const [email, setEmail] = useState('');
+    const router = useRouter();
 
     const signUp = () => {
 
-        if (isEmpty()) { return; }
-
-        if (!isValidateEmail(email)) {
+        if (email.length > 0 && !isValidateEmail(email)) {
             alert('Please provide valid email');
             return;
         }
+
+        if (isEmpty()) { return; }
 
         if (hasWhiteSpace(password) && hasWhiteSpace(confirmedPassword)) {
             alert('Whitespace is invalid for password');
@@ -34,6 +35,8 @@ const Registration = () => {
         if (password !== confirmedPassword) {
             alert('Password and confirmed password do not match.');
             return;
+        } else {
+            router.push('/');
         }
 
     }
