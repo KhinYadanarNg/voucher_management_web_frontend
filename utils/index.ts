@@ -8,4 +8,4 @@ export const isValidateEmail = (email: string) => {
 
 export const hasWhiteSpace = (text: string) => {
     return /\s/g.test(text);
-  }
+}
