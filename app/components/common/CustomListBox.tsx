@@ -2,7 +2,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import React, { Fragment, useState } from 'react'
 import Image from "next/image";
 
-export default function CustomListBox() {
+export default function CustomListBox({ setFilter }) {
     const userTypes = [
         { id: 0, type: 'Choose user type' },
         { id: 1, type: 'Customer' },
@@ -12,7 +12,11 @@ export default function CustomListBox() {
     return (
         <div>
             <Listbox
-                value={selectedUserType} onChange={setSelectedUserType}>
+                value={selectedUserType}
+                onChange={(e) => {
+                    setSelectedUserType(e);
+                    setFilter(e);
+                }}>
                 <Listbox.Button className="customfilter__btn">
                     <span>{selectedUserType.type}</span>
                     <Image src='/chevron-up-down.svg' width={20} height={20} className='pt-1' alt='chevron_up-down' />

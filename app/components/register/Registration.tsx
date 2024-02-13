@@ -1,24 +1,27 @@
 "use client";
 import React, { Fragment, useState } from 'react'
 import CustomListBox from '../common/CustomListBox';
-import { hasWhiteSpace, isValidateEmail } from '@/utils';
+import { hasWhiteSpace, isValidateEmail, registerUser } from '@/utils';
 import { useRouter } from 'next/navigation';
 
 const Registration = () => {
 
     const userTypes = [
         { id: 0, type: 'Choose user type' },
-        { id: 1, type: 'Customer' },
-        { id: 2, type: 'Merchant' }
+        { id: 1, type: 'CUSTOMER' },
+        { id: 2, type: 'MERCHANT' }
     ]
 
     const [selectedUserType, setSelectedUserType] = useState(userTypes[0]);
     const [password, setPassword] = useState('');
     const [confirmedPassword, setConfirmedPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [image, setImage] = useState<File>();
     const router = useRouter();
 
-    const signUp = () => {
+
+    const signUp = async () => {
 
         if (email.length > 0 && !isValidateEmail(email)) {
             alert('Please provide valid email');
@@ -26,6 +29,11 @@ const Registration = () => {
         }
 
         if (isEmpty()) { return; }
+
+        if (selectedUserType.id == 0){
+            alert('Please choose user type');
+            return;
+        }
 
         if (hasWhiteSpace(password) && hasWhiteSpace(confirmedPassword)) {
             alert('Whitespace is invalid for password');
@@ -36,25 +44,38 @@ const Registration = () => {
             alert('Password and confirmed password do not match.');
             return;
         } else {
-            router.push('/');
+            try {
+                const response = await registerUser(email, username, password, selectedUserType.type.toUpperCase(), image);
+                const { message, result } = response;
+                if (result.length > 0) {
+                    router.push('/');
+                } else {
+                    alert(message);
+                }
+            } catch (error) {
+                console.log(error);
+            } finally {
+            }
+
         }
 
     }
 
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        setImage(file);
+    };
 
     const isEmpty = () => {
         var elements = document.getElementsByTagName("input")
         for (var i = 0; i < elements.length; i++) {
-            if (elements[i].value == "") {
+            if (elements[i].value == "" && elements[i].type != "file") {
                 alert('Please provide ' + elements[i].id);
                 return true;
             }
         }
         return false;
     }
-
-
-
     return (
         <main>
             <div className="mt-20">
@@ -62,11 +83,11 @@ const Registration = () => {
                 </h1>
             </div>
             <div className='wrapper mt-5'>
-                <form action="/" method="post">
+                <form action="/" method="post" encType='multipart/form-data'>
                     <div className='registration__input'>
                         <text>Name</text>
                     </div>
-                    <input type="text" id="name" className="logintext__input" />
+                    <input type="text" id="name" className="logintext__input" onChange={(e) => setUsername(e.target.value)} />
                     <div className='registration__input'>
                         <text>Email</text>
                     </div>
@@ -82,7 +103,11 @@ const Registration = () => {
                     <div className='registration__input pb-1'>
                         <text>Register as</text>
                     </div>
-                    <CustomListBox></CustomListBox>
+                    <CustomListBox setFilter={setSelectedUserType}></CustomListBox>
+                    <div className='registration__input'>
+                        <text>User Image</text>
+                    </div>
+                    <input type="file" accept="image/*" id="image" onChange={handleImageChange} />
                     <button type="button" className="authentication__btn mt-10" onClick={signUp}>Sign Up</button>
                 </form>
             </div>
