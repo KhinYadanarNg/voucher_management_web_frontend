@@ -30,6 +30,11 @@ const Registration = () => {
 
         if (isEmpty()) { return; }
 
+        if (selectedUserType.id == 0){
+            alert('Please choose user type');
+            return;
+        }
+
         if (hasWhiteSpace(password) && hasWhiteSpace(confirmedPassword)) {
             alert('Whitespace is invalid for password');
             return;
@@ -43,6 +48,7 @@ const Registration = () => {
                 const response = await registerUser(email, username, password, selectedUserType.type.toUpperCase(), image);
                 const { message, result } = response;
                 if (result.length > 0) {
+                    console.log(result);
                     router.push('/');
                 } else {
                     alert(message);
