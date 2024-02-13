@@ -10,7 +10,42 @@ export const hasWhiteSpace = (text: string) => {
     return /\s/g.test(text);
 }
 
-export const fetchCampaigns = () => {
+export async function registerUser(email: string, username: string, password: string, role: string) {
+    const user = {
+        email,
+        username,
+        password,
+        role
+    }
+    let formData = new FormData();
+    const blob = new Blob([JSON.stringify({
+
+        email,
+        username,
+        password,
+        role
+
+    })], {
+        type: "application/json"
+    })
+
+    formData.append('user', blob);
+
+    const response = await fetch(
+        `http://localhost:8080/api/user/create`,
+        {
+            method: 'POST',
+            body: formData
+
+        });
+
+    const result = await response.json();
+    return result;
+}
+
+
+
+export const fetchCampaigns = async () => {
     const result =
         [
             {
