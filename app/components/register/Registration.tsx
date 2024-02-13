@@ -1,7 +1,7 @@
 "use client";
 import React, { Fragment, useState } from 'react'
 import CustomListBox from '../common/CustomListBox';
-import registerUser, { hasWhiteSpace, isValidateEmail } from '@/utils';
+import { hasWhiteSpace, isValidateEmail, registerUser } from '@/utils';
 import { useRouter } from 'next/navigation';
 
 const Registration = () => {
@@ -17,7 +17,6 @@ const Registration = () => {
     const [confirmedPassword, setConfirmedPassword] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
-    const [result, setResult] = useState([])
     const router = useRouter();
 
 
@@ -40,19 +39,21 @@ const Registration = () => {
             return;
         } else {
             try {
-                const result = await registerUser(email, username, password, selectedUserType.type.toUpperCase());
-                setResult(result)
+                const response = await registerUser(email, username, password, selectedUserType.type.toUpperCase());
+                const { message, result } = response;
+                if (result.length > 0) {
+                    router.push('/');
+                } else {
+                    alert(message);
+                }
             } catch (error) {
                 console.log(error);
-
             } finally {
-
             }
 
         }
 
     }
-
 
     const isEmpty = () => {
         var elements = document.getElementsByTagName("input")
