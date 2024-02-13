@@ -11,12 +11,6 @@ export const hasWhiteSpace = (text: string) => {
 }
 
 export async function registerUser(email: string, username: string, password: string, role: string, image?: File) {
-    const user = {
-        email,
-        username,
-        password,
-        role
-    }
     let formData = new FormData();
     const blob = new Blob([JSON.stringify({
 

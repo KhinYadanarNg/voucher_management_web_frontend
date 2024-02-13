@@ -48,7 +48,6 @@ const Registration = () => {
                 const response = await registerUser(email, username, password, selectedUserType.type.toUpperCase(), image);
                 const { message, result } = response;
                 if (result.length > 0) {
-                    console.log(result);
                     router.push('/');
                 } else {
                     alert(message);
