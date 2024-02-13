@@ -15,5 +15,6 @@ export interface UserRegistrationResponseProps {
 
 export interface UserInfoProps {
     "email": string;
+    "role": string;
 }
 
