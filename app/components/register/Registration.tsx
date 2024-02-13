@@ -17,6 +17,7 @@ const Registration = () => {
     const [confirmedPassword, setConfirmedPassword] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
+    const [image, setImage] = useState<File>();
     const router = useRouter();
 
 
@@ -39,7 +40,7 @@ const Registration = () => {
             return;
         } else {
             try {
-                const response = await registerUser(email, username, password, selectedUserType.type.toUpperCase());
+                const response = await registerUser(email, username, password, selectedUserType.type.toUpperCase(), image);
                 const { message, result } = response;
                 if (result.length > 0) {
                     router.push('/');
@@ -55,10 +56,15 @@ const Registration = () => {
 
     }
 
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        setImage(file);
+    };
+
     const isEmpty = () => {
         var elements = document.getElementsByTagName("input")
         for (var i = 0; i < elements.length; i++) {
-            if (elements[i].value == "") {
+            if (elements[i].value == "" && elements[i].type != "file") {
                 alert('Please provide ' + elements[i].id);
                 return true;
             }
@@ -93,6 +99,10 @@ const Registration = () => {
                         <text>Register as</text>
                     </div>
                     <CustomListBox setFilter={setSelectedUserType}></CustomListBox>
+                    <div className='registration__input'>
+                        <text>User Image</text>
+                    </div>
+                    <input type="file" accept="image/*" id="image" onChange={handleImageChange} />
                     <button type="button" className="authentication__btn mt-10" onClick={signUp}>Sign Up</button>
                 </form>
             </div>

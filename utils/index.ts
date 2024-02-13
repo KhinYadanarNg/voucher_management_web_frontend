@@ -10,7 +10,7 @@ export const hasWhiteSpace = (text: string) => {
     return /\s/g.test(text);
 }
 
-export async function registerUser(email: string, username: string, password: string, role: string) {
+export async function registerUser(email: string, username: string, password: string, role: string, image?: File) {
     const user = {
         email,
         username,
@@ -30,6 +30,9 @@ export async function registerUser(email: string, username: string, password: st
     })
 
     formData.append('user', blob);
+    if (image != null) {
+        formData.append("image", image);
+    }
 
     const response = await fetch(
         `http://localhost:8080/api/user/create`,
