@@ -43,7 +43,7 @@ export async function registerUser(email: string, username: string, password: st
 
 export const fetchCampaigns = async () => {
     const result =
-        [
+    [
             {
                 "id": 1,
                 "code": "VOUCHER10",
@@ -72,5 +72,6 @@ export const fetchCampaigns = async () => {
                 "policy": "Term and condition to use the voucher, enjoy with our voucher by registering as a member. "
             }
         ]
-    return result;
+    const response = JSON.parse(result.toString());
+    return response
 }
