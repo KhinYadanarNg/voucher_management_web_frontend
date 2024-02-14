@@ -1,9 +1,15 @@
 import React from 'react'
 import Registration from './Registration'
+import Container from '../Container'
+import FormWrap from '../common/FormWrap'
 
 const page = () => {
     return (
-        <div><Registration></Registration></div>
+        <Container>
+            <FormWrap>
+                <Registration />
+            </FormWrap>
+        </Container>
     )
 }
 

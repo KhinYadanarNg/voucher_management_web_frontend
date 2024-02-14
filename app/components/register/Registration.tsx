@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react'
 import CustomListBox from '../common/CustomListBox';
 import { hasWhiteSpace, isValidateEmail, registerUser } from '@/utils';
 import { useRouter } from 'next/navigation';
+import Heading from '../common/Heading';
 
 const Registration = () => {
 
@@ -80,8 +81,8 @@ const Registration = () => {
     return (
         <main>
             <div className="mt-20">
-                <h1 className="text-4x1 font-extrabold text-center">Welcome to IV Voucher
-                </h1>
+                {/* <h1 className="text-4x1 font-extrabold text-center">Welcome to IV Voucher Manage</h1> */}
+                <Heading title={'Welcome to IV Voucher Management'} center={true}/>
             </div>
             <div className='wrapper mt-5'>
                 <form action="/" method="post" encType='multipart/form-data'>
@@ -104,7 +105,7 @@ const Registration = () => {
                     <div className='registration__input pb-1'>
                         <text>Register as</text>
                     </div>
-                    <CustomListBox setFilter={setSelectedUserType}></CustomListBox>
+                    <CustomListBox className="text-slate-500" setFilter={setSelectedUserType}></CustomListBox>
                     <div className='registration__input'>
                         <text>User Image</text>
                     </div>
