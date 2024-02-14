@@ -25,7 +25,7 @@ const CampaignList = () => {
         <section>
           <div className='home__campaigns-wrapper'>
             {campaigns?.map((campaign) => (
-              <Campaign campaign={campaign} />
+              <Campaign campaign={campaign} key={campaign} />
             ))}
           </div>
         </section>
