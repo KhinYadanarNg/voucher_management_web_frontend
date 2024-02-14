@@ -2,7 +2,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import React, { Fragment, useState } from 'react'
 import Image from "next/image";
 
-export default function CustomListBox({ setFilter }) {
+export default function CustomListBox({ setFilter }: any) {
     const userTypes = [
         { id: 0, type: 'Choose user type' },
         { id: 1, type: 'Customer' },

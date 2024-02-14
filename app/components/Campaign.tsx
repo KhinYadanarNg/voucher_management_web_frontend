@@ -2,7 +2,12 @@ import { CampaignProps } from '@/type'
 import React from 'react'
 import ProgressBar from './common/Progressbar';
 
-const Campaign = ({ campaign }: CampaignProps) => {
+export interface CampaignCardProps {
+    campaign: CampaignProps;
+  }
+
+
+const Campaign = ({ campaign }: CampaignCardProps) => {
     const { id, code, discount, description, store, policy, minimumSpend } = campaign;
     return (
         <div className='border px-2 py-2'>

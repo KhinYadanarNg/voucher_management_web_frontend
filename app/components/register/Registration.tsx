@@ -30,7 +30,7 @@ const Registration = () => {
 
         if (isEmpty()) { return; }
 
-        if (selectedUserType.id == 0){
+        if (selectedUserType.id == 0) {
             alert('Please choose user type');
             return;
         }
@@ -61,8 +61,9 @@ const Registration = () => {
 
     }
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const target = event.target as HTMLInputElement;
+        const file: File = (target.files as FileList)[0];
         setImage(file);
     };
 
@@ -107,7 +108,7 @@ const Registration = () => {
                     <div className='registration__input'>
                         <text>User Image</text>
                     </div>
-                    <input type="file" accept="image/*" id="image" onChange={handleImageChange} />
+                    <input type="file" accept="image/*" id="image" onChange={(e) => handleImageChange(e)} />
                     <button type="button" className="authentication__btn mt-10" onClick={signUp}>Sign Up</button>
                 </form>
             </div>
