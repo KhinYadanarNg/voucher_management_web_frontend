@@ -1,38 +1,10 @@
-import { render, screen } from "@testing-library/react";
-import Home from "@/app/page";
-import { describe } from "node:test";
+import { render, screen } from '@testing-library/react';
+import Home from '@/app/page'; // Import the component you want to test
 
-describe("Home", () => {
-  it("should have Login text", () => {
-    render(<Home />); //ARRANGE
+test('Home component should have Login text', () => {
+  render(<Home />); // Arrange: Render the component
 
-    const myElem = screen.getByText("Login"); // ACT
+  const myElem = screen.getByText('Login'); // Act: Get the element with text 'Login'
 
-    expect(myElem).toBeInTheDocument(); //ASSERT
-  });
-
-//   it("should have Login text", () => {
-//     render(<Home />); //ARRANGE
-
-//     const myElem = screen.getByText("Login"); // ACT
-
-//     expect(myElem).toBeInTheDocument(); //ASSERT
-//   });
-
-//   it("should have Login text", () => {
-//     render(<Home />); //ARRANGE
-
-//     const myElem = screen.getByText("Login"); // ACT
-
-//     expect(myElem).toBeInTheDocument(); //ASSERT
-//   });
-
-//   it("should have Login text", () => {
-//     render(<Home />); //ARRANGE
-
-//     const myElem = screen.getByText("Login"); // ACT
-
-//     expect(myElem).toBeInTheDocument(); //ASSERT
-//   });
-
+  expect(myElem).toBeInTheDocument(); // Assert: Check if the element is in the document
 });
