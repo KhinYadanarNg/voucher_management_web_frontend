@@ -24,7 +24,7 @@ const CampaignList = () => {
   }, [])
 
   return (
-    <div>
+    <div >
       {campaigns.length > 0 ? (
         <section>
           <div className='home__campaigns-wrapper'>
@@ -38,9 +38,10 @@ const CampaignList = () => {
         //   <h2 className="text-black text-x1 font-bold">Oops, no results</h2>
         // </div>
 
+        // onClick={() => router.push('/campaign/1')}
         <div onClick={() => router.push('/campaign/1')}
             className="col-span-1 cursor-pointer border-[1.2px] border-slate-200 bg-slate-50
-                      rounded-sm p-2 trnsition hover:scale-105 text-center text-sm"
+                      rounded-sm p-2 trnsition hover:scale-105 text-center text-sm" data-testid="campaign-list"
         >
            <div>This is campaign list</div>
         </div>
