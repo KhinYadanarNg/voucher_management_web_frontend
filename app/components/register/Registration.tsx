@@ -1,9 +1,10 @@
 "use client";
 import React, { Fragment, useState } from 'react'
 import CustomListBox from '../common/CustomListBox';
-import { hasWhiteSpace, isValidateEmail, registerUser } from '@/utils';
+import { hasWhiteSpace, isValidateEmail } from '@/utils';
 import { useRouter } from 'next/navigation';
 import Heading from '../common/Heading';
+import { registerUser } from '@/service';
 
 const Registration = () => {
 
