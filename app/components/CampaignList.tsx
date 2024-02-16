@@ -1,7 +1,7 @@
 "use client";
-import { fetchCampaigns } from '@/utils';
 import { useEffect, useState } from 'react'
 import Campaign from './Campaign';
+import { fetchCampaigns } from '@/service';
 
 const CampaignList = () => {
   const [campaigns, setCampaigns] = useState([]);
