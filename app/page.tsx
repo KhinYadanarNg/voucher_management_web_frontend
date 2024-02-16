@@ -1,11 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Container from './components/Container'
+import CampaignList from './components/CampaignList'
 
 export default function Home() {
   return (
-    <main>Testing for Voucher Management<br />
-      <Link href="/components/login">Login</Link><br />
-      <Link href="/components/register">Register</Link>
-    </main>
+    <div className='p-8'>
+      <Container>
+          <CampaignList/>
+      </Container>
+    </div>
   )
 }
