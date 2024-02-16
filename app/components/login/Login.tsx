@@ -26,7 +26,7 @@ const Login = () => {
 
   return (
     <main>
-      <div className="mt-20">
+      <div className="mt-20" data-testid="login-page">
         
         <Heading title={"Welcome to IV Voucher"} center={true} />
       </div>
