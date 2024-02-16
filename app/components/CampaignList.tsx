@@ -2,8 +2,12 @@
 import { useEffect, useState } from 'react'
 import Campaign from './Campaign';
 import { fetchCampaigns } from '@/service';
+import { useRouter } from 'next/navigation';
 
 const CampaignList = () => {
+
+  const router = useRouter();
+  
   const [campaigns, setCampaigns] = useState([]);
   const getCampaignList = async () => {
     try {
@@ -30,8 +34,15 @@ const CampaignList = () => {
           </div>
         </section>
       ) : (
-        <div className="home__error-container">
-          <h2 className="text-black text-x1 font-bold">Oops, no results</h2>
+        // <div className="home__error-container">
+        //   <h2 className="text-black text-x1 font-bold">Oops, no results</h2>
+        // </div>
+
+        <div onClick={() => router.push('/campaign/1')}
+            className="col-span-1 cursor-pointer border-[1.2px] border-slate-200 bg-slate-50
+                      rounded-sm p-2 trnsition hover:scale-105 text-center text-sm"
+        >
+           <div>This is campaign list</div>
         </div>
       )}
     </div>
