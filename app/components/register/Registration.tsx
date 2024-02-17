@@ -55,11 +55,10 @@ const Registration = () => {
           image
         );
         const { message, result } = response;
-        if (result.length > 0) {
+        alert(message); 
+        if (result.length > 0) { 
           router.push("/");
-        } else {
-          alert(message);
-        }
+        } 
       } catch (error) {
         console.log(error);
       } finally {
