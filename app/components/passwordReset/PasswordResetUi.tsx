@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Heading from '../common/Heading'
 import { hasWhiteSpace, isValidateEmail } from '@/utils';
 import { useRouter } from 'next/navigation';
+import { forgotPassword } from '@/service';
 
 const PasswordResetUi = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +19,15 @@ const PasswordResetUi = () => {
       return;
     }
     if (password.length > 0 && !hasPasswordWhiteSpace) {
-      router.push('/components/login');
+      try {
+        const response = await forgotPassword(email, password)
+        const {message} = response;
+        alert(message);
+        router.push('/components/login');
+      } catch (error) {
+        alert(error);
+      } finally {
+      }
     } else {
       alert("please provide valid password")
     }

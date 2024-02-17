@@ -28,7 +28,29 @@ export async function registerUser(email: string, username: string, password: st
     return result;
 }
 
+export async function forgotPassword(email: string, password: string) {
 
+    let body = {
+        email,
+        password
+    }
+
+    const headers = {
+        'Content-Type': 'application/json'
+    };
+
+    const response = await fetch(
+        `http://localhost:8080/api/user/resetPassword`,
+        {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(body)
+
+        });
+
+    const result = await response.json();
+    return result;
+}
 
 export const fetchCampaigns = async () => {
     const result =
