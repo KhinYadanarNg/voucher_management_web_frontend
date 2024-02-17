@@ -1,5 +1,5 @@
 "use client";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import CustomListBox from "../common/CustomListBox";
 import { hasWhiteSpace, isValidateEmail } from "@/utils";
 import { useRouter } from "next/navigation";
@@ -84,7 +84,7 @@ const Registration = () => {
   };
   return (
     <main>
-      <div className="mt-20">
+      <div className="mt-20" data-testid="register-page">
         {/* <h1 className="text-4x1 font-extrabold text-center">Welcome to IV Voucher Manage</h1> */}
         <Heading title={"Welcome to IV Voucher Management"} center={true} />
       </div>

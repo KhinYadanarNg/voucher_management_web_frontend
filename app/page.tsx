@@ -1,7 +1,5 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import Container from './components/Container'
-import CampaignList from './components/CampaignList'
+import CampaignList from './components/campaigns/CampaignList'
 
 export default function Home() {
   return (

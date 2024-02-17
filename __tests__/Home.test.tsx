@@ -1,18 +1,29 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Home from '@/app/page'; // Import the component you want to test
 
-jest.mock("next/navigation", () => ({
-  useRouter() {
-    return {
-      prefetch: () => null
-    };
-  }
-}));
+jest.mock('next/navigation');
 
-test('Home component should have text', () => {
-  render(<Home />); // Arrange: Render the component
+describe('Home Component', () => {
+  
+  it('renders CampaignList within Container', async () => {
+    render(<Home />);
+    
+    // Wait for the CampaignList component to appear in the document
+    await waitFor(() => {
+      
+      const campaignListElement = screen.getByTestId('campaign-list');
+      expect(campaignListElement).toBeInTheDocument();
+    });
+  });
 
-  const myElem = screen.getByText('This is campaign list'); // Act: Get the element with text 'Login'
-
-  expect(myElem).toBeInTheDocument(); // Assert: Check if the element is in the document
+  //Add more test here
 });
+
+
+// test('Home component should have Login text', () => {
+//   render(<Home />); // Arrange: Render the component
+
+//   const myElem = screen.getByText('Login'); // Act: Get the element with text 'Login'
+
+//   expect(myElem).toBeInTheDocument(); // Assert: Check if the element is in the document
+// });

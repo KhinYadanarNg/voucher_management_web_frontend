@@ -1,6 +1,5 @@
 import React from 'react'
 import Login from './Login'
-import Link from 'next/link'
 import Container from '../Container'
 import FormWrap from '../common/FormWrap'
 
