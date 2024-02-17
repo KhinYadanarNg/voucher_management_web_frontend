@@ -1,5 +1,5 @@
 import Container from './components/Container'
-import CampaignList from './components/CampaignList'
+import CampaignList from './components/campaigns/CampaignList'
 
 export default function Home() {
   return (
