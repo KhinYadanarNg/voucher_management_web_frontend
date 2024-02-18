@@ -17,7 +17,7 @@ export async function registerUser(email: string, username: string, password: st
     }
 
     const response = await fetch(
-        `ec2-18-143-163-22.ap-southeast-1.compute.amazonaws.com:8081/api/user/create`,
+        `http://localhost:8080/api/user/create`,
         {
             method: 'POST',
             body: formData
