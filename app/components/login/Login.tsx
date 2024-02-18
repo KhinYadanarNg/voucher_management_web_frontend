@@ -27,7 +27,7 @@ const Login = () => {
   return (
     <main>
       <div className="mt-20" data-testid="login-page">
-        
+
         <Heading title={"Welcome to IV Voucher"} center={true} />
       </div>
       <div className="mt-10">
@@ -36,12 +36,14 @@ const Login = () => {
             type="text"
             placeholder="Please enter email"
             className="logintext__input"
+            data-testid='input-field-email'
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Please enter password"
             className="logintext__input mt-10"
+            data-testid='input-field-password'
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
