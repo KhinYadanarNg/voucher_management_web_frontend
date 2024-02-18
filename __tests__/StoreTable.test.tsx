@@ -11,10 +11,10 @@ describe('Store Table Component', () => {
             expect(storeListTableBodyElement).toBeInTheDocument();
         });
     });
-});
 
-test('Store table component should have column', () => {
-    const { getByText } = render(<StoreTable stores={[]} />);
-    expect(getByText('Store Name')).toBeInTheDocument();
-    expect(getByText('Store Description')).toBeInTheDocument();
+    test('Store table component should have column', () => {
+        const { getByText } = render(<StoreTable stores={[]} />);
+        expect(getByText('Store Name')).toBeInTheDocument();
+        expect(getByText('Store Description')).toBeInTheDocument();
+    });
 });
