@@ -4,13 +4,14 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Heading from "../common/Heading";
+import { loginUser } from "@/app/service/authentication";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const logIn = () => {
+  const logIn = async () => {
     const isValidEmail = isValidateEmail(email);
     const hasPasswordWhiteSpace = hasWhiteSpace(password);
     if (!isValidEmail) {
@@ -18,7 +19,17 @@ const Login = () => {
       return;
     }
     if (password.length > 0 && !hasPasswordWhiteSpace) {
-      router.push("/");
+      try {
+        const response = await loginUser(email, password);
+        const { message, result } = response;
+        alert(message);
+        if (result.length > 0) {
+          router.push("/");
+        }
+      } catch (error) {
+        alert(error);
+      } finally {
+      }
     } else {
       alert("please provide valid password");
     }
