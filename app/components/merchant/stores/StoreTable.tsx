@@ -9,6 +9,7 @@ const Store = ({ stores }: { stores: StoreDetailProps[] }) => {
         <div>
             <Table
                 aria-label="Example table with dynamic content"
+                data-testid='store-list-table'
                 bottomContent={
                     <div className="flex w-full justify-center">
                     </div>
@@ -17,7 +18,7 @@ const Store = ({ stores }: { stores: StoreDetailProps[] }) => {
                 <TableHeader columns={storeColumns}>
                     {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
                 </TableHeader>
-                <TableBody items={stores} emptyContent="No store to display">
+                <TableBody items={stores} emptyContent="No store to display" data-testid='store-list-table-body'>
                     {(item) => (
                         <TableRow key={item.storeID}>
                             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
