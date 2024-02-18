@@ -17,7 +17,7 @@ export async function registerUser(email: string, username: string, password: st
     }
 
     const response = await fetch(
-        `http://localhost:8080/api/user/create`,
+        `http://localhost:8081/api/user/create`,
         {
             method: 'POST',
             body: formData
@@ -65,7 +65,7 @@ export async function loginUser(email: string, password: string) {
     };
 
     const response = await fetch(
-        `http://localhost:8080/api/user/login`,
+        `http://localhost:8081/api/user/login`,
         {
             method: 'POST',
             headers: headers,
