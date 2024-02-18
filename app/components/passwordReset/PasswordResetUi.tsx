@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Heading from '../common/Heading'
 import { hasWhiteSpace, isValidateEmail } from '@/utils';
 import { useRouter } from 'next/navigation';
-import { forgotPassword } from '@/app/service';
+import { forgotPassword } from '@/app/service/authentication';
 
 const PasswordResetUi = () => {
   const [email, setEmail] = useState('');
