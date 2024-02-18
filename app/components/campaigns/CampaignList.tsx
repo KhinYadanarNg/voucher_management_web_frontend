@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react'
 import Campaign from './Campaign';
-import { fetchCampaigns } from '@/app/service';
+import { fetchCampaigns } from '@/app/service/campaign';
 import { useRouter } from 'next/navigation';
 
 const CampaignList = () => {

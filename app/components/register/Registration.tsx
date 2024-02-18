@@ -4,7 +4,7 @@ import CustomListBox from "../common/CustomListBox";
 import { hasWhiteSpace, isValidateEmail } from "@/utils";
 import { useRouter } from "next/navigation";
 import Heading from "../common/Heading";
-import { registerUser } from "@/app/service";
+import { registerUser } from "@/app/service/authentication";
 import Link from "next/link";
 
 const Registration = () => {

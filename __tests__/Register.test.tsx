@@ -15,5 +15,10 @@ describe('Register Component', () => {
     });
   });
 
-  //Add more test here
+  test('Registration component should have header text', () => {
+    render(<Register />); 
+    const header = screen.getByRole("heading");
+    const headerText = 'Welcome to IV Voucher Management';
+    expect(header).toHaveTextContent(headerText);
+  });
 });
