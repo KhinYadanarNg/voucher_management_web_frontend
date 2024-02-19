@@ -37,3 +37,15 @@
 .home__campaigns-wrapper {
   @apply grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14 px-10;
 }
+
+.storedetail__button {
+  @apply outline-none border-2 pt-1 rounded text-center border-black h-[35px] w-[100px];
+}
+
+.storedetail__column {
+  @apply w-fit h-10 pt-1 grid grid-cols-[170px_auto];
+}
+
+.storedetail__maincolumn {
+  @apply w-full h-40 mt-3 grid grid-cols-[220px_auto];
+}

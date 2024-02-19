@@ -1,11 +1,12 @@
 'use client';
 import { useEffect } from "react";
+import StoreDetail from "./StoreDetail";
 
 type customStoreType = {
     storeId: string;
     storeName: string;
 };
-const StoreDetail = () => {
+const DetailStore = () => {
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const data = params.get('data');
@@ -16,8 +17,8 @@ const StoreDetail = () => {
     }, []);
 
     return (
-        <div>This is detail</div>
+        <div><StoreDetail></StoreDetail></div>
     );
 };
 
-export default StoreDetail;
+export default DetailStore;
