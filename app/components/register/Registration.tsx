@@ -55,10 +55,10 @@ const Registration = () => {
           image
         );
         const { message, result } = response;
-        alert(message); 
-        if (result.length > 0) { 
+        alert(message);
+        if (result.length > 0) {
           router.push("/");
-        } 
+        }
       } catch (error) {
         console.log(error);
       } finally {
@@ -91,7 +91,7 @@ const Registration = () => {
       <div className="wrapper mt-5">
         <form action="/" method="post" encType="multipart/form-data">
           <div className="registration__input">
-            <text>Name</text>
+            Name
           </div>
           <input
             type="text"
@@ -100,7 +100,7 @@ const Registration = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
           <div className="registration__input">
-            <text>Email</text>
+            Email
           </div>
           <input
             type="text"
@@ -109,7 +109,7 @@ const Registration = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <div className="registration__input">
-            <text>Password</text>
+            Password
           </div>
           <input
             type="password"
@@ -118,7 +118,7 @@ const Registration = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className="registration__input">
-            <text>Confirm Password</text>
+            Confirm Password
           </div>
           <input
             type="password"
@@ -127,14 +127,14 @@ const Registration = () => {
             onChange={(e) => setConfirmedPassword(e.target.value)}
           />
           <div className="registration__input pb-1">
-            <text>Register as</text>
+            Register as
           </div>
           <CustomListBox
             className="text-slate-500"
             setFilter={setSelectedUserType}
           ></CustomListBox>
           <div className="registration__input">
-            <text>User Image</text>
+            User Image
           </div>
           <input
             type="file"
