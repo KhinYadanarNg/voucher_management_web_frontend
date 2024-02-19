@@ -34,21 +34,23 @@ export const storeColumns = [
 export const renderCell = (store: StoreDetailProps, columnKey: React.Key) => {
   const cellValue = store[columnKey as keyof StoreDetailProps];
 
+  const query = {
+    storeId: store.storeID,
+    storeName: store.storeName
+  }
+  const encodedData = encodeURIComponent(JSON.stringify(query));
+
   switch (columnKey) {
     case 'action':
       return (
         <div className="relative flex items-center gap-2">
-            <span className="cursor-pointer text-black">
-              {/* <EyeIcon id={stringStoreNumber}  onClick={viewImageClicked}/> */}
-              <Link href={{
-                pathname: '/components/merchant/stores/detail',
-                query: {
-                  storeId: store.storeID,
-                  storeName: store.storeName
-                }
-              }
-              }>View Detail</Link>
-            </span>
+          <span className="cursor-pointer text-black">
+            {/* <EyeIcon id={stringStoreNumber}  onClick={viewImageClicked}/> */}
+            <Link href={`/components/merchant/stores/detail?data=${encodedData}`}>
+              View Detail
+            </Link>
+
+          </span>
         </div>
       )
     default:
