@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import { button } from '@nextui-org/react'
+import { StoreDetailProps } from '@/type/store'
 
-const StoreDetail = () => {
+const StoreDetail = ({ store }: { store: StoreDetailProps }) => {
     return (
         <div>
             <div className='mt-10 grid md:grid-cols-2'>
@@ -13,43 +13,43 @@ const StoreDetail = () => {
                             Store Detail ID:
                         </span>
                         <span className='pb-3'>
-                            S1
+                            {store.storeID}
                         </span>
                         <span>
                             Store Name:
                         </span>
                         <span className='pb-3'>
-                            NTUC
+                        {store.storeName}
                         </span>
                         <span>
                             Description:
                         </span>
                         <span className='pb-3'>
-                            Chinese new year promotion
+                        {store.storeDesc}
                         </span>
                         <span>
                             Address1:
                         </span>
                         <span className='pb-3'>
-                            Orchard road
+                        {store.storeAddress}
                         </span>
                         <span>
                             Address2:
                         </span>
                         <span className='pb-3'>
-                            Orchard road
+                        {store.storeAddress}
                         </span>
                         <span>
                             Country:
                         </span>
                         <span className='pb-3'>
-                            Singapore
+                        {store.storeAddress}
                         </span>
                         <span>
                             Created Date:
                         </span>
                         <span className='pb-3'>
-                            19 Feb 2024
+                        {store.storeCreatedDate}
                         </span>
                     </div>
                 </div>
