@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import CustomListBox from "../common/CustomListBox";
-import { hasWhiteSpace } from "@/utils";
 import { useRouter } from "next/navigation";
 import Heading from "../common/Heading";
 import { registerUser } from "@/app/service/authentication";
