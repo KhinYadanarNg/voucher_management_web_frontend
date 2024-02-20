@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from 'react'
 import Heading from '../common/Heading'
-import { hasWhiteSpace, isValidateEmail } from '@/utils';
 import { useRouter } from 'next/navigation';
 import { forgotPassword } from '@/app/service/authentication';
 
@@ -10,26 +9,15 @@ const PasswordResetUi = () => {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
-
   const resetPassword = async () => {
-    const isValidEmail = isValidateEmail(email);
-    const hasPasswordWhiteSpace = hasWhiteSpace(password);
-    if (!isValidEmail) {
-      alert("Please provide valid email");
-      return;
-    }
-    if (password.length > 0 && !hasPasswordWhiteSpace) {
-      try {
-        const response = await forgotPassword(email, password)
-        const {message} = response;
-        alert(message);
-        router.push('/components/login');
-      } catch (error) {
-        alert(error);
-      } finally {
-      }
-    } else {
-      alert("please provide valid password")
+    try {
+      const response = await forgotPassword(email, password)
+      const { message } = response;
+      alert(message);
+      router.push('/components/login');
+    } catch (error) {
+      alert(error);
+    } finally {
     }
   }
 
@@ -40,16 +28,16 @@ const PasswordResetUi = () => {
         <Heading title={'Welcome to IV Voucher Management'} center={true} />
       </div>
       <div className='wrapper mt-5'>
-        <form action="/" method="post" >
+        <form method="post" onSubmit={resetPassword}>
           <div className='registration__input'>
             Email
           </div>
-          <input type="text" id="email" className="logintext__input" data-testid='input-field-email' onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" id="email" className="logintext__input" data-testid='input-field-email' required onChange={(e) => setEmail(e.target.value)} />
           <div className='registration__input'>
             Password
           </div>
-          <input type="password" id="password" className="logintext__input" data-testid='input-field-password' onChange={(e) => setPassword(e.target.value)} />
-          <button type="button" className="authentication__btn mt-10" onClick={resetPassword}>Reset Password</button>
+          <input type="password" id="password" className="logintext__input" data-testid='input-field-password' required minLength={6} pattern="[^' ']+" onChange={(e) => setPassword(e.target.value)} />
+          <button type="submit" className="authentication__btn mt-10">Reset Password</button>
         </form>
       </div>
     </main>
