@@ -1,6 +1,6 @@
-import { CampaignProps } from '@/type'
 import React from 'react'
 import ProgressBar from '../common/Progressbar';
+import { CampaignProps } from '@/type/campaign';
 
 export interface CampaignCardProps {
     campaign: CampaignProps;
