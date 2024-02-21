@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 const CampaignList = () => {
 
   const router = useRouter();
-  
+
   const [campaigns, setCampaigns] = useState([]);
   const getCampaignList = async () => {
     try {
