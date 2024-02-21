@@ -1,23 +1,21 @@
 'use client';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import StoreDetail from "./StoreDetail";
+import { StoreDetailProps } from "@/type/store";
 
-type customStoreType = {
-    storeId: string;
-    storeName: string;
-};
-const StoreDetail = () => {
+const DetailStore = () => {
+    const [storeDetail, setStoreDetail] = useState<StoreDetailProps>();
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
-        const data = params.get('data');
+        const storeDetail = params.get('store');
 
-        const decodedData = data ? JSON.parse(data.toString()) : null;
-        const customStoreParams: customStoreType = decodedData
-        console.log(customStoreParams.storeName);
+        const decodedStoreData = storeDetail ? JSON.parse(storeDetail.toString()) : null;
+        setStoreDetail(decodedStoreData);
     }, []);
 
     return (
-        <div>This is detail</div>
+        <div> {storeDetail && <StoreDetail store={storeDetail} />}</div>
     );
 };
 
-export default StoreDetail;
+export default DetailStore;

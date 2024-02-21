@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import CustomListBox from "../common/CustomListBox";
-import { hasWhiteSpace, isValidateEmail } from "@/utils";
 import { useRouter } from "next/navigation";
 import Heading from "../common/Heading";
 import { registerUser } from "@/app/service/authentication";
 import Link from "next/link";
+import { UserFilterType, UserTypeProps } from "@/type/user";
 
 const Registration = () => {
   const userTypes = [
@@ -23,22 +23,9 @@ const Registration = () => {
   const router = useRouter();
 
   const signUp = async () => {
-    if (email.length > 0 && !isValidateEmail(email)) {
-      alert("Please provide valid email");
-      return;
-    }
-
-    if (isEmpty()) {
-      return;
-    }
 
     if (selectedUserType.id == 0) {
       alert("Please choose user type");
-      return;
-    }
-
-    if (hasWhiteSpace(password) && hasWhiteSpace(confirmedPassword)) {
-      alert("Whitespace is invalid for password");
       return;
     }
 
@@ -72,16 +59,6 @@ const Registration = () => {
     setImage(file);
   };
 
-  const isEmpty = () => {
-    var elements = document.getElementsByTagName("input");
-    for (var i = 0; i < elements.length; i++) {
-      if (elements[i].value == "" && elements[i].type != "file") {
-        alert("Please provide " + elements[i].id);
-        return true;
-      }
-    }
-    return false;
-  };
   return (
     <main>
       <div className="mt-20" data-testid="register-page">
@@ -89,7 +66,7 @@ const Registration = () => {
         <Heading title={"Welcome to IV Voucher Management"} center={true} />
       </div>
       <div className="wrapper mt-5">
-        <form action="/" method="post" encType="multipart/form-data">
+        <form method="post" onSubmit={signUp}>
           <div className="registration__input">
             Name
           </div>
@@ -98,15 +75,17 @@ const Registration = () => {
             id="name"
             className="logintext__input"
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
           <div className="registration__input">
             Email
           </div>
           <input
-            type="text"
+            type="email"
             id="email"
             className="logintext__input"
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <div className="registration__input">
             Password
@@ -115,7 +94,10 @@ const Registration = () => {
             type="password"
             id="password"
             className="logintext__input"
+            minLength={6}
+            pattern="[^' ']+"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <div className="registration__input">
             Confirm Password
@@ -124,13 +106,15 @@ const Registration = () => {
             type="password"
             id="confirmed password"
             className="logintext__input"
+            minLength={6}
+            pattern="[^' ']+"
             onChange={(e) => setConfirmedPassword(e.target.value)}
+            required
           />
           <div className="registration__input pb-1">
             Register as
           </div>
           <CustomListBox
-            className="text-slate-500"
             setFilter={setSelectedUserType}
           ></CustomListBox>
           <div className="registration__input">
@@ -143,10 +127,8 @@ const Registration = () => {
             onChange={(e) => handleImageChange(e)}
           />
           <button
-            type="button"
-            className="authentication__btn mt-10"
-            onClick={signUp}
-          >
+            type="submit"
+            className="authentication__btn mt-10">
             Sign Up
           </button>
 

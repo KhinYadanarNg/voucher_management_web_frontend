@@ -1,5 +1,4 @@
 "use client";
-import { hasWhiteSpace, isValidateEmail } from "@/utils";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -8,30 +7,20 @@ import { loginUser } from "@/app/service/authentication";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const router = useRouter();
 
   const logIn = async () => {
-    const isValidEmail = isValidateEmail(email);
-    const hasPasswordWhiteSpace = hasWhiteSpace(password);
-    if (!isValidEmail) {
-      alert("Please provide valid email");
-      return;
-    }
-    if (password.length > 0 && !hasPasswordWhiteSpace) {
-      try {
-        const response = await loginUser(email, password);
-        const { message, result } = response;
-        alert(message);
-        if (result.length > 0) {
-          router.push("/");
-        }
-      } catch (error) {
-        alert(error);
-      } finally {
+    try {
+      const response = await loginUser(email, password);
+      const { message, result } = response;
+      alert(message);
+      if (result.length > 0) {
+        router.push("/");
       }
-    } else {
-      alert("please provide valid password");
+    } catch (error) {
+      alert(error);
+    } finally {
     }
   };
 
@@ -42,25 +31,27 @@ const Login = () => {
         <Heading title={"Welcome to IV Voucher"} center={true} />
       </div>
       <div className="mt-10">
-        <form className="wrapper" action="/" method="post">
+        <form className="wrapper" method="post"  onSubmit={logIn}>
           <input
-            type="text"
+            type="email"
+            value={email}
             placeholder="Please enter email"
             className="logintext__input"
             data-testid='input-field-email'
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             type="password"
+            required
             placeholder="Please enter password"
             className="logintext__input mt-10"
             data-testid='input-field-password'
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
-            type="button"
+            type="submit"
             className="authentication__btn mt-10"
-            onClick={logIn}
           >
             Login
           </button>

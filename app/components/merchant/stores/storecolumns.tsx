@@ -1,6 +1,5 @@
 import React from 'react'
 import { StoreDetailProps } from "@/type/store";
-import { Tooltip } from '@nextui-org/react'
 import Link from "next/link";
 
 
@@ -34,11 +33,7 @@ export const storeColumns = [
 export const renderCell = (store: StoreDetailProps, columnKey: React.Key) => {
   const cellValue = store[columnKey as keyof StoreDetailProps];
 
-  const query = {
-    storeId: store.storeID,
-    storeName: store.storeName
-  }
-  const encodedData = encodeURIComponent(JSON.stringify(query));
+  const encodedData = encodeURIComponent(JSON.stringify(store));
 
   switch (columnKey) {
     case 'action':
@@ -46,10 +41,9 @@ export const renderCell = (store: StoreDetailProps, columnKey: React.Key) => {
         <div className="relative flex items-center gap-2">
           <span className="cursor-pointer text-black">
             {/* <EyeIcon id={stringStoreNumber}  onClick={viewImageClicked}/> */}
-            <Link href={`/components/merchant/stores/detail?data=${encodedData}`}>
+            <Link href={`/components/merchant/stores/detail?store=${encodedData}`}>
               View Detail
             </Link>
-
           </span>
         </div>
       )
