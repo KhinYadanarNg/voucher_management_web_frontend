@@ -1,9 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import {StoreDetailProps } from '@/type/store'
+import {StoreCard } from '@/type/store'
 
-const StoreDetail = ({ store }: {store: StoreDetailProps}) => {
-    if (store !== undefined) {
+const StoreDetail: React.FC<StoreCard>  = ({ store }) => {
     return (
         <div data-testid="store-detail-id">
             <div className='mt-10'>
@@ -63,9 +62,6 @@ const StoreDetail = ({ store }: {store: StoreDetailProps}) => {
             </span>
         </div>
     )
-  } else {
-    return <div></div>
-  }
 }
 
 export default StoreDetail
