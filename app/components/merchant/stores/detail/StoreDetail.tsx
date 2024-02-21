@@ -6,7 +6,7 @@ const StoreDetail = ({ store }: {store: StoreDetailProps}) => {
     if (store !== undefined) {
     return (
         <div data-testid="store-detail-id">
-            <div className='mt-10 grid md:grid-cols-2'>
+            <div className='mt-10'>
                 <div className='storedetail__maincolumn'>
                     <span className='mx-5'><Image src={'/store-placeholder.png'} alt={''} width={220} height={200} /></span>
                     <div className='storedetail__column'>
