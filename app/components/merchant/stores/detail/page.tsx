@@ -6,10 +6,10 @@ const DetailStore = () => {
     const [storeDetail, setStoreDetail] = useState<any>();
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
-        const data = params.get('store');
+        const storeDetail = params.get('store');
 
-        const decodedData = data ? JSON.parse(data.toString()) : null;
-        setStoreDetail(decodedData);
+        const decodedStoreData = storeDetail ? JSON.parse(storeDetail.toString()) : null;
+        setStoreDetail(decodedStoreData);
     }, []);
 
     return (
