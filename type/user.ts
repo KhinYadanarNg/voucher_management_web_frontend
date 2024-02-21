@@ -8,3 +8,12 @@ export interface UserInfoProps {
     "role": string;
 }
 
+export type UserTypeProps = {
+    id: number
+    type: string
+}
+
+export interface UserFilterType {
+    setFilter: (setFilter: UserTypeProps) => void;
+}
+

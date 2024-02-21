@@ -1,9 +1,10 @@
 import { Listbox, Transition } from '@headlessui/react'
 import React, { Fragment, useState } from 'react'
 import Image from "next/image";
+import { UserTypeProps, UserFilterType } from '@/type/user';
 
-export default function CustomListBox({ setFilter }: any) {
-    const userTypes = [
+export default function CustomListBox({ setFilter }: UserFilterType) {
+    const userTypes: UserTypeProps[] = [
         { id: 0, type: 'Choose user type' },
         { id: 1, type: 'Customer' },
         { id: 2, type: 'Merchant' }
@@ -15,7 +16,7 @@ export default function CustomListBox({ setFilter }: any) {
                 value={selectedUserType}
                 onChange={(e) => {
                     setSelectedUserType(e);
-                    setFilter(e);
+                    setFilter(e)
                 }}>
                 <Listbox.Button className="customfilter__btn">
                     <span>{selectedUserType.type}</span>

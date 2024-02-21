@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Heading from "../common/Heading";
 import { registerUser } from "@/app/service/authentication";
 import Link from "next/link";
+import { UserFilterType, UserTypeProps } from "@/type/user";
 
 const Registration = () => {
   const userTypes = [
@@ -114,7 +115,6 @@ const Registration = () => {
             Register as
           </div>
           <CustomListBox
-            className="text-slate-500"
             setFilter={setSelectedUserType}
           ></CustomListBox>
           <div className="registration__input">
