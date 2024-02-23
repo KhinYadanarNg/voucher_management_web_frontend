@@ -1,55 +1,60 @@
 import React from 'react'
 import Image from 'next/image'
-import {StoreCard } from '@/type/store'
+import { StoreCard } from '@/type/store'
 
-const StoreDetail: React.FC<StoreCard>  = ({ store }) => {
+const StoreDetail: React.FC<StoreCard> = ({ store }) => {
+    console.log(store.image)
     return (
         <div data-testid="store-detail-id">
             <div className='mt-10'>
                 <div className='storedetail__maincolumn'>
-                    <span className='mx-5'><Image src={'/store-placeholder.png'} alt={''} width={220} height={200} /></span>
+                    {store.image.length > 0 ? (
+                        <span className='mx-5'><Image src={store.image} alt={''} width={220} height={200} /></span>
+                    ) : (
+                        <span className='mx-5'><Image src='/store-placeholder.png' alt={''} width={220} height={200} /></span>
+                    )}
                     <div className='storedetail__column'>
                         <span>
                             Store Detail ID:
                         </span>
                         <span className='pb-3'>
-                            {store.storeID}
+                            {store.storeId}
                         </span>
                         <span>
                             Store Name:
                         </span>
                         <span className='pb-3'>
-                        {store.storeName}
+                            {store.storeName}
                         </span>
                         <span>
                             Description:
                         </span>
                         <span className='pb-3'>
-                        {store.storeDesc}
+                            {store.description}
                         </span>
                         <span>
                             Address1:
                         </span>
                         <span className='pb-3'>
-                        {store.storeAddress}
+                            {store.address}
                         </span>
                         <span>
                             Address2:
                         </span>
                         <span className='pb-3'>
-                        {store.storeAddress}
+                            {store.address2}
                         </span>
                         <span>
                             Country:
                         </span>
                         <span className='pb-3'>
-                        {store.storeAddress}
+                            {store.country}
                         </span>
                         <span>
-                            Created Date:
+                            Contact Number:
                         </span>
                         <span className='pb-3'>
-                        {store.storeCreatedDate}
+                            {store.contactNumber}
                         </span>
                     </div>
                 </div>

@@ -13,11 +13,12 @@ const getStoreList = async () => {
     }
 }
 export default async function Stores() {
-    const stores = await getStoreList()
+    const stores = await getStoreList();
+    const {message, result} = stores;
     return (
         <section className='py-24'>
             <div className='container'>
-                <StoreTable stores={stores}></StoreTable>
+                <StoreTable stores={result}></StoreTable>
             </div>
         </section>
     )

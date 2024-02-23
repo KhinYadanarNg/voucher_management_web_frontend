@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const storeColumns = [
   {
-    key: "storeID",
+    key: "storeId",
     label: "Store ID",
   },
   {
@@ -13,16 +13,12 @@ export const storeColumns = [
     label: "Store Name",
   },
   {
-    key: "storeDesc",
+    key: "description",
     label: "Store Description",
   },
   {
-    key: 'storeAddress',
+    key: 'address',
     label: 'Address'
-  },
-  {
-    key: 'storeCreatedDate',
-    label: 'Created Date'
   },
   {
     key: 'action',
