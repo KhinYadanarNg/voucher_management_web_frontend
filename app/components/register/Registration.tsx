@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Heading from "../common/Heading";
 import { registerUser } from "@/app/service/authentication";
 import Link from "next/link";
-import { UserFilterType, UserTypeProps } from "@/type/user";
+import { signIn } from "next-auth/react";
 
 const Registration = () => {
   const userTypes = [
@@ -42,14 +42,29 @@ const Registration = () => {
           image
         );
         const { message, result } = response;
-        alert(message);
         if (result.length > 0) {
-          router.push("/");
+          logIn(message)
+        } else {
+          alert(message);
         }
       } catch (error) {
         console.log(error);
       } finally {
       }
+    }
+  };
+
+  const logIn = async (message: string) => {
+    const res = await signIn("credentials", {
+      username: email,
+      password: password,
+      redirect: false
+    });
+    if (res?.error == null) {
+      alert(message);
+      router.push("/")
+    } else {
+      alert(res.error)
     }
   };
 
