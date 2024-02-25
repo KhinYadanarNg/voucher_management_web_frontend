@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Heading from "../common/Heading";
-import { loginUser } from "@/app/service/authentication";
+import { signIn } from "next-auth/react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,16 +11,15 @@ const Login = () => {
   const router = useRouter();
 
   const logIn = async () => {
-    try {
-      const response = await loginUser(email, password);
-      const { message, result } = response;
-      alert(message);
-      if (result.length > 0) {
-        router.push("/");
-      }
-    } catch (error) {
-      alert(error);
-    } finally {
+    const res = await signIn("credentials", {
+      username: email,
+      password: password,
+      redirect: false
+    });
+    if (res?.error == null) {
+      router.push("/")
+    } else {
+      alert(res.error)
     }
   };
 
@@ -31,7 +30,7 @@ const Login = () => {
         <Heading title={"Welcome to IV Voucher"} center={true} />
       </div>
       <div className="mt-10">
-        <form className="wrapper" method="post"  onSubmit={logIn}>
+        <form className="wrapper" method="post" onSubmit={logIn}>
           <input
             type="email"
             value={email}
