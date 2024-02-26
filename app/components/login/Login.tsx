@@ -47,8 +47,9 @@ const Login = () => {
         }
 
         if (callback?.error) {
+            console.log("in callback ok, callback?.error :", callback?.error);
             toast.error(callback.error);
-            console.log("After LoggedIn, working callback error");
+            console.log("After LoggedIn, working callback error: update");
         }
     });
 
