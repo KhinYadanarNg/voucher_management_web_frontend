@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import NavBar from './components/common/NavBar'
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -21,6 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
+      <Toaster
+          toastOptions={{
+            style: {
+              background: "rgb(51 65 85)",
+              color: "#fff",
+            },
+          }}
+        />
         <div className='flex flex-col min-h-screen'>
           <NavBar />
           <main className='flex-grow'>{children}</main>

@@ -83,12 +83,13 @@ const RegisterForm = () => {
                     router.push('/');
                     router.refresh();
                     toast.success('Logged In');
+
                     console.log("After registered, working successfully logged in");
                 }
     
                 if (callback?.error) {
-                    toast.error(callback.error);
-                    console.log("After Registered, working callback error");
+                    toast.error("Logged In failed.");
+                    console.log("After Registered, working callback error : update");
                 }
             });
                 }
