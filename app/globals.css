@@ -19,7 +19,7 @@
 }
 
 .customfilter__btn {
-  @apply flex justify-between outline-none border-2 pt-1 px-2 border-black h-[35px] w-[250px];
+  @apply flex justify-between outline-none border-2 pt-1 px-2 border-black h-[35px] w-[580px];
 }
 
 .progressBar {
