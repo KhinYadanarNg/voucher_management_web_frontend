@@ -61,7 +61,6 @@ export async function loginUser(email: string, password: string) {
         password
     }
 
-    console.log(JSON.stringify(body));
     const headers = {
         'Content-Type': 'application/json'
     };
