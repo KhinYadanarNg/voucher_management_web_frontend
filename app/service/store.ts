@@ -1,7 +1,23 @@
+import { serverURL } from "@/utils";
+import { getCurrentUser } from "../auth/getCurrentUser";
+
 export const fetchStoreListByMerchant = async () => {
-    const res = await fetch(
-        'https://65d15d72ab7beba3d5e44f21.mockapi.io/api/v1/stores/Stores'
-      )
-      const data = await res.json()
-      return data;
+  const currentUser = await getCurrentUser();
+  const email = currentUser && currentUser.email;
+  const body = {
+    email
+  }
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  const res = await fetch(
+    `${serverURL}/api/store/getAllByUser`, {
+    cache: 'no-store',
+    headers: headers,
+    method: 'POST',
+    body: JSON.stringify(body)
+  }
+  )
+  const data = await res.json()
+  return data;
 }

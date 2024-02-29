@@ -20,7 +20,7 @@ const Store = ({ stores }: { stores: StoreDetailProps[] }) => {
                 </TableHeader>
                 <TableBody items={stores} emptyContent="No store to display" data-testid='store-list-table-body'>
                     {(item) => (
-                        <TableRow key={item.storeID}>
+                        <TableRow key={item.storeId}>
                             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
                         </TableRow>
                     )}
