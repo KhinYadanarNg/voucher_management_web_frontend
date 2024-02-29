@@ -11,7 +11,7 @@ export const fetchStoreListByMerchant = async () => {
     'Content-Type': 'application/json'
   };
   const res = await fetch(
-    `${serverURL}/store/getAllByUser`, {
+    `${serverURL}/api/store/getAllByUser`, {
     cache: 'no-store',
     headers: headers,
     method: 'POST',

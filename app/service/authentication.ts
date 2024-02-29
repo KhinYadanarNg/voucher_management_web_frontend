@@ -19,7 +19,7 @@ export async function registerUser(email: string, username: string, password: st
     }
 
     const response = await fetch(
-        `${serverURL}/user/create`,
+        `${serverURL}/api/user/create`,
         {
             method: 'POST',
             body: formData
@@ -42,7 +42,7 @@ export async function forgotPassword(email: string, password: string) {
     };
 
     const response = await fetch(
-        `${serverURL}/user/resetPassword`,
+        `${serverURL}/api/user/resetPassword`,
         {
             method: 'POST',
             headers: headers,
@@ -66,7 +66,7 @@ export async function loginUser(email: string, password: string) {
     };
 
     const response = await fetch(
-        `${serverURL}/user/login`,
+        `${serverURL}/api/user/login`,
         {
             method: 'POST',
             headers: headers,
