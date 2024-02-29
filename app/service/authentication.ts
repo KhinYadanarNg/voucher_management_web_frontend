@@ -1,3 +1,5 @@
+import { serverURL } from "@/utils";
+
 export async function registerUser(email: string, username: string, password: string, role: string, image?: File) {
     let formData = new FormData();
     const blob = new Blob([JSON.stringify({
@@ -17,7 +19,7 @@ export async function registerUser(email: string, username: string, password: st
     }
 
     const response = await fetch(
-        `http://localhost:8081/api/user/create`,
+        `${serverURL}/user/create`,
         {
             method: 'POST',
             body: formData
@@ -40,7 +42,7 @@ export async function forgotPassword(email: string, password: string) {
     };
 
     const response = await fetch(
-        `http://localhost:8080/api/user/resetPassword`,
+        `${serverURL}/user/resetPassword`,
         {
             method: 'POST',
             headers: headers,
@@ -65,7 +67,7 @@ export async function loginUser(email: string, password: string) {
     };
 
     const response = await fetch(
-        `http://localhost:8081/api/user/login`,
+        `${serverURL}/user/login`,
         {
             method: 'POST',
             headers: headers,

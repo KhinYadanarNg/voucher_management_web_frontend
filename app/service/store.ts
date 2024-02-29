@@ -1,6 +1,7 @@
+const serverURL = process.env.NEXT_PUBLIC_APP_API_ENDPOINT;
 export const fetchStoreListByMerchant = async () => {
   const res = await fetch(
-    'http://localhost:8080/api/store/getAll', {
+    `${serverURL}/store/getAll`, {
       cache: 'no-store'
   }
   )
