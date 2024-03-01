@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import NavBar from './components/common/NavBar'
 import { Toaster } from "react-hot-toast";
+export const dynamic = "force-dynamic";
 
 const poppins = Poppins({
   subsets: ['latin'],
