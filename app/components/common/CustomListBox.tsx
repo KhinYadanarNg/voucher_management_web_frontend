@@ -2,7 +2,6 @@ import { Listbox, Transition } from '@headlessui/react'
 import React, { Fragment, useState } from 'react'
 import Image from "next/image";
 import { UserTypeProps, UserFilterType } from '@/type/user';
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
 export default function CustomListBox({ setFilter }: UserFilterType) {
     const userTypes: UserTypeProps[] = [
