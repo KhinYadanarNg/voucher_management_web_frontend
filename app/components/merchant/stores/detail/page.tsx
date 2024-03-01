@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import StoreDetail from "./StoreDetail";
 import { StoreDetailProps } from "@/type/store";
+import Provider from "@/app/components/common/Provider";
 
 const DetailStore = () => {
     const [storeDetail, setStoreDetail] = useState<StoreDetailProps>();
@@ -14,7 +15,7 @@ const DetailStore = () => {
     }, []);
 
     return (
-        <div> {storeDetail && <StoreDetail store={storeDetail} />}</div>
+        <div><Provider>{storeDetail && <StoreDetail store={storeDetail} />}</Provider></div>
     );
 };
 
