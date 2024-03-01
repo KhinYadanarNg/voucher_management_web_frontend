@@ -30,6 +30,7 @@ export async function createStoreByMerchant( storeName: string, description: str
       address1,
       address2,
       postalCode,
+      contactNumber,
       country,
       createdBy
   })], {
