@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { StoreCard } from '@/type/store'
 
 const StoreDetail: React.FC<StoreCard> = ({ store }) => {
-    console.log(store.image)
     return (
         <div data-testid="store-detail-id">
             <div className='mt-10'>
@@ -60,7 +59,7 @@ const StoreDetail: React.FC<StoreCard> = ({ store }) => {
                 </div>
             </div>
             <span className='pr-3'>
-                <button className='mt-40 ml-60 storedetail__button'>Edit</button>
+                <button className='mt-40 ml-60 storedetail__button hover:bg-orange-100 text-orange-600 '>Edit</button>
             </span>
             <span>
                 <button className='storedetail__button'>Cancel</button>
