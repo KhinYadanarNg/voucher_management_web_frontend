@@ -3,10 +3,16 @@ import Image from 'next/image'
 import { StoreCard } from '@/type/store'
 import NullData from '@/app/components/common/NullData'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 const StoreDetail: React.FC<StoreCard> = ({ store }) => {
     const { data: session } = useSession();
-    const currentUser = session?.user
+    const currentUser = session?.user;
+    const router = useRouter();
+    const onCancel = () => {
+        router.push('/components/merchant/stores')
+    }
+
     {
         return (
             currentUser ? (<div data-testid="store-detail-id">
@@ -67,7 +73,7 @@ const StoreDetail: React.FC<StoreCard> = ({ store }) => {
                     <button className='mt-40 ml-60 storedetail__button hover:bg-orange-100 text-orange-600 '>Edit</button>
                 </span>
                 <span>
-                    <button className='storedetail__button'>Cancel</button>
+                    <button className='storedetail__button' onClick={onCancel}>Cancel</button>
                 </span>
             </div>) : (
                 <NullData title="Oops Access denied" />
