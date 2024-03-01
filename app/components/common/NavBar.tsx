@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import Avatar from './Avatar';
 import LogOut from './LogOut';
+import MerchantNavBar from './MerchantNavBar';
 
 
 const NavBar = async () => {
@@ -16,7 +17,7 @@ const NavBar = async () => {
 
   return (
     <div className='sticky top-0 w-full bg-[#F07D13] z-30 shadow-sm'>
-      <div className='py-4 border-b-[1px]'>
+      <div className='py-4'>
         <Container>
           <div className='flex items-center justify-between gap-2 md-gap-0'>
             <Image src={nusLogo} alt='' width={97} height={35} className='justify-center object-contain' priority />
@@ -46,8 +47,13 @@ const NavBar = async () => {
               </div>
             </div>
           </div>
+          
         </Container>
+      </div>
 
+      <div >
+      {currentUser && currentUser.role === 'MERCHANT' && <MerchantNavBar />}
+          {/* <MerchantNavBar/> */}
       </div>
     </div>
   )

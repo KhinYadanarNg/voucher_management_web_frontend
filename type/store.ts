@@ -17,3 +17,11 @@ export type StoreDetailProps = {
 export type StoreCard = {
     store: StoreDetailProps;
 }
+
+export type CountryProps = {
+    id: number;
+    value: string;
+}
+export interface CountryFilter {
+    setFilter: (setFilter: CountryProps) => void;
+}

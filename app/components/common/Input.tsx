@@ -10,6 +10,7 @@ interface InputProps{
     required?: boolean;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors;
+    placeholder?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -20,11 +21,9 @@ const Input: React.FC<InputProps> = ({
     required,
     register,
     errors,
+    placeholder,
     
 }) => {
-
-  console.log("Priting the errors vlaue in Input : ", errors[id])
-
 
   return (
     <div className='w-full relative'>
@@ -37,7 +36,7 @@ const Input: React.FC<InputProps> = ({
         id={id}
         disabled={disabled}
         {...register(id, {required})}
-        placeholder=''
+        placeholder={placeholder}
         type={type}
         className={`
         peer

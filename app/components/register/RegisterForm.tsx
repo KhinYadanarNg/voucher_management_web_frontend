@@ -124,8 +124,8 @@ const RegisterForm = () => {
           <div data-testid="register-page"/>
             <Heading title={"Welcome to IV Voucher Management"} center={true} />
             <hr className="bg-slate-300 w-full h-px" />
-            <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
-            <Input id="email" label="Email" disabled={isLoading} register={register} errors={errors} required />
+            <Input id="name" label="Name" disabled={isLoading} placeholder="" register={register} errors={errors} required />
+            <Input id="email" label="Email" disabled={isLoading} placeholder="" register={register} errors={errors} required />
             <Input
                 id="password"
                 label="Password"
@@ -134,6 +134,7 @@ const RegisterForm = () => {
                 errors={errors}
                 required
                 type="password"
+                placeholder=""
             />
             <Input
                 id="confirmPassword"
@@ -143,6 +144,7 @@ const RegisterForm = () => {
                 errors={errors}
                 required
                 type="password"
+                placeholder=""
             />
             
             {/* this is for dropdown error handling to show with red border if the user select nothing */}

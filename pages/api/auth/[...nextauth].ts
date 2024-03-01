@@ -1,4 +1,5 @@
 import { loginUser } from "@/app/service/authentication";
+import { User } from "@/next-auth";
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -16,6 +17,7 @@ export const authOptions: AuthOptions = {
         const passwordCredentials : string = credentials?.password || '';
         
         const apiResponse = await loginUser(emailCredentials, passwordCredentials);
+        console.log("Printing the apiResponse at authOptions.ts ===> ", apiResponse);
         const res = apiResponse.result[0];
         const message = apiResponse.message;
 
@@ -42,7 +44,7 @@ export const authOptions: AuthOptions = {
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
-    maxAge: 300,
+    maxAge: 3000,
   },
 callbacks: {
     async jwt({token, user}) {
@@ -56,7 +58,8 @@ callbacks: {
     },
     async session({session, token}) {
       console.log("Priting the token in session block at authOptions.ts ===> ", token);
-      session.user = token.user || '';
+      
+      session.user = token.user as User || '';
       console.log("Priting the session in session block at authOptions.ts ===> ", session);
       return session;
     }
