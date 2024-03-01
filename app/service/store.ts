@@ -12,7 +12,6 @@ export const fetchStoreListByMerchant = async () => {
   };
   const res = await fetch(
     `${serverURL}/api/store/getAllByUser`, {
-    cache: 'no-store',
     headers: headers,
     method: 'POST',
     body: JSON.stringify(body)
@@ -24,8 +23,6 @@ export const fetchStoreListByMerchant = async () => {
 
 export async function createStoreByMerchant( storeName: string, description: string, address1: string, address2: string, postalCode: string, country: string,contactNumber: string, image?: File, createdBy?: { email: string }) {
   let formData = new FormData();
-  const currentUser = await getCurrentUser();
-  console.log("Printing the currentUser at createStoreByMerchant api call : ", currentUser);
   
   const blob = new Blob([JSON.stringify({
       storeName,
