@@ -23,9 +23,8 @@ export default async function Stores() {
                         <StoreTable stores={stores.result}></StoreTable>
                     </div>
                 </section>
-
             ) : (
-                 <NullData title="Fetch data failed" />
+                <NullData title="Fetch data failed" />
             ))
     }
 
