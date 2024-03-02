@@ -39,7 +39,7 @@
 }
 
 .storedetail__button {
-  @apply outline-none border-2 pt-1 rounded text-center border-black h-[35px] w-[100px];
+  @apply border-2 hover:bg-orange-100 text-orange-600 rounded-3xl h-[35px] w-[100px];
 }
 
 .storedetail__column {
