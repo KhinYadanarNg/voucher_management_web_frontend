@@ -7,6 +7,7 @@ import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import Avatar from './Avatar';
 import LogOut from './LogOut';
 import MerchantNavBar from './MerchantNavBar';
+import CustomerNavBar from './CustomerNavBar';
 
 
 const NavBar = async () => {
@@ -53,7 +54,8 @@ const NavBar = async () => {
 
       <div >
       {currentUser && currentUser.role === 'MERCHANT' && <MerchantNavBar />}
-          {/* <MerchantNavBar/> */}
+      {currentUser && currentUser.role === 'CUSTOMER' && <CustomerNavBar />}
+          
       </div>
     </div>
   )
