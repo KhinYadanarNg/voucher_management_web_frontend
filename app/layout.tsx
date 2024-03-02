@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import NavBar from './components/common/NavBar'
 import { Toaster } from "react-hot-toast";
+import Provider from './components/common/Provider';
 export const dynamic = "force-dynamic";
 
 const poppins = Poppins({
@@ -32,8 +33,10 @@ export default function RootLayout({
           }}
         />
         <div className='flex flex-col min-h-screen'>
+          <Provider>
           <NavBar />
           <main className='flex-grow'>{children}</main>
+          </Provider>
         </div>
 
       </body>
