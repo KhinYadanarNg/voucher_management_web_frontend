@@ -11,6 +11,8 @@ const MerchantNavBar =  () => {
   const pathname = usePathname();
 
   console.log("Printing the pathname : ", pathname);
+  console.log("Printing the pathname is equal or not : ", (pathname === '/components/merchant/stores'));
+
   return (
     <div className='top-0 w-full bg-[#F07D13] z-30 shadow-none'>
         <Container>
@@ -23,8 +25,8 @@ const MerchantNavBar =  () => {
               <SubNavItem label={'Create Campaign'} selected={pathname === '/components/campaigns/createCampaign'}/>
             </Link>
 
-            <Link href='/components/merchant/stores/'>
-            <SubNavItem label={'My Store'} selected={pathname === '/components/merchant/stores/'}/>
+            <Link href='/components/merchant/stores'>
+            <SubNavItem label={'My Store'} selected={pathname === '/components/merchant/stores'}/>
             </Link>
 
             <Link href='/components/merchant/stores/createStore'>
