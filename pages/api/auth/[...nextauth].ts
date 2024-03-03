@@ -1,5 +1,6 @@
 import { loginUser } from "@/app/service/authentication";
 import { User } from "@/next-auth";
+import { frontendServerURL } from "@/utils";
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -39,7 +40,8 @@ export const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/components/login",
+    // signIn: "/components/login",
+    signIn: `${frontendServerURL}/components/login`,
   },
   debug: process.env.NODE_ENV === "development",
   session: {

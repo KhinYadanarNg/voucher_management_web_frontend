@@ -65,6 +65,7 @@ export async function loginUser(email: string, password: string) {
         'Content-Type': 'application/json'
     };
 
+    console.log('Tracing server api url : ', `${serverURL}/api/user/login`);
     const response = await fetch(
         `${serverURL}/api/user/login`,
         {
