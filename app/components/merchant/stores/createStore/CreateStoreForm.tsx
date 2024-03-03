@@ -1,11 +1,11 @@
 "use client";
 import Input from "@/app/components/common/Input";
-import {countryList} from "@/utils/countriesList";
-import {useRouter} from "next/navigation";
-import React, {useEffect, useState} from "react";
-import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
+import { countryList } from "@/utils/countriesList";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import CountryDropDown from "./CountryDropDown";
-import {createStoreByMerchant} from "@/app/service/store";
+import { createStoreByMerchant } from "@/app/service/store";
 import toast from "react-hot-toast";
 
 export type ImageType = {
@@ -14,14 +14,14 @@ export type ImageType = {
     image: File | null;
 };
 interface CreateStoreFormProps {
-    currentUser: { 
+    currentUser: {
         email: string;
         name: string;
         role: string;
-     }
+    }
 }
 
-const CreateStoreForm: React.FC<CreateStoreFormProps> = ({currentUser}) => {
+const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
 
     console.log("Printing the currentUser at createStoreForm : ", currentUser);
     const [selectedCountry, setSelectedCountry] = useState(countryList[0]);
@@ -38,7 +38,7 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({currentUser}) => {
         setValue,
         watch,
         reset,
-        formState: {errors},
+        formState: { errors },
     } = useForm<FieldValues>({
         defaultValues: {
             storeName: "",
@@ -64,12 +64,12 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({currentUser}) => {
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         // Handle form submission
-        setIsLoading(true);
         console.log(data);
         data.country = selectedCountry.value;
+        data.image = image;
 
-        console.log("Printing the data.country at CreateStoreForm : " , data.country);
-        console.log("Printing the createdBy at CreateStoreForm : " , createdBy);
+        console.log("Printing the data.country at CreateStoreForm : ", data.country);
+        console.log("Printing the createdBy at CreateStoreForm : ", createdBy);
         try {
             const response = await createStoreByMerchant(
                 data.storeName,
@@ -83,7 +83,7 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({currentUser}) => {
                 createdBy
 
             );
-            const {message, result} = response;
+            const { message, result } = response;
 
             if (result.length > 0) {
                 toast.success(message);
@@ -91,10 +91,10 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({currentUser}) => {
                 setImage(null);
                 setSelectedCountry(countryList[0]);
                 router.push("/components/merchant/stores");
-            }else{
+            } else {
                 toast.error(message);
             }
-        } catch {}
+        } catch { }
     };
 
     const onCancel = () => {
@@ -113,84 +113,86 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({currentUser}) => {
     };
 
     return (
-        <div style={{display: "flex", gap: "5rem"}}>
-            <div style={{flex: 1}} className="justify-start">
-                <Input
-                    id="storeName"
-                    label="Store Name"
-                    disabled={isLoading}
-                    register={register}
-                    errors={errors}
-                    required
-                />
-                <Input
-                    id="description"
-                    label="Description"
-                    disabled={isLoading}
-                    register={register}
-                    errors={errors}
-                    required
-                />
-                <Input
-                    id="address1"
-                    label="Address"
-                    placeholder="Address 1"
-                    disabled={isLoading}
-                    register={register}
-                    errors={errors}
-                    required
-                />
-                <Input
-                    id="address2"
-                    label=""
-                    placeholder="Address 2"
-                    disabled={isLoading}
-                    register={register}
-                    errors={errors}
-                    required
-                />
-                <Input
-                    id="postalCode"
-                    label=""
-                    placeholder="Postal Code"
-                    disabled={isLoading}
-                    register={register}
-                    errors={errors}
-                    required
-                />
-                <Input
-                    id="contactNumber"
-                    label="Contact Number"
-                    placeholder=""
-                    disabled={isLoading}
-                    register={register}
-                    errors={errors}
-                    required
-                />
-            </div>
-            <div style={{flex: 1}} className="justify-end">
-                <CountryDropDown setFilter={setSelectedCountry} defaultValue=""></CountryDropDown>
+        <form>
+            <div style={{ display: "flex", gap: "5rem" }}>
+                <div style={{ flex: 1 }} className="justify-start">
+                    <Input
+                        id="storeName"
+                        label="Store Name"
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                    />
+                    <Input
+                        id="description"
+                        label="Description"
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                    />
+                    <Input
+                        id="address1"
+                        label="Address"
+                        placeholder="Address 1"
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                    />
+                    <Input
+                        id="address2"
+                        label=""
+                        placeholder="Address 2"
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                    />
+                    <Input
+                        id="postalCode"
+                        label=""
+                        placeholder="Postal Code"
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                    />
+                    <Input
+                        id="contactNumber"
+                        label="Contact Number"
+                        placeholder=""
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                    />
+                </div>
+                <div style={{ flex: 1 }} className="justify-end">
+                    <CountryDropDown setFilter={setSelectedCountry} defaultValue=""></CountryDropDown>
 
-                <div className="registration__input">Image Upload</div>
+                    <div className="registration__input">Image Upload</div>
 
-                <input type="file" accept="image/*" id="image" onChange={(e) => handleImageChange(e)} />
+                    <input type="file" accept="image/*" id="image" onChange={(e) => handleImageChange(e)} />
 
-                <div className="flex justify-end mt-80">
-                    <button
-                        className="bg-white border-2 hover:bg-orange-100 text-orange-600  py-2 px-4 rounded-3xl mr-2"
-                        onClick={handleSubmit(onSubmit)}
-                    >
-                        Create
-                    </button>
-                    <button
-                        className="bg-slate-200 border-2 hover:bg-gray-300 text-orange-700  py-2 px-4 rounded-3xl"
-                        onClick={onCancel}
-                    >
-                        Cancel
-                    </button>
+                    <div className="flex justify-end mt-80">
+                        <button
+                            className="bg-white border-2 hover:bg-orange-100 text-orange-600  py-2 px-4 rounded-3xl mr-2"
+                            onClick={handleSubmit(onSubmit)}
+                        >
+                            Create
+                        </button>
+                        <button
+                            className="bg-slate-200 border-2 hover:bg-gray-300 text-orange-700  py-2 px-4 rounded-3xl"
+                            onClick={onCancel}
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     );
 };
 
