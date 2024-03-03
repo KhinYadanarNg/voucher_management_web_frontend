@@ -1,5 +1,4 @@
 export const serverURL = process.env.NEXT_PUBLIC_APP_API_ENDPOINT;
-export const frontendServerURL = process.env.NEXT_PUBLIC_FE_URL;
 export const isValidateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValid = emailRegex.test(email);
