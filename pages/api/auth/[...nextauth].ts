@@ -40,8 +40,8 @@ export const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    // signIn: "/components/login",
-    signIn: `${frontendServerURL}/components/login`,
+    signIn: "/components/login",
+    // signIn: `${process.env.NEXTAUTH_URL}/components/login`,
   },
   debug: process.env.NODE_ENV === "development",
   session: {
