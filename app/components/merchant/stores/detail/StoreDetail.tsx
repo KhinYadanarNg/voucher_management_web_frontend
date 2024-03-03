@@ -7,7 +7,7 @@ const StoreDetail: React.FC<StoreCard> = ({ store }) => {
     const router = useRouter();
     const encodedData = encodeURIComponent(JSON.stringify(store));
     const onCancel = () => {
-        router.push('/components/merchant/stores')
+        router.back();
     }
 
     const onEditStore = () => {
