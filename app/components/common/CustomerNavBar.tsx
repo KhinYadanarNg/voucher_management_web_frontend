@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 
-const MerchantNavBar =  () => {
+const CustomerNavBar =  () => {
 
   const pathname = usePathname();
 
@@ -17,20 +17,13 @@ const MerchantNavBar =  () => {
         <Container>
           <div className='flex flex-row items-center justify-between md:justify-start overflow-auto flex-nowrap gap-2 md-gap-12'>
             <Link href='/components/campaigns/'>
-              <SubNavItem label={'Campaign List'} selected={pathname === '/components/campaigns'}/>
-            </Link>
-
-            <Link href='/components/campaigns/createCampaign'>
-              <SubNavItem label={'Create Campaign'} selected={pathname === '/components/campaigns/createCampaign'}/>
+              <SubNavItem label={'Campaigns'} selected={pathname === '/components/campaigns'}/>
             </Link>
 
             <Link href='/components/merchant/stores'>
-            <SubNavItem label={'My Store'} selected={pathname === '/components/merchant/stores'}/>
+            <SubNavItem label={'Stores'} selected={pathname === '/components/merchant/stores'}/>
             </Link>
-
-            <Link href='/components/merchant/stores/createStore'>
-            <SubNavItem label={'Create Store'} selected={pathname === '/components/merchant/stores/createStore'}/>
-            </Link>
+            
           </div>
         </Container>
 
@@ -38,4 +31,4 @@ const MerchantNavBar =  () => {
   )
 }
 
-export default MerchantNavBar
+export default CustomerNavBar
