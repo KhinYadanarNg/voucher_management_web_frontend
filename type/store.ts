@@ -24,4 +24,5 @@ export type CountryProps = {
 }
 export interface CountryFilter {
     setFilter: (setFilter: CountryProps) => void;
+    defaultValue: string;
 }

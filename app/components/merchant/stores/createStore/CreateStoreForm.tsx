@@ -169,7 +169,7 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({currentUser}) => {
                 />
             </div>
             <div style={{flex: 1}} className="justify-end">
-                <CountryDropDown setFilter={setSelectedCountry}></CountryDropDown>
+                <CountryDropDown setFilter={setSelectedCountry} defaultValue=""></CountryDropDown>
 
                 <div className="registration__input">Image Upload</div>
 

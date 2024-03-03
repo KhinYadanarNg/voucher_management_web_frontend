@@ -5,8 +5,13 @@ import { useRouter } from 'next/navigation'
 
 const StoreDetail: React.FC<StoreCard> = ({ store }) => {
     const router = useRouter();
+    const encodedData = encodeURIComponent(JSON.stringify(store));
     const onCancel = () => {
         router.push('/components/merchant/stores')
+    }
+
+    const onEditStore = () => {
+        router.push(`/components/merchant/stores/updateStore?store=${encodedData}`)
     }
 
 
@@ -65,7 +70,7 @@ const StoreDetail: React.FC<StoreCard> = ({ store }) => {
                     </div>
                 </div>
                 <span className='pr-3'>
-                    <button className='mt-40 ml-60 storedetail__button hover:bg-orange-100 text-orange-600 '>Edit</button>
+                    <button className='mt-40 ml-60 storedetail__button hover:bg-orange-100 text-orange-600 ' onClick={onEditStore}>Edit</button>
                 </span>
                 <span>
                     <button className='storedetail__button' onClick={onCancel}>Cancel</button>

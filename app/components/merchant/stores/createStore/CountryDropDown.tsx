@@ -4,7 +4,7 @@ import Image from "next/image";
 import { countryList } from '@/utils/countriesList';
 import { CountryFilter } from '@/type/store';
 
-export default function CountryDropDown({ setFilter }: CountryFilter) {
+export default function CountryDropDown({ setFilter, defaultValue }: CountryFilter) {
     
     const [selectedCountry, setSelectedCountry] = useState(countryList[0])
     return (
@@ -15,10 +15,15 @@ export default function CountryDropDown({ setFilter }: CountryFilter) {
                 value={selectedCountry}
                 onChange={(e) => {
                     setSelectedCountry(e);
+                    defaultValue = ""
                     setFilter(e)
                 }}>
                 <Listbox.Button className="customfilter__btn">
+                    {defaultValue.length == 0 ? (  
                     <span>{selectedCountry.value}</span>
+                    ):(
+                      <span>{defaultValue}</span>
+                    )}
                     <Image src='/chevron-up-down.svg' width={20} height={20} className='pt-1' alt='chevron_up-down' />
                 </Listbox.Button>
                 <Transition
