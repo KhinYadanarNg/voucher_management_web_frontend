@@ -69,29 +69,34 @@ const RegisterForm = () => {
 
             console.log("Printing the JSON value: ",JSON.stringify(data));
             registerUser(data.email, data.name, data.password, data.role).then(
-                () => {
-            toast.success('Account created');
-    
-            signIn('credentials', {
-                email: data.email,
-                password: data.password,
-                redirect: false,
-            }).then((callback) => {
+                (callback) => {
 
-                console.log("Start working Register form callback block: ", callback);
-                if (callback?.ok) {
-                    router.push('/');
-                    router.refresh();
-                    toast.success('Logged In');
+                  const{message, result} = callback;
 
-                    console.log("After registered, working successfully logged in");
-                }
+                  if(result.length>0){
+                    toast.success('Account created');
+                    signIn('credentials', {
+                      email: data.email,
+                      password: data.password,
+                      redirect: false,
+                  }).then((callback) => {
+      
+                      if (callback?.ok) {
+                          router.push('/');
+                          router.refresh();
+                          toast.success('Logged In');
+                      }
+          
+                      if (callback?.error) {
+                          toast.error("Logged In failed.");
+                      }
+                  });
+                  }else{
+                    toast.error(message)
+                  }
+            
     
-                if (callback?.error) {
-                    toast.error("Logged In failed.");
-                    console.log("After Registered, working callback error : update");
-                }
-            });
+            
                 }
             );
         } catch (error) {

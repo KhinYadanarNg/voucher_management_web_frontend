@@ -11,7 +11,6 @@ const CustomerNavBar =  () => {
   const pathname = usePathname();
 
   console.log("Printing the pathname : ", pathname);
-  console.log("Printing the pathname is equal or not : ", (pathname === '/components/merchant/stores'));
 
   return (
     <div className='top-0 w-full bg-[#F07D13] z-30 shadow-none'>
