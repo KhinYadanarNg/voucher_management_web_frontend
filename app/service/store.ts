@@ -21,34 +21,34 @@ export const fetchStoreListByMerchant = async () => {
   return data;
 }
 
-export async function createStoreByMerchant( storeName: string, description: string, address1: string, address2: string, postalCode: string, country: string,contactNumber: string, image?: File, createdBy?: { email: string }) {
+export async function createStoreByMerchant(storeName: string, description: string, address1: string, address2: string, postalCode: string, country: string, contactNumber: string, image?: File, createdBy?: { email: string }) {
   let formData = new FormData();
-  
+
   const blob = new Blob([JSON.stringify({
-      storeName,
-      description,
-      address1,
-      address2,
-      postalCode,
-      contactNumber,
-      country,
-      createdBy
+    storeName,
+    description,
+    address1,
+    address2,
+    postalCode,
+    contactNumber,
+    country,
+    createdBy
   })], {
-      type: "application/json"
+    type: "application/json"
   })
 
   formData.append('store', blob);
   if (image != null) {
-      formData.append("image", image);
+    formData.append("image", image);
   }
 
   const response = await fetch(
-      `${serverURL}/api/store/create`,
-      {
-          method: 'POST',
-          body: formData
+    `${serverURL}/api/store/create`,
+    {
+      method: 'POST',
+      body: formData
 
-      });
+    });
 
   const result = await response.json();
   return result;
