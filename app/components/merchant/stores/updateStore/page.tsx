@@ -13,7 +13,7 @@ const UpdateStore = async ({ searchParams }: {
 
     {
         return (
-            currentUser ? (<div>{decodedStoreData && <UpdateStoreForm store={decodedStoreData} />}</div>) : (
+            currentUser ? (<div>{decodedStoreData && <UpdateStoreForm store={decodedStoreData} currentSessionUser={currentUser} />}</div>) : (
                 <NullData title="Oops Access denied" />)
         )
     }

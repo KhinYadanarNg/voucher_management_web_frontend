@@ -53,3 +53,40 @@ export async function createStoreByMerchant( storeName: string, description: str
   const result = await response.json();
   return result;
 }
+
+
+export async function updateStoreByMerchant(storeId: string, storeName: string, description: string, address1: string, address2: string, postalCode: string, country: string, contactNumber: string, image?: File, updatedBy?: { email: string }) {
+  let formData = new FormData();
+  const deleted = false
+  const blob = new Blob([JSON.stringify({
+    storeId,
+    storeName,
+    description,
+    address1,
+    address2,
+    postalCode,
+    contactNumber,
+    country,
+    updatedBy,
+    deleted
+  })], {
+    type: "application/json"
+  })
+
+  formData.append('store', blob);
+  if (image != null) {
+    formData.append("image", image);
+  }
+  console.log(formData)
+
+  const response = await fetch(
+    `${serverURL}/api/store/update`,
+    {
+      method: 'POST',
+      body: formData
+
+    });
+
+  const result = await response.json();
+  return result;
+}
