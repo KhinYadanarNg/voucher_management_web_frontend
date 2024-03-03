@@ -5,24 +5,25 @@ import { countryList } from '@/utils/countriesList';
 import { CountryFilter } from '@/type/store';
 
 export default function CountryDropDown({ setFilter, defaultValue }: CountryFilter) {
-    
+
     const [selectedCountry, setSelectedCountry] = useState(countryList[0])
+    const [defaultCountry, setDefaultCountry] = useState(defaultValue);
     return (
-        
+
         <div>
             <div className="registration__input">Country</div>
             <Listbox
                 value={selectedCountry}
                 onChange={(e) => {
+                    setDefaultCountry("");
                     setSelectedCountry(e);
-                    defaultValue = ""
                     setFilter(e)
                 }}>
                 <Listbox.Button className="customfilter__btn">
-                    {defaultValue.length == 0 ? (  
-                    <span>{selectedCountry.value}</span>
-                    ):(
-                      <span>{defaultValue}</span>
+                    {defaultCountry.length == 0 ? (
+                        <span>{selectedCountry.value}</span>
+                    ) : (
+                        <span>{defaultValue}</span>
                     )}
                     <Image src='/chevron-up-down.svg' width={20} height={20} className='pt-1' alt='chevron_up-down' />
                 </Listbox.Button>

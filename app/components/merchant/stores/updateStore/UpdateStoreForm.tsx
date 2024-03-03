@@ -2,7 +2,7 @@
 import { StoreCard } from "@/type/store";
 import Input from "@/app/components/common/Input";
 import { useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import CountryDropDown from "../createStore/CountryDropDown";
 import { countryList } from "@/utils/countriesList";
 
@@ -23,7 +23,9 @@ const UpdateStoreForm: React.FC<StoreCard> = ({ store }) => {
 
     const {
         register,
+        handleSubmit,
         formState: { errors },
+        formState: { isDirty },
     } = useForm<FieldValues>({
         defaultValues: {
             storeName: store.storeName,
@@ -37,6 +39,13 @@ const UpdateStoreForm: React.FC<StoreCard> = ({ store }) => {
         },
     });
 
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        if (!isDirty) {
+            alert("Please update fields")
+        }
+
+    }
+
 
     return (
         <div style={{ display: "flex", gap: "5rem" }}>
@@ -44,7 +53,7 @@ const UpdateStoreForm: React.FC<StoreCard> = ({ store }) => {
                 <Input
                     id="storeName"
                     label="Store Name"
-                    disabled={isLoading}
+                    disabled={true}
                     register={register}
                     errors={errors}
                     required
@@ -121,7 +130,7 @@ const UpdateStoreForm: React.FC<StoreCard> = ({ store }) => {
                 <div className="flex justify-end mt-64">
                     <button
                         className="border-2 hover:bg-orange-300 text-orange-700  py-3 px-4 rounded-3xl mr-3"
-                    >
+                        onClick={handleSubmit(onSubmit)}>
                         Update
                     </button>
                     <button
