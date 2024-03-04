@@ -14,14 +14,16 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
     const [imageUrl, setImageUrl] = useState(store.image);
     const [storeImage, setImage] = useState<File | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [isImageChanged, setImageChanged] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState(countryList[0]);
     const updatedBy = { email: currentSessionUser.email };
     const router = useRouter();
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setImageUrl("")
         const target = event.target as HTMLInputElement;
         const file: File = (target.files as FileList)[0];
+        setImageUrl("");
+        setImageChanged(true);
         setImage(file);
 
     };
@@ -50,13 +52,22 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
     }
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        const isUpdateCountry = isChangedCountry();
-        if (!isDirty && !isUpdateCountry && imageUrl.length > 0) {
-            alert("Please update fields");
-            return;
+       
+        const isUpdatedCountry = isChangedCountry();
+        if (!isImageChanged && store.image.length === 0) {
+            if (!isDirty && !isUpdatedCountry) {
+                alert("Please update fields");
+                return;
+            }
+        } else {
+            if (!isDirty && !isUpdatedCountry && imageUrl.length > 0) {
+                alert("Please update fields");
+                return;
+            }
         }
 
-        data.country = selectedCountry.value;
+        data.country = selectedCountry.id === 0 ? store.country : selectedCountry.value;
+        console.log(selectedCountry.value);
         data.image = storeImage
         try {
             const response = await updateStoreByMerchant(
@@ -86,6 +97,10 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
     }
 
     const isChangedCountry = () => {
+        console.log(selectedCountry.id);
+        console.log(store.country);
+        console.log(selectedCountry.value);
+
         return !(store.country === selectedCountry.value || selectedCountry.id == 0)
     }
 
@@ -169,7 +184,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                             ) : (<input type="file" accept="image/*" id="image" onChange={(e) => handleImageChange(e)} />)
                             }
                         </span>
-                    )}
+                    )} 
 
                     <div className="flex justify-end mt-64">
                         <button onClick={handleSubmit(onSubmit)}
