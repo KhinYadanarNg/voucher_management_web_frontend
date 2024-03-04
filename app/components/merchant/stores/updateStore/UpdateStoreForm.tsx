@@ -52,7 +52,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
     }
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-       
+
         const isUpdatedCountry = isChangedCountry();
         if (!isImageChanged && store.image.length === 0) {
             if (!isDirty && !isUpdatedCountry) {
@@ -67,7 +67,6 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
         }
 
         data.country = selectedCountry.id === 0 ? store.country : selectedCountry.value;
-        console.log(selectedCountry.value);
         data.image = storeImage
         try {
             const response = await updateStoreByMerchant(
@@ -97,10 +96,6 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
     }
 
     const isChangedCountry = () => {
-        console.log(selectedCountry.id);
-        console.log(store.country);
-        console.log(selectedCountry.value);
-
         return !(store.country === selectedCountry.value || selectedCountry.id == 0)
     }
 
@@ -184,7 +179,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                             ) : (<input type="file" accept="image/*" id="image" onChange={(e) => handleImageChange(e)} />)
                             }
                         </span>
-                    )} 
+                    )}
 
                     <div className="flex justify-end mt-64">
                         <button onClick={handleSubmit(onSubmit)}
