@@ -77,7 +77,6 @@ export async function updateStoreByMerchant(storeId: string, storeName: string, 
   if (image != null) {
     formData.append("image", image);
   }
-  console.log(formData)
 
   const response = await fetch(
     `${serverURL}/api/store/update`,
