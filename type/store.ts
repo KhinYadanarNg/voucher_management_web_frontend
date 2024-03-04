@@ -1,3 +1,5 @@
+import { SessionUserProps } from "./user";
+
 export type StoreDetailProps = {
     storeId: string;
     storeName: string;
@@ -18,10 +20,16 @@ export type StoreCard = {
     store: StoreDetailProps;
 }
 
+export type UpdateStoreCard = {
+    store: StoreDetailProps;
+    currentSessionUser: SessionUserProps;
+}
+
 export type CountryProps = {
     id: number;
     value: string;
 }
 export interface CountryFilter {
     setFilter: (setFilter: CountryProps) => void;
+    defaultValue: string;
 }

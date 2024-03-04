@@ -17,3 +17,10 @@ export interface UserFilterType {
     setFilter: (setFilter: UserTypeProps) => void;
 }
 
+export interface SessionUserProps {
+    email: string;
+    name: string;
+    role: string;
+
+}
+

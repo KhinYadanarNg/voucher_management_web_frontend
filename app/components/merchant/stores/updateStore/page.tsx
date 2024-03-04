@@ -1,9 +1,9 @@
-import StoreDetail from "./StoreDetail";
 import { StoreDetailProps } from "@/type/store";
 import NullData from "@/app/components/common/NullData";
+import UpdateStoreForm from "./UpdateStoreForm";
 import { getCurrentUser } from "@/app/auth/getCurrentUser";
 
-const DetailStore = async ({ searchParams }: {
+const UpdateStore = async ({ searchParams }: {
     searchParams: {
         store: StoreDetailProps
     }
@@ -13,11 +13,10 @@ const DetailStore = async ({ searchParams }: {
 
     {
         return (
-            currentUser ? (<div>{decodedStoreData && <StoreDetail store={decodedStoreData} />}</div>) : (
-                <NullData title="Oops Access denied" />
-            )
-        );
+            currentUser ? (<div>{decodedStoreData && <UpdateStoreForm store={decodedStoreData} currentSessionUser={currentUser} />}</div>) : (
+                <NullData title="Oops Access denied" />)
+        )
     }
 };
 
-export default DetailStore;
+export default UpdateStore;
