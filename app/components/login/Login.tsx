@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Heading from "../common/Heading";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import { toast } from "react-hot-toast";
 
 const Login = () => {
@@ -36,22 +36,22 @@ const Login = () => {
         email,
         password,
         redirect: false,
-    }).then((callback) => {
+      }).then((callback) => {
 
         console.log("Start working Login form callback block: ", callback);
         if (callback?.ok) {
-            router.push('/');
-            router.refresh();
-            toast.success('Logged In');
-            console.log("After LoggedIn, working successfully logged in");
+          router.push('/');
+          router.refresh();
+          toast.success('Logged In');
+          console.log("After LoggedIn, working successfully logged in");
         }
 
         if (callback?.error) {
-            console.log("in callback ok, callback?.error :", callback?.error);
-            toast.error(callback.error);
-            console.log("After LoggedIn, working callback error: update");
+          console.log("in callback ok, callback?.error :", callback?.error);
+          toast.error(callback.error);
+          console.log("After LoggedIn, working callback error: update");
         }
-    });
+      });
 
     } else {
       alert("please provide valid password");
