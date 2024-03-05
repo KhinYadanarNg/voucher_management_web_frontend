@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import CustomListBox from "../common/CustomListBox";
+import CustomListBox from "./UsetTypeListBox";
 import { useRouter } from "next/navigation";
 import Heading from "../common/Heading";
 import { registerUser } from "@/app/service/authentication";
