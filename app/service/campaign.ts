@@ -1,6 +1,6 @@
 export const fetchCampaigns = async () => {
     const result =
-    [
+        [
             {
                 "id": 1,
                 "code": "VOUCHER10",
