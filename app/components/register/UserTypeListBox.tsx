@@ -3,7 +3,7 @@ import React, { Fragment, useState } from 'react'
 import Image from "next/image";
 import { UserTypeProps, UserFilterType } from '@/type/user';
 
-export default function CustomListBox({ setFilter }: UserFilterType) {
+export default function UserTypeListBox({ setFilter }: UserFilterType) {
     const userTypes: UserTypeProps[] = [
         { id: 0, type: 'Choose user type' },
         { id: 1, type: 'Customer' },

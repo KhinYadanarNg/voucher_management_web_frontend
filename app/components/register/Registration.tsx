@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import CustomListBox from "./UsetTypeListBox";
+import UserTypeListBox from "./UserTypeListBox";
 import { useRouter } from "next/navigation";
 import Heading from "../common/Heading";
 import { registerUser } from "@/app/service/authentication";
@@ -114,9 +114,9 @@ const Registration = () => {
           <div className="registration__input pb-1">
             Register as
           </div>
-          <CustomListBox
+          <UserTypeListBox
             setFilter={setSelectedUserType}
-          ></CustomListBox>
+          ></UserTypeListBox>
           <div className="registration__input">
             User Image
           </div>

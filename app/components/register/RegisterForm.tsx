@@ -8,7 +8,7 @@ import Button from "../common/Button";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
-import CustomListBox from "./UsetTypeListBox";
+import UserTypeListBox from "./UserTypeListBox";
 import { registerUser } from "@/app/service/authentication";
 import { hasWhiteSpace, isValidateEmail } from "@/utils";
 
@@ -156,8 +156,8 @@ const RegisterForm = () => {
       {/* <CustomListBox id="callCustomList" register={register}  errors={errors}
                 required
           setFilter={setSelectedUserType}></CustomListBox> */}
-      <CustomListBox
-        setFilter={setSelectedUserType}></CustomListBox>
+      <UserTypeListBox
+        setFilter={setSelectedUserType}></UserTypeListBox>
 
       {/* this is for file upload */}
       {/* <span>User Image</span>
