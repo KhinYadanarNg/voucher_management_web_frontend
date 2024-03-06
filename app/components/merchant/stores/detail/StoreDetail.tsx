@@ -65,17 +65,15 @@ const StoreDetail: React.FC<StoreCard> = ({ store }) => {
                         <span>
                             Contact Number:
                         </span>
-                        <span className='pb-3'>
+                        <span className='pb-10'>
                             {store.contactNumber}
+                        </span>
+                        <span className='flex justify-start gap-1'>
+                            <button className='storedetail__button hover:bg-orange-100 text-orange-600 ' onClick={onEditStore}>Edit</button>
+                            <button className='storedetail__button justify-end' onClick={onCancel}>Cancel</button>
                         </span>
                     </div>
                 </div>
-                <span className='pr-3'>
-                    <button className='mt-40 ml-60 storedetail__button hover:bg-orange-100 text-orange-600 ' onClick={onEditStore}>Edit</button>
-                </span>
-                <span>
-                    <button className='storedetail__button' onClick={onCancel}>Cancel</button>
-                </span>
             </div>
         </div>
 
