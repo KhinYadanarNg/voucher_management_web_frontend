@@ -114,8 +114,8 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
 
     return (
         <form>
-            <div style={{ display: "flex", gap: "5rem" }}>
-                <div style={{ flex: 1 }} className="justify-start">
+            <div style={{ gap: "5rem" }} className="mx-3 mt-10 grid grid-cols-2">
+                <div>
                     <Input
                         id="storeName"
                         label="Store Name"
@@ -169,10 +169,10 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
                         required
                     />
                 </div>
-                <div style={{ flex: 1 }} className="justify-end">
+                <div>
                     <CountryDropDown setFilter={setSelectedCountry} defaultValue=""></CountryDropDown>
 
-                    <div className="registration__input">Image Upload</div>
+                    <div className="registration__input mt-3">Image Upload</div>
 
                     <input type="file" accept="image/*" id="image" onChange={(e) => handleImageChange(e)} />
 

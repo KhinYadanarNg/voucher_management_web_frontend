@@ -156,8 +156,10 @@ const RegisterForm = () => {
       {/* <CustomListBox id="callCustomList" register={register}  errors={errors}
                 required
           setFilter={setSelectedUserType}></CustomListBox> */}
-      <UserTypeListBox
-        setFilter={setSelectedUserType}></UserTypeListBox>
+      <div className="w-full">
+        <UserTypeListBox
+          setFilter={setSelectedUserType}></UserTypeListBox>
+      </div>
 
       {/* this is for file upload */}
       {/* <span>User Image</span>

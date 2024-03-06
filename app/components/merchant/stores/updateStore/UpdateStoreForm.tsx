@@ -102,8 +102,8 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
 
     return (
         <form>
-            <div style={{ display: "flex", gap: "5rem" }}>
-                <div style={{ flex: 1 }} className="ml-10 mt-10">
+            <div style={{ gap: "5rem" }} className="mx-3 mt-10 grid grid-cols-2">
+                <div>
                     <Input
                         id="storeName"
                         label="Store Name"
@@ -157,7 +157,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                         required
                     />
                 </div>
-                <div style={{ flex: 1 }} className="justify-end mt-10">
+                <div>
                     <CountryDropDown setFilter={setSelectedCountry} defaultValue={store.country}></CountryDropDown>
 
                     <div className="registration__input">Image Upload</div>
