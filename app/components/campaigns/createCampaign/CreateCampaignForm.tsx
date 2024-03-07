@@ -10,14 +10,14 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const storeList: CustomFilterTypeProps[] = [
-    { id: "0", value: 'Choose user type' }
+    { id: 0, value: 'Choose Store' }
   ]
   const [selectedListBoxValue, setSelectedListBoxValue] = useState(storeList[0]);
 
   {
     stores.map((store) => (
       storeList.push({
-        id: store.storeId,
+        id: Number(store.storeId),
         value: store.storeName
       })
     ))
@@ -50,7 +50,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
             required
           />
 
-          <ListBox setFilter={setSelectedListBoxValue} customFilterTypes={storeList}></ListBox>
+          <ListBox setFilter={setSelectedListBoxValue} customFilterTypes={storeList} defaultValue=""></ListBox>
 
           <Input
             id="campaignStartDate"

@@ -4,8 +4,9 @@ import Image from "next/image";
 import { CustomListBoxProps } from '@/type/customListBox';
 
 
-export default function ListBox({ setFilter, customFilterTypes }: CustomListBoxProps) {
+export default function ListBox({ setFilter, customFilterTypes, defaultValue }: CustomListBoxProps) {
     const [selectedValue, setSelectedValue] = useState(customFilterTypes[0])
+    const [defaultCountry, setDefaultValue] = useState(defaultValue);
     return (
 
         <div>
@@ -13,11 +14,16 @@ export default function ListBox({ setFilter, customFilterTypes }: CustomListBoxP
             <Listbox
                 value={selectedValue}
                 onChange={(e) => {
+                    setDefaultValue('');
                     setSelectedValue(e);
-                    setFilter
+                    setFilter(e)
                 }}>
                 <Listbox.Button className="customfilter__btn">
-                    <span>{selectedValue.value}</span>
+                    {defaultCountry.length == 0 ? (
+                        <span>{selectedValue.value}</span>
+                    ) : (
+                        <span>{defaultValue}</span>
+                    )}
                     <Image src='/chevron-up-down.svg' width={20} height={20} className='pt-1' alt='chevron_up-down' />
                 </Listbox.Button>
                 <Transition

@@ -4,9 +4,9 @@ import { countryList } from "@/utils/countriesList";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import CountryDropDown from "./CountryDropDown";
 import { createStoreByMerchant } from "@/app/service/store";
 import toast from "react-hot-toast";
+import ListBox from "@/app/components/common/ListBox";
 
 export type ImageType = {
     color: string;
@@ -170,7 +170,7 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
                     />
                 </div>
                 <div>
-                    <CountryDropDown setFilter={setSelectedCountry} defaultValue=""></CountryDropDown>
+                    <ListBox setFilter={setSelectedCountry} customFilterTypes={countryList} defaultValue=""></ListBox>
 
                     <div className="registration__input mt-3">Image Upload</div>
 

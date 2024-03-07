@@ -2,28 +2,29 @@
 import React, { useState } from "react";
 import Heading from "../common/Heading";
 import Input from "../common/Input";
-import { FieldValues, RegisterOptions, SubmitHandler, UseFormRegisterReturn, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Button from "../common/Button";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
-import UserTypeListBox from "./UserTypeListBox";
 import { registerUser } from "@/app/service/authentication";
 import { hasWhiteSpace, isValidateEmail } from "@/utils";
+import ListBox from "../common/ListBox";
+import { CustomFilterTypeProps } from "@/type/customListBox";
 
 const RegisterForm = () => {
 
-  const userTypes = [
-    { id: 0, type: "Choose user type" },
-    { id: 1, type: "CUSTOMER" },
-    { id: 2, type: "MERCHANT" },
+  const userTypes: CustomFilterTypeProps[] = [
+    { id: 0, value: "Choose user type" },
+    { id: 1, value: "CUSTOMER" },
+    { id: 2, value: "MERCHANT" },
   ];
 
   const [selectedUserType, setSelectedUserType] = useState(userTypes[0]);
   const [image, setImage] = useState<File>();
 
-  console.log("Check in useState function: Selected Role is :", selectedUserType.type);
+  console.log("Check in useState function: Selected Role is :", selectedUserType.value);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -41,10 +42,10 @@ const RegisterForm = () => {
 
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
     console.log(data);
-    data.role = selectedUserType.type.toUpperCase();
+    data.role = selectedUserType.value.toUpperCase();
 
     try {
 
@@ -57,6 +58,7 @@ const RegisterForm = () => {
         return;
       }
 
+      console.log(selectedUserType)
       if (selectedUserType.id == 0) {
         alert("Please choose user type");
         return;
@@ -157,8 +159,7 @@ const RegisterForm = () => {
                 required
           setFilter={setSelectedUserType}></CustomListBox> */}
       <div className="w-full">
-        <UserTypeListBox
-          setFilter={setSelectedUserType}></UserTypeListBox>
+        <ListBox setFilter={setSelectedUserType} customFilterTypes={userTypes} defaultValue=""></ListBox>
       </div>
 
       {/* this is for file upload */}
