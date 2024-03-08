@@ -11,6 +11,7 @@ interface InputProps{
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors;
     placeholder?: string;
+    min?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -22,6 +23,7 @@ const Input: React.FC<InputProps> = ({
     register,
     errors,
     placeholder,
+    min
     
 }) => {
 
@@ -38,6 +40,7 @@ const Input: React.FC<InputProps> = ({
         {...register(id, {required})}
         placeholder={placeholder}
         type={type}
+        min={min}
         className={`
         peer
         w-full

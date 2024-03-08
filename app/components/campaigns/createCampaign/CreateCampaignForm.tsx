@@ -6,6 +6,7 @@ import { CustomFilterTypeProps } from '@/type/customListBox';
 import { StoreDetailProps } from '@/type/store';
 import ListBox from '../../common/ListBox';
 import { useRouter } from 'next/navigation';
+import moment from 'moment';
 
 const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
 
@@ -15,7 +16,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
   ]
   const [selectedListBoxValue, setSelectedListBoxValue] = useState(storeList[0]);
   const router = useRouter();
-  const [minDate, setMinDate] = useState(new Date().toISOString().split('T')[0]); // Get today's date
+
   {
     stores.map((store) => (
       storeList.push({
@@ -30,10 +31,10 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
       alert('Please choose a store');
       return;
     }
-    
+
     const today = new Date();
-    if (data.campaignStartDate > today) {
-      alert('Campaign start date shoul be greater than today.')
+    if (data.campaignEndDate < data.campaignStartDate) {
+      alert('Campaign end date shoul be greater than campaign start date.')
     }
   }
 
@@ -77,6 +78,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
             disabled={isLoading}
             register={register}
             errors={errors}
+            min={moment().format("YYYY-MM-DD")}
             required
           />
           <Input
@@ -86,6 +88,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
             disabled={isLoading}
             register={register}
             errors={errors}
+            min={moment().format("YYYY-MM-DD")}
             required
           />
         </div>
