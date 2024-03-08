@@ -8,6 +8,7 @@ import { countryList } from "@/utils/countriesList";
 import { updateStoreByMerchant } from "@/app/service/store";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import ListBox from "@/app/components/common/ListBox";
 
 const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser }) => {
 
@@ -158,7 +159,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                     />
                 </div>
                 <div>
-                    <CountryDropDown setFilter={setSelectedCountry} defaultValue={store.country}></CountryDropDown>
+                    <ListBox setFilter={setSelectedCountry} customFilterTypes={countryList} defaultValue={store.country}></ListBox>
 
                     <div className="registration__input">Image Upload</div>
 
