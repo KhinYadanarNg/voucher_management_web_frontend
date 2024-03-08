@@ -3,7 +3,6 @@ import { UpdateStoreCard } from "@/type/store";
 import Input from "@/app/components/common/Input";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import CountryDropDown from "../createStore/CountryDropDown";
 import { countryList } from "@/utils/countriesList";
 import { updateStoreByMerchant } from "@/app/service/store";
 import toast from "react-hot-toast";
@@ -12,8 +11,8 @@ import ListBox from "@/app/components/common/ListBox";
 
 const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser }) => {
 
-    const [imageUrl, setImageUrl] = useState(store.image);
-    const [storeImage, setImage] = useState<File | null>(null);
+    const [defaultStoreImageUrl, setDefultStoreImageUrl] = useState(store.image);
+    const [updatedStoreImage, setUpdatedStoreImage] = useState<File | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isImageChanged, setImageChanged] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState(countryList[0]);
@@ -23,9 +22,9 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const target = event.target as HTMLInputElement;
         const file: File = (target.files as FileList)[0];
-        setImageUrl("");
+        setDefultStoreImageUrl("");
         setImageChanged(true);
-        setImage(file);
+        setUpdatedStoreImage(file);
 
     };
 
@@ -61,14 +60,14 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                 return;
             }
         } else {
-            if (!isDirty && !isUpdatedCountry && imageUrl.length > 0) {
+            if (!isDirty && !isUpdatedCountry && defaultStoreImageUrl.length > 0) {
                 alert("Please update fields");
                 return;
             }
         }
 
         data.country = selectedCountry.id === 0 ? store.country : selectedCountry.value;
-        data.image = storeImage
+        data.image = updatedStoreImage
         try {
             const response = await updateStoreByMerchant(
                 store.storeId,
@@ -87,7 +86,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
 
             if (result.length > 0) {
                 toast.success(message);
-                setImage(null);
+                setUpdatedStoreImage(null);
                 setSelectedCountry(countryList[0]);
                 router.push("/components/merchant/stores");
             } else {
@@ -164,18 +163,18 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                     <div className="registration__input">Image Upload</div>
 
 
-                    {imageUrl.length > 0 ? (
+                    {defaultStoreImageUrl.length > 0 ? (
                         <span>
                             <input type="file" accept="image/*" id="image" className="w-28" style={{ color: "transparent", position: 'relative' }}
                                 onChange={(e) => handleImageChange(e)} />
-                            <label htmlFor="file" >{imageUrl}</label>
+                            <label htmlFor="file" >{defaultStoreImageUrl}</label>
                         </span>) : (
                         <span>
-                            {storeImage?.name ? (
+                            {updatedStoreImage?.name ? (
                                 <span>
                                     <input type="file" accept="image/*" id="image" className="w-28" style={{ color: "transparent", position: 'relative' }}
                                         onChange={(e) => handleImageChange(e)} />
-                                    <label htmlFor="file">{storeImage?.name}</label>
+                                    <label htmlFor="file">{updatedStoreImage?.name}</label>
                                 </span>
                             ) : (<input type="file" accept="image/*" id="image" onChange={(e) => handleImageChange(e)} />)
                             }
