@@ -13,7 +13,7 @@ const CreateStore = async () => {
   }
   
   return (
-    <div className='p-8'>
+    <div>
         <Container>
             <CreateStoreForm currentUser={currentUser}/>
         </Container>

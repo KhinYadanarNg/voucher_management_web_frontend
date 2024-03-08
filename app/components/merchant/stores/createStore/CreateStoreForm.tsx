@@ -4,9 +4,9 @@ import { countryList } from "@/utils/countriesList";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import CountryDropDown from "./CountryDropDown";
 import { createStoreByMerchant } from "@/app/service/store";
 import toast from "react-hot-toast";
+import ListBox from "@/app/components/common/ListBox";
 
 export type ImageType = {
     color: string;
@@ -114,8 +114,8 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
 
     return (
         <form>
-            <div style={{ display: "flex", gap: "5rem" }}>
-                <div style={{ flex: 1 }} className="justify-start">
+            <div style={{ gap: "5rem" }} className="mx-3 mt-10 grid grid-cols-2">
+                <div>
                     <Input
                         id="storeName"
                         label="Store Name"
@@ -169,10 +169,10 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
                         required
                     />
                 </div>
-                <div style={{ flex: 1 }} className="justify-end">
-                    <CountryDropDown setFilter={setSelectedCountry} defaultValue=""></CountryDropDown>
+                <div>
+                    <ListBox setFilter={setSelectedCountry} customFilterTypes={countryList} defaultValue=""></ListBox>
 
-                    <div className="registration__input">Image Upload</div>
+                    <div className="registration__input mt-3">Image Upload</div>
 
                     <input type="file" accept="image/*" id="image" onChange={(e) => handleImageChange(e)} />
 

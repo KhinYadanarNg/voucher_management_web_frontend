@@ -1,4 +1,5 @@
 import { serverURL } from "@/utils";
+import toast from "react-hot-toast";
 
 export async function registerUser(email: string, username: string, password: string, role: string, image?: File) {
     let formData = new FormData();
@@ -18,16 +19,20 @@ export async function registerUser(email: string, username: string, password: st
         formData.append("image", image);
     }
 
-    const response = await fetch(
-        `${serverURL}/api/user/create`,
-        {
-            method: 'POST',
-            body: formData
+    try {
+        const response = await fetch(
+            `${serverURL}/api/user/create`,
+            {
+                method: 'POST',
+                body: formData
 
-        });
+            });
+        const result = await response.json();
+        return result;
+    } catch {
+        return { message: "Fetch data failed", result: []};
+    }
 
-    const result = await response.json();
-    return result;
 }
 
 export async function forgotPassword(email: string, password: string) {
