@@ -158,6 +158,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                     />
                 </div>
                 <div>
+                    <div className="pt-4">Countries</div>
                     <ListBox setFilter={setSelectedCountry} customFilterTypes={countryList} defaultValue={store.country}></ListBox>
 
                     <div className="registration__input">Image Upload</div>

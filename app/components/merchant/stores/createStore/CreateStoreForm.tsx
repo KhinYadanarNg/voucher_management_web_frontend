@@ -170,6 +170,7 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
                     />
                 </div>
                 <div>
+                    <div className="pt-4">Countries</div>
                     <ListBox setFilter={setSelectedCountry} customFilterTypes={countryList} defaultValue=""></ListBox>
 
                     <div className="registration__input mt-3">Image Upload</div>

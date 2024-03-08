@@ -156,6 +156,7 @@ const RegisterForm = () => {
                 required
           setFilter={setSelectedUserType}></CustomListBox> */}
       <div className="w-full">
+      <div>Register as</div>
         <ListBox setFilter={setSelectedUserType} customFilterTypes={userTypes} defaultValue=""></ListBox>
       </div>
 

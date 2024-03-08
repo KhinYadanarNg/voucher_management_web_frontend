@@ -10,7 +10,6 @@ export default function ListBox({ setFilter, customFilterTypes, defaultValue }: 
     return (
 
         <div>
-            <div className="registration__input">Register as</div>
             <Listbox
                 value={selectedValue}
                 onChange={(e) => {
