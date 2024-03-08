@@ -94,11 +94,8 @@ const RegisterForm = () => {
               }
             });
           } else {
-            toast.error(message)
+            toast.error(message);
           }
-
-
-
         }
       );
     } catch (error) {
