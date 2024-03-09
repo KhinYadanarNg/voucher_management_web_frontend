@@ -1,10 +1,12 @@
 'use client'
 import React, { useState } from 'react'
 import Input from '../../common/Input'
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { CustomFilterTypeProps } from '@/type/customListBox';
 import { StoreDetailProps } from '@/type/store';
 import ListBox from '../../common/ListBox';
+import { useRouter } from 'next/navigation';
+import moment from 'moment';
 
 const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
 
@@ -13,6 +15,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
     { id: 0, value: 'Choose Store' }
   ]
   const [selectedListBoxValue, setSelectedListBoxValue] = useState(storeList[0]);
+  const router = useRouter();
 
   {
     stores.map((store) => (
@@ -21,6 +24,22 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
         value: store.storeName
       })
     ))
+  }
+
+  const onCreate: SubmitHandler<FieldValues> = async (data) => {
+    if (selectedListBoxValue.id == 0) {
+      alert('Please choose a store');
+      return;
+    }
+
+    const today = new Date();
+    if (data.campaignEndDate < data.campaignStartDate) {
+      alert('Campaign end date shoul be greater than campaign start date.')
+    }
+  }
+
+  const onCancel = () => {
+    router.back()
   }
 
   const {
@@ -49,7 +68,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
             errors={errors}
             required
           />
-
+          <div className='pt-5'>Stores</div>
           <ListBox setFilter={setSelectedListBoxValue} customFilterTypes={storeList} defaultValue=""></ListBox>
 
           <Input
@@ -59,6 +78,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
             disabled={isLoading}
             register={register}
             errors={errors}
+            min={moment().format("YYYY-MM-DD")}
             required
           />
           <Input
@@ -68,6 +88,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
             disabled={isLoading}
             register={register}
             errors={errors}
+            min={moment().format("YYYY-MM-DD")}
             required
           />
         </div>
@@ -90,6 +111,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
 
           <Input
             id="maxVouchers"
+            type="number"
             label="Maximum Vouchers"
             disabled={isLoading}
             register={register}
@@ -110,11 +132,11 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
       </div>
 
       <div className="flex justify-end mt-10">
-        <button
+        <button onClick={handleSubmit(onCreate)}
           className="border-2 hover:bg-orange-300 text-orange-700  py-3 px-4 rounded-3xl mr-3">
           Create
         </button>
-        <button
+        <button onClick={handleSubmit(onCancel)}
           className="border-2 hover:bg-orange-300 text-orange-700  py-2 px-4 rounded-3xl mr-3"
         >
           Cancel

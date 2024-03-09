@@ -11,6 +11,7 @@ interface InputProps{
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors;
     placeholder?: string;
+    min?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -22,6 +23,7 @@ const Input: React.FC<InputProps> = ({
     register,
     errors,
     placeholder,
+    min
     
 }) => {
 
@@ -35,9 +37,16 @@ const Input: React.FC<InputProps> = ({
         <input autoComplete='off'
         id={id}
         disabled={disabled}
-        {...register(id, {required})}
         placeholder={placeholder}
         type={type}
+        min={min}
+        {...type === "password" ?({...register(id, {required, pattern: { 
+          value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
+          message: "Password should not contain white space and contain at least one uppercase, lowercase and one digit.",
+      },   minLength: {
+          value: 6,
+          message: "Password must be at least 6 characters",
+        }})}):( {...register(id, {required})})}
         className={`
         peer
         w-full
