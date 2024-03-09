@@ -9,9 +9,9 @@ import Link from "next/link";
 import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { registerUser } from "@/app/service/authentication";
-import { hasWhiteSpace, isValidateEmail } from "@/utils";
 import ListBox from "../common/ListBox";
 import { CustomFilterTypeProps } from "@/type/customListBox";
+import { isValidateEmail } from "@/utils";
 
 const RegisterForm = () => {
 
@@ -49,23 +49,18 @@ const RegisterForm = () => {
 
     try {
 
-      if (data.email.length > 0 && !isValidateEmail(data.email)) {
+      console.log(selectedUserType)
+      if (!isValidateEmail(data.email)) {
         alert("Please provide valid email");
         return;
       }
-
-      if (isEmpty()) {
-        return;
-      }
-
-      console.log(selectedUserType)
       if (selectedUserType.id == 0) {
         alert("Please choose user type");
         return;
       }
 
-      if (hasWhiteSpace(data.password) && hasWhiteSpace(data.confirmPassword)) {
-        alert("Whitespace is invalid for password");
+      if (data.password !== data.confirmPassword) {
+        alert("Password and confirm password should be same");
         return;
       }
 
@@ -106,17 +101,6 @@ const RegisterForm = () => {
     }
   };
 
-  const isEmpty = () => {
-    var elements = document.getElementsByTagName("input");
-    for (var i = 0; i < elements.length; i++) {
-      if (elements[i].value == "" && elements[i].type != "file") {
-        alert("Please provide " + elements[i].id);
-        return true;
-      }
-    }
-    return false;
-  };
-
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
@@ -140,6 +124,9 @@ const RegisterForm = () => {
         type="password"
         placeholder=""
       />
+      {errors.password && (
+        <p className="text-red-500">{`${errors.password.message}`}</p>
+      )}
       <Input
         id="confirmPassword"
         label="Confirm Password"
@@ -151,12 +138,16 @@ const RegisterForm = () => {
         placeholder=""
       />
 
+      {errors.confirmPassword && (
+        <p className="text-red-500">{`${errors.confirmPassword.message}`}</p>
+      )}
+
       {/* this is for dropdown error handling to show with red border if the user select nothing */}
       {/* <CustomListBox id="callCustomList" register={register}  errors={errors}
                 required
           setFilter={setSelectedUserType}></CustomListBox> */}
       <div className="w-full">
-      <div>Register as</div>
+        <div>Register as</div>
         <ListBox setFilter={setSelectedUserType} customFilterTypes={userTypes} defaultValue=""></ListBox>
       </div>
 
