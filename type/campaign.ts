@@ -1,9 +1,12 @@
+import { StoreDetailProps } from "./store";
+
 export interface CampaignProps {
-    "id": number;
-    "code": string;
-    "discount": number;
+    "campaignId": number;
     "description": string;
-    "store": string;
-    "policy": string;
-    "minimumSpend": number;
+    "numberOfVouchers": number;
+    "condition1": string;
+    "condition2": string;
+    "startDate": string;
+    "endDate": string;
+    "store": StoreDetailProps;
 }

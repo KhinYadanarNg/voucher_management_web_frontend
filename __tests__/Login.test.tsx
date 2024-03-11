@@ -10,8 +10,8 @@ describe('Login Component', () => {
     // Wait for the Login component to appear in the document
     await waitFor(() => {
 
-      const campaignListElement = screen.getByTestId('login-page');
-      expect(campaignListElement).toBeInTheDocument();
+      const loginPageElement = screen.getByTestId('login-page');
+      expect(loginPageElement).toBeInTheDocument();
     });
   });
 

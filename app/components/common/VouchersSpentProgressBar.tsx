@@ -5,7 +5,11 @@ const fetchSpentVouchers = async () => {
   return 30;
 };
 
-const ProgressBar = () => {
+export interface SpentVouchersProps {
+  totalVouchers: number;
+}
+
+const VouchersSpentProgressBar = ({ totalVouchers }: SpentVouchersProps) => {
   const [spentVouchers, setSpentVouchers] = useState(0);
 
   useEffect(() => {
@@ -17,7 +21,6 @@ const ProgressBar = () => {
     fetchData();
   }, []);
 
-  const totalVouchers = 100;
 
   // Calculate progress value
   const progress = (spentVouchers / totalVouchers) * 100;
@@ -35,4 +38,4 @@ const ProgressBar = () => {
   );
 };
 
-export default ProgressBar;
+export default VouchersSpentProgressBar;

@@ -1,11 +1,19 @@
+import { getCurrentUser } from './auth/getCurrentUser'
 import Container from './components/Container'
-import CampaignList from './components/campaigns/CampaignList'
+import CampaignListByCustomer from './components/customer/campaigns/CampaignListByCustomer';
+import CampaignListByMerchant from './components/merchant/campaigns/CampaignListByMerchant';
 
-export default function Home() {
+export default async function Home() {
+  const currentUser = await getCurrentUser();
+  const role = currentUser?.role || '';
   return (
-    <div className='p-8'>
+    <div data-testid='home'>
       <Container>
-          <CampaignList/>
+        {role === "MERCHANT" ? (
+          <CampaignListByMerchant />
+        ) : (
+          <CampaignListByCustomer />
+        )}
       </Container>
     </div>
   )

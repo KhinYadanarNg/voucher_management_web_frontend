@@ -1,6 +1,6 @@
 import { fetchStoreListByMerchant } from '@/app/service/store';
 import React from 'react'
-import NullData from '../../common/NullData';
+import NullData from '../../../common/NullData';
 import CreateCampaignForm from './CreateCampaignForm';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 
