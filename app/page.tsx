@@ -2,8 +2,6 @@ import Container from './components/Container'
 import CampaignList from './components/campaigns/CampaignList'
 
 export default function Home() {
-  console.log("Printing out of env properties APP_NAME in main page : ", process.env.APP_NAME);
-  console.log('Printing the api endpoint in main page : ', process.env.NEXT_PUBLIC_APP_API_ENDPOINT);
 
   return (
     <div className='p-8'>
