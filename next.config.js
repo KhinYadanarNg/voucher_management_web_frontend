@@ -4,6 +4,9 @@ const path = require('path');
 
 module.exports = () => {
   let environment;
+
+  console.log("printing the process.env.NODE_ENV", process.env.NODE_ENV);
+
   if (process.env.NODE_ENV === 'production') {
     environment = 'production';
   } else if (process.env.NODE_ENV === 'testing') {
@@ -17,7 +20,7 @@ module.exports = () => {
   const envConfig = dotenv.parse(fs.readFileSync(envPath));
 
   return {
-    env: envConfig,
+    //env: envConfig,
     images: {
         remotePatterns: [
             {
