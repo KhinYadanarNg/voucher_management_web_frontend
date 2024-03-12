@@ -34,7 +34,7 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
 
     const today = new Date();
     if (data.campaignEndDate < data.campaignStartDate) {
-      alert('Campaign end date shoul be greater than campaign start date.')
+      alert('Campaign end date should be greater than campaign start date.')
     }
   }
 
@@ -122,8 +122,8 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
       </div>
       <div>
         <Input
-          id="campaignTitle"
-          label="Campaign Title"
+          id="campaignDetail"
+          label="Campaign Detail"
           disabled={isLoading}
           register={register}
           errors={errors}
