@@ -5,6 +5,6 @@ export type CustomListBoxProps = {
 }
 
 export type CustomFilterTypeProps = {
-    id: number;
+    id: string;
     value: string;
 }

@@ -65,7 +65,7 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         // Handle form submission
         console.log(data);
-        data.country = selectedCountry.id === 0 ? "" : selectedCountry.value;
+        data.country = selectedCountry.id === "0" ? "" : selectedCountry.value;
         data.image = image;
 
         console.log("Printing the data.country at CreateStoreForm : ", data.country);

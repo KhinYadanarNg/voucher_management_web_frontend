@@ -16,9 +16,9 @@ import { isValidateEmail } from "@/utils";
 const RegisterForm = () => {
 
   const userTypes: CustomFilterTypeProps[] = [
-    { id: 0, value: "Choose user type" },
-    { id: 1, value: "CUSTOMER" },
-    { id: 2, value: "MERCHANT" },
+    { id: "0", value: "Choose user type" },
+    { id: "1", value: "CUSTOMER" },
+    { id: "2", value: "MERCHANT" },
   ];
 
   const [selectedUserType, setSelectedUserType] = useState(userTypes[0]);
@@ -54,7 +54,7 @@ const RegisterForm = () => {
         alert("Please provide valid email");
         return;
       }
-      if (selectedUserType.id == 0) {
+      if (selectedUserType.id == "0") {
         alert("Please choose user type");
         return;
       }
