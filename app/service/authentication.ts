@@ -19,7 +19,7 @@ export async function registerUser(email: string, username: string, password: st
 
     try {
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_APP_API_ENDPOINT}/api/user/create`,
+            `${process.env.BACKEND_URL}/api/user/create`,
             {
                 method: 'POST',
                 body: formData
@@ -35,8 +35,6 @@ export async function registerUser(email: string, username: string, password: st
 
 export async function forgotPassword(email: string, password: string) {
 
-    console.log('Priting the api endpoint before calling api : ', process.env.NEXT_PUBLIC_APP_API_ENDPOINT);
-
     let body = {
         email,
         password
@@ -47,7 +45,7 @@ export async function forgotPassword(email: string, password: string) {
     };
 
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_API_ENDPOINT}/api/user/resetPassword`,
+        `${process.env.BACKEND_URL}/api/user/resetPassword`,
         {
             method: 'POST',
             headers: headers,
@@ -69,10 +67,8 @@ export async function loginUser(email: string, password: string) {
     const headers = {
         'Content-Type': 'application/json'
     };
-
-    console.log('Tracing server api url in loginUser api call : ', `${process.env.NEXT_PUBLIC_APP_API_ENDPOINT}/api/user/login`);
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_API_ENDPOINT}/api/user/login`,
+        `${process.env.BACKEND_URL}/api/user/login`,
         {
             method: 'POST',
             headers: headers,
