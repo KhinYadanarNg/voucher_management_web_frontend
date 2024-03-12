@@ -4,6 +4,9 @@ const path = require('path');
 
 module.exports = () => {
   let environment;
+
+  console.log("printing the process.env.NODE_ENV", process.env.NODE_ENV);
+
   if (process.env.NODE_ENV === 'production') {
     environment = 'production';
   } else if (process.env.NODE_ENV === 'testing') {
