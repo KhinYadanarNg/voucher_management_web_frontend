@@ -20,7 +20,7 @@ module.exports = () => {
   const envConfig = dotenv.parse(fs.readFileSync(envPath));
 
   return {
-    //env: envConfig,
+    env: envConfig,
     images: {
         remotePatterns: [
             {
