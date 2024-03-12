@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 const fetchSpentVouchers = async () => {
-  return 30;
+  return 0;
 };
 
 export interface SpentVouchersProps {

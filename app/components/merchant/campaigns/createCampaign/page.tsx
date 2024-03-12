@@ -26,7 +26,7 @@ export default async function CreateCampaign() {
       stores ? (
         <section className='py-5'>
           <div className='container'>
-            <CreateCampaignForm stores={stores.result}></CreateCampaignForm>
+            <CreateCampaignForm stores={stores.result} currentSessionUser={currentUser}></CreateCampaignForm>
           </div>
         </section>
       ) : (

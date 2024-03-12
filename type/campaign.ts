@@ -1,4 +1,5 @@
 import { StoreDetailProps } from "./store";
+import { SessionUserProps } from "./user";
 
 export interface CampaignProps {
     "campaignId": number;
@@ -9,4 +10,10 @@ export interface CampaignProps {
     "startDate": string;
     "endDate": string;
     "store": StoreDetailProps;
+}
+
+export interface CreateCampaignParamsProps {
+    stores: StoreDetailProps[];
+    currentSessionUser: SessionUserProps;
+
 }
