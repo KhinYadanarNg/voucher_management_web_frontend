@@ -17,9 +17,12 @@ export async function registerUser(email: string, username: string, password: st
         formData.append("image", image);
     }
 
+    console.log("Printing the BackendURL : ", process.env.NEXT_PUBLIC_BACKEND_URL);
+    console.log("Printing the Full BackendURL : ", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`);
+
     try {
         const response = await fetch(
-            `${process.env.BACKEND_URL}/api/user/create`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`,
             {
                 method: 'POST',
                 body: formData
@@ -45,7 +48,7 @@ export async function forgotPassword(email: string, password: string) {
     };
 
     const response = await fetch(
-        `${process.env.BACKEND_URL}/api/user/resetPassword`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/resetPassword`,
         {
             method: 'POST',
             headers: headers,
@@ -68,7 +71,7 @@ export async function loginUser(email: string, password: string) {
         'Content-Type': 'application/json'
     };
     const response = await fetch(
-        `${process.env.BACKEND_URL}/api/user/login`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/login`,
         {
             method: 'POST',
             headers: headers,
@@ -76,8 +79,8 @@ export async function loginUser(email: string, password: string) {
 
         });
 
-    console.log("Printing the BackendURL : ", process.env.BACKEND_URL);
-    console.log("Printing the Full BackendURL : ", `${process.env.BACKEND_URL}/api/user/create`);
+    console.log("Printing the BackendURL : ", process.env.NEXT_PUBLIC_BACKEND_URL);
+    console.log("Printing the Full BackendURL : ", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`);
     const result = await response.json();
     return result;
 }

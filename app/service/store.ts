@@ -10,7 +10,7 @@ export const fetchStoreListByMerchant = async () => {
     'Content-Type': 'application/json'
   };
   const res = await fetch(
-    `${process.env.BACKEND_URL}/api/store/getAllByUser`, {
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAllByUser`, {
     headers: headers,
     method: 'POST',
     body: JSON.stringify(body)
@@ -42,7 +42,7 @@ export async function createStoreByMerchant(storeName: string, description: stri
   }
 
   const response = await fetch(
-    `${process.env.BACKEND_URL}/api/store/create`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/create`,
     {
       method: 'POST',
       body: formData
@@ -78,7 +78,7 @@ export async function updateStoreByMerchant(storeId: string, storeName: string, 
   }
 
   const response = await fetch(
-    `${process.env.BACKEND_URL}/api/store/update`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/update`,
     {
       method: 'POST',
       body: formData
