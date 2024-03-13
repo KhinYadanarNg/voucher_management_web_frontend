@@ -76,6 +76,8 @@ export async function loginUser(email: string, password: string) {
 
         });
 
+    console.log("Printing the BackendURL : ", process.env.BACKEND_URL);
+    console.log("Printing the Full BackendURL : ", `${process.env.BACKEND_URL}/api/user/create`);
     const result = await response.json();
     return result;
 }
