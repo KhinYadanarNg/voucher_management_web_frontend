@@ -19,11 +19,11 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: NODE_ENV
+            - name: BACKEND_URL
               valueFrom:
                 configMapKeyRef:
                   name: my-configmap
-                  key: NODE_ENV
+                  key: BACKEND_URL
 
 ---
 apiVersion: v1
