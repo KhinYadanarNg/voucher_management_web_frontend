@@ -1,34 +1,35 @@
-export const fetchCampaigns = async () => {
-    const result =
-        [
-            {
-                "id": 1,
-                "code": "VOUCHER10",
-                "discount": 10,
-                "description": "Get 10% off on all products",
-                "store": "NTUC",
-                "minimumSpend": 100,
-                "policy": "Term and condition to use the voucher, enjoy with our voucher by registering as a member. "
-            },
-            {
-                "id": 2,
-                "code": "VOUCHER20",
-                "discount": 20,
-                "description": "Get 20% off on your next purchase",
-                "store": "Cold Storage",
-                "minimumSpend": 100,
-                "policy": "Term and condition to use the voucher, enjoy with our voucher by registering as a member. "
-            },
-            {
-                "id": 3,
-                "code": "FREESHIP",
-                "discount": 30,
-                "description": "Free shipping on orders above $50",
-                "store": "Zara",
-                "minimumSpend": 100,
-                "policy": "Term and condition to use the voucher, enjoy with our voucher by registering as a member. "
-            }
-        ]
-    const response = JSON.parse(result.toString());
-    return response
+export const fetchCampaignsByMerchant = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAll`
+  )
+  const data = await res.json()
+  return data;
+}
+
+export const createCampaign = async (description: string, startDate: string, endDate: string, condition1: string, condition2: string, numberOfVouchers: number, store: { storeId: string }, createdBy: { email: string }) => {
+  const formData = new FormData();
+  const blob = new Blob([JSON.stringify({
+    description,
+    startDate,
+    endDate,
+    condition1,
+    condition2,
+    numberOfVouchers,
+    store,
+    createdBy
+  })], {
+    type: "application/json"
+  })
+
+  formData.append('campaign', blob);
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/create`,
+    {
+      method: 'POST',
+      body: formData,
+    });
+  const data = await res.json()
+  console.log(data)
+  return data;
 }

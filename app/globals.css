@@ -50,7 +50,3 @@
   @apply w-full h-40 mt-3 grid grid-cols-[220px_auto];
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-}

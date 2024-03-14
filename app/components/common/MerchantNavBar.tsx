@@ -16,12 +16,12 @@ const MerchantNavBar =  () => {
     <div className='top-0 w-full bg-[#F07D13] z-30 shadow-none'>
         <Container>
           <div className='flex flex-row items-center justify-between md:justify-start overflow-auto flex-nowrap gap-2 md-gap-12'>
-            <Link href='/components/campaigns/'>
-              <SubNavItem label={'Campaign List'} selected={pathname === '/components/campaigns'}/>
+            <Link href='/components/merchant/campaigns'>
+              <SubNavItem label={'Campaign List'} selected={pathname === '/components/merchant/campaigns'}/>
             </Link>
 
-            <Link href='/components/campaigns/createCampaign'>
-              <SubNavItem label={'Create Campaign'} selected={pathname === '/components/campaigns/createCampaign'}/>
+            <Link href='/components/merchant/campaigns/createCampaign'>
+              <SubNavItem label={'Create Campaign'} selected={pathname === '/components/merchant/campaigns/createCampaign'}/>
             </Link>
 
             <Link href='/components/merchant/stores'>

@@ -66,7 +66,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
             }
         }
 
-        data.country = selectedCountry.id === 0 ? store.country : selectedCountry.value;
+        data.country = selectedCountry.id === "0" ? store.country : selectedCountry.value;
         data.image = updatedStoreImage
         try {
             const response = await updateStoreByMerchant(
@@ -96,12 +96,12 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
     }
 
     const isChangedCountry = () => {
-        return !(store.country === selectedCountry.value || selectedCountry.id == 0)
+        return !(store.country === selectedCountry.value || selectedCountry.id == "0")
     }
 
 
     return (
-        <form>
+        <form data-testid='update-store-form'>
             <div style={{ gap: "5rem" }} className="mx-3 mt-10 grid grid-cols-2">
                 <div>
                     <Input

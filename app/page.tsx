@@ -1,12 +1,22 @@
-import Container from './components/Container'
-import CampaignList from './components/campaigns/CampaignList'
+import React from 'react'
+import Container from './components/Container';
+import CampaignListByMerchant from './components/merchant/campaigns/CampaignListByMerchant';
+import CampaignListByCustomer from './components/customer/campaigns/CampaignListByCustomer';
+import { getCurrentUser } from './auth/getCurrentUser';
 
-export default function Home() {
+export default async function Home() {
+  const currentUser = await getCurrentUser();
+  const role = currentUser?.role || '';
+  console.log("Printing out of env properties : ", process.env.APP_NAME);
 
   return (
-    <div className='p-8'>
+    <div data-testid='home'>
       <Container>
-          <CampaignList/>
+        {role === "MERCHANT" ? (
+          <CampaignListByMerchant />
+        ) : (
+          <CampaignListByCustomer />
+        )}
       </Container>
     </div>
   )

@@ -26,7 +26,7 @@ export type UpdateStoreCard = {
 }
 
 export type CountryProps = {
-    id: number;
+    id: string;
     value: string;
 }
 export interface CountryFilter {

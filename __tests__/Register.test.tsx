@@ -11,8 +11,8 @@ describe('Register Component', () => {
     // Wait for the Register component to appear in the document
     await waitFor(() => {
       
-      const campaignListElement = screen.getByTestId('register-page');
-      expect(campaignListElement).toBeInTheDocument();
+      const registrationPageElement = screen.getByTestId('register-page');
+      expect(registrationPageElement).toBeInTheDocument();
     });
   });
 

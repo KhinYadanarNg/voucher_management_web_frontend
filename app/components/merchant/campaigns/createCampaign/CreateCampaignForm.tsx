@@ -1,18 +1,20 @@
 'use client'
 import React, { useState } from 'react'
-import Input from '../../common/Input'
+import Input from '../../../common/Input'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { CustomFilterTypeProps } from '@/type/customListBox';
-import { StoreDetailProps } from '@/type/store';
-import ListBox from '../../common/ListBox';
+import ListBox from '../../../common/ListBox';
 import { useRouter } from 'next/navigation';
 import moment from 'moment';
+import { createCampaign } from '@/app/service/campaign';
+import { CreateCampaignParamsProps } from '@/type/campaign';
+import toast from 'react-hot-toast';
 
-const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
+const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParamsProps) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const storeList: CustomFilterTypeProps[] = [
-    { id: 0, value: 'Choose Store' }
+    { id: "0", value: 'Choose Store' }
   ]
   const [selectedListBoxValue, setSelectedListBoxValue] = useState(storeList[0]);
   const router = useRouter();
@@ -20,21 +22,45 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
   {
     stores.map((store) => (
       storeList.push({
-        id: Number(store.storeId),
+        id: store.storeId,
         value: store.storeName
       })
     ))
   }
 
-  const onCreate: SubmitHandler<FieldValues> = async (data) => {
-    if (selectedListBoxValue.id == 0) {
+  const onCreate: SubmitHandler<FieldValues> = async (fieldValues) => {
+    if (selectedListBoxValue.id == "0") {
       alert('Please choose a store');
       return;
     }
 
     const today = new Date();
-    if (data.campaignEndDate < data.campaignStartDate) {
-      alert('Campaign end date shoul be greater than campaign start date.')
+    const startDate = Date.parse(fieldValues.campaignStartDate);
+    const endDate = Date.parse(fieldValues.campaignEndDate);
+    if (startDate < today.getTime()) {
+      alert('Campaign start date should be greater than current date.');
+      return;
+    }
+    if (endDate < startDate) {
+      alert('Campaign end date should be greater than campaign start date.')
+      return;
+    }
+
+    const createdBy = { email: currentSessionUser.email };
+    const store = { storeId: selectedListBoxValue.id };
+
+    try {
+      const response = await createCampaign(fieldValues.campaignTitle, fieldValues.campaignStartDate, fieldValues.campaignEndDate, fieldValues.condition1, fieldValues.condition2, fieldValues.maxVouchers, store, createdBy);
+      const { success, message, data } = response;
+      if (success && data) {
+        setSelectedListBoxValue(storeList[0]);
+        toast.success(message);
+        router.push("/components/merchant/campaigns");
+      } else {
+        toast.error(message);
+      }
+    } catch {
+
     }
   }
 
@@ -73,22 +99,22 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
 
           <Input
             id="campaignStartDate"
-            type='date'
+            type='datetime-local'
             label="Campaign Start Date"
             disabled={isLoading}
             register={register}
             errors={errors}
-            min={moment().format("YYYY-MM-DD")}
+            min={moment().format("YYYY-MM-DD[T]HH:mm")}
             required
           />
           <Input
             id="campaignEndDate"
-            type='date'
+            type='datetime-local'
             label="Campaign End Date"
             disabled={isLoading}
             register={register}
             errors={errors}
-            min={moment().format("YYYY-MM-DD")}
+            min={moment().format("YYYY-MM-DD[T]HH:mm")}
             required
           />
         </div>
@@ -120,16 +146,16 @@ const CreateCampaignForm = ({ stores }: { stores: StoreDetailProps[] }) => {
           />
         </div>
       </div>
-      <div>
+      {/* <div>
         <Input
-          id="campaignTitle"
-          label="Campaign Title"
+          id="campaignDetail"
+          label="Campaign Detail"
           disabled={isLoading}
           register={register}
           errors={errors}
           required
         />
-      </div>
+      </div> */}
 
       <div className="flex justify-end mt-10">
         <button onClick={handleSubmit(onCreate)}

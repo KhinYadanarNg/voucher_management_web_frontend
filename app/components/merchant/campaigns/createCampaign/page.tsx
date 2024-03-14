@@ -1,6 +1,6 @@
 import { fetchStoreListByMerchant } from '@/app/service/store';
 import React from 'react'
-import NullData from '../../common/NullData';
+import NullData from '../../../common/NullData';
 import CreateCampaignForm from './CreateCampaignForm';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 
@@ -26,7 +26,7 @@ export default async function CreateCampaign() {
       stores ? (
         <section className='py-5'>
           <div className='container'>
-            <CreateCampaignForm stores={stores.result}></CreateCampaignForm>
+            <CreateCampaignForm stores={stores.result} currentSessionUser={currentUser}></CreateCampaignForm>
           </div>
         </section>
       ) : (
