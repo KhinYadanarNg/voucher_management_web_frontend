@@ -17,3 +17,9 @@ export interface CreateCampaignParamsProps {
     currentSessionUser: SessionUserProps;
 
 }
+
+export interface CampaignListParamsProps {
+    campaigns: CampaignProps[];
+    currentSessionUser: SessionUserProps;
+
+}
