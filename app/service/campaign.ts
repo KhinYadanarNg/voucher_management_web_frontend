@@ -1,8 +1,6 @@
-import { serverURL } from "@/utils";
-
 export const fetchCampaignsByMerchant = async () => {
   const res = await fetch(
-    `${serverURL}/api/campaign/getAll`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAll`
   )
   const data = await res.json()
   return data;
@@ -26,7 +24,7 @@ export const createCampaign = async (description: string, startDate: string, end
   formData.append('campaign', blob);
 
   const res = await fetch(
-    `${serverURL}/api/campaign/create`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/create`,
     {
       method: 'POST',
       body: formData,
