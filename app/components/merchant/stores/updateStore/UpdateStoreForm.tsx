@@ -101,7 +101,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
 
 
     return (
-        <form>
+        <form data-testid='update-store-form'>
             <div style={{ gap: "5rem" }} className="mx-3 mt-10 grid grid-cols-2">
                 <div>
                     <Input

@@ -1,7 +1,8 @@
-import { getCurrentUser } from './auth/getCurrentUser'
-import Container from './components/Container'
-import CampaignListByCustomer from './components/customer/campaigns/CampaignListByCustomer';
+import React from 'react'
+import Container from './components/Container';
 import CampaignListByMerchant from './components/merchant/campaigns/CampaignListByMerchant';
+import CampaignListByCustomer from './components/customer/campaigns/CampaignListByCustomer';
+import { getCurrentUser } from './auth/getCurrentUser';
 
 export default async function Home() {
   const currentUser = await getCurrentUser();

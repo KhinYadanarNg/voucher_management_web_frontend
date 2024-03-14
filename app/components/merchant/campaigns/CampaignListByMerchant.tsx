@@ -1,11 +1,11 @@
-import { CampaignProps } from '@/type/campaign'
 import React from 'react'
+import { CampaignProps } from '@/type/campaign'
 import Campaign from '../../common/Campaign'
 import { fetchCampaignsByMerchant } from '@/app/service/campaign';
 import NullData from '../../common/NullData';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 
-const getCampaignList = async () => {
+const getCampaignListByMerchant = async () => {
     try {
         const campaigns = await fetchCampaignsByMerchant();
         return campaigns;
@@ -17,7 +17,7 @@ const getCampaignList = async () => {
 }
 const CampaignListByMerchant = async () => {
     const currentUser = await getCurrentUser();
-    const campaigns = await getCampaignList();
+    const campaigns = await getCampaignListByMerchant();
     const role = currentUser?.role || '';
     {
         return (
