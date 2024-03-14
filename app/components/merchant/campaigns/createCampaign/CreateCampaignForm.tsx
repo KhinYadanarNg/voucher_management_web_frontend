@@ -54,7 +54,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
       const { success, message, data } = response;
       if (success && data) {
         setSelectedListBoxValue(storeList[0]);
-        toast.error(message);
+        toast.success(message);
         router.push("/components/merchant/campaigns");
       } else {
         toast.error(message);
