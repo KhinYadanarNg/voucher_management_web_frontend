@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { CampaignProps } from '@/type/campaign';
-import VouchersSpentProgressBar from './VouchersSpentProgressBar';
+import VouchersSpentProgressBar from '../common/VouchersSpentProgressBar';
 
 export interface CampaignCardProps {
     campaign: CampaignProps;
