@@ -20,8 +20,8 @@ const CustomerNavBar =  () => {
               <SubNavItem label={'Campaigns'} selected={pathname === '/components/customer/campaigns'}/>
             </Link>
 
-            <Link href='/components/merchant/stores'>
-            <SubNavItem label={'Stores'} selected={pathname === '/components/merchant/stores'}/>
+            <Link href='/components/customer/showStores'>
+            <SubNavItem label={'Stores'} selected={pathname === '/components/customer/showStores'}/>
             </Link>
             
           </div>

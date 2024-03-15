@@ -88,3 +88,17 @@ export async function updateStoreByMerchant(storeId: string, storeName: string, 
   const result = await response.json();
   return result;
 }
+
+//For Customer
+export const fetchAllActiveStore = async () => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAll`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch all active store data from the API');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('API Error:', error);
+    throw new Error('Failed to fetch data from the API');
+  }
+};
