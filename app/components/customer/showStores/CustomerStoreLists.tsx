@@ -49,7 +49,7 @@ const CustomerStoreLists = () => {
       <Container>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
           {activeStores.map((store) => (
-            <CustomerStoreCard data={store} />
+            <CustomerStoreCard data={store} key={store.storeId} />
           ))}
         </div>
       </Container>
