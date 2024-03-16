@@ -1,12 +1,12 @@
 import React from 'react'
-import { fetchCampaignsByMerchant } from '@/app/service/campaign';
+import { fetchCampaignsByCustomer} from '@/app/service/campaign';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import NullData from '../../common/NullData';
 import CampaignList from '../../campaignAsset/CampaignList';
 
-const getCampaignListByMerchant = async () => {
+const getCampaignListByCustomer = async () => {
   try {
-    const campaigns = await fetchCampaignsByMerchant();
+    const campaigns = await fetchCampaignsByCustomer();
     return campaigns;
   } catch (error) {
     console.log(error);
@@ -17,7 +17,7 @@ const getCampaignListByMerchant = async () => {
 
 export default async function CampaignListByCustomer() {
   var currentUser = await getCurrentUser();
-  const campaigns = await getCampaignListByMerchant();
+  const campaigns = await getCampaignListByCustomer();
 
   if (!currentUser) {
     currentUser = { email: "", name: "", image: "", role: "" }

@@ -1,7 +1,34 @@
-export const fetchCampaignsByMerchant = async () => {
+import { getCurrentUser } from "../auth/getCurrentUser";
+
+export const fetchCampaignsByCustomer = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAll`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/all/active`
   )
+  const data = await res.json()
+  return data;
+}
+
+export const fetchCampaignsByMerchant = async () => {
+  const formData = new FormData();
+  const currentUser = await getCurrentUser();
+  const email = currentUser && currentUser.email;
+  const blob = new Blob([JSON.stringify({
+    email
+  })], {
+    type: "application/json"
+  })
+  
+  formData.append('email', blob);
+  console.log("blob")
+  console.log(blob)
+  console.log(email)
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/user/email`,
+    {
+      method: 'POST',
+      body: formData,
+    })
+
   const data = await res.json()
   return data;
 }
@@ -30,6 +57,5 @@ export const createCampaign = async (description: string, startDate: string, end
       body: formData,
     });
   const data = await res.json()
-  console.log(data)
   return data;
 }
