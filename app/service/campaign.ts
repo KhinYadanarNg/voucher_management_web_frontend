@@ -19,9 +19,6 @@ export const fetchCampaignsByMerchant = async () => {
   })
   
   formData.append('email', blob);
-  console.log("blob")
-  console.log(blob)
-  console.log(email)
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/user/email`,
     {
