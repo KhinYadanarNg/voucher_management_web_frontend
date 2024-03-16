@@ -2,6 +2,7 @@
 import React from 'react'
 import { CampaignProps } from '@/type/campaign';
 import VouchersSpentProgressBar from '../common/VouchersSpentProgressBar';
+import Link from 'next/link';
 
 export interface CampaignCardProps {
     campaign: CampaignProps;
@@ -9,9 +10,7 @@ export interface CampaignCardProps {
 
 }
 const Campaign = ({ campaign, userRole }: CampaignCardProps) => {
-    const onSubmit = () => {
-
-    }
+    const encodedData = encodeURIComponent(JSON.stringify(campaign));
     return (
         <div className='border px-2 py-2'>
             <h3 className='pb-2'>{campaign.description}</h3>
@@ -29,9 +28,9 @@ const Campaign = ({ campaign, userRole }: CampaignCardProps) => {
                 userRole !== '' ? (
                     <div>{userRole === "MERCHANT" ? (
                         <div>
-                            <button onClick={(onSubmit)} className='border-2 hover:bg-orange-300 w-20 h-8 my-3 float-right rounded-3xl'>
+                            <Link className='border-2 hover:bg-orange-300 w-20 mt-3 float-right rounded-3xl text-center' href={`/components/merchant/campaigns/detail?campaign=${encodedData}`}>
                                 View
-                            </button>
+                            </Link>
                         </div>
                     ) : (
                         <button className='border-2 hover:bg-orange-300 w-20 h-8 my-3 float-right rounded-3xl'>Reedem

@@ -10,6 +10,9 @@ export interface CampaignProps {
     "startDate": string;
     "endDate": string;
     "store": StoreDetailProps;
+    "campaignStatus": string;
+    "numberOfClaimedVouchers": number;
+    "pin": string;
 }
 
 export interface CreateCampaignParamsProps {

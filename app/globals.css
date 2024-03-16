@@ -50,3 +50,10 @@
   @apply w-full h-40 mt-3 grid grid-cols-[220px_auto];
 }
 
+.campaigndetail__button {
+  @apply border-2 hover:bg-orange-100 text-orange-600 rounded-3xl h-[35px] w-24 text-center
+}
+
+.campaigndetail__maincolumn {
+  @apply w-full h-40 mt-3 grid grid-cols-[200px_auto];
+}
