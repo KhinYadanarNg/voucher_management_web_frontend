@@ -25,6 +25,30 @@ describe('Update store form Component', () => {
             expect(updateStoreForm).toBeInTheDocument();
         });
     });
+
+    it('Update store form required field', () => {
+        render(<UpdateStoreForm store={{
+            storeId: "",
+            storeName: "",
+            description: "",
+            address: "",
+            address1: "",
+            address2: "",
+            address3: "",
+            city: "",
+            state: "",
+            country: "",
+            postalCode: "",
+            image: "",
+            contactNumber: ""
+        }} currentSessionUser={{ email: "", name: "", role: "" }} />);
+
+        const storeNameTextField = screen.getByTestId("store-name");
+        expect(storeNameTextField).toBeRequired();
+
+        const startDescTextField = screen.getByTestId("store-desc");
+        expect(startDescTextField).toHaveAttribute('required');
+    });
 });
 
 
