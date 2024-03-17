@@ -57,10 +57,10 @@ callbacks: {
       return token;
     },
     async session({session, token}) {
-      console.log("Priting the token in session block at authOptions.ts ===> ", token);
+      // console.log("Priting the token in session block at authOptions.ts ===> ", token);
       
       session.user = token.user as User || '';
-      console.log("Priting the session in session block at authOptions.ts ===> ", session);
+      // console.log("Priting the session in session block at authOptions.ts ===> ", session);
       return session;
     }
   },

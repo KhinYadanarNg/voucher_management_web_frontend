@@ -14,8 +14,6 @@ const NavBar = async () => {
 
   const currentUser = await getCurrentUser();
 
-  console.log("Printing session at NavBar getting from getCurrentUser is ", currentUser);
-
   return (
     <div className='sticky top-0 w-full bg-[#F07D13] z-30 shadow-sm'>
       <div className='py-4'>

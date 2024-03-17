@@ -10,8 +10,6 @@ const MerchantNavBar =  () => {
 
   const pathname = usePathname();
 
-  console.log("Printing the pathname : ", pathname);
-
   return (
     <div className='top-0 w-full bg-[#F07D13] z-30 shadow-none'>
         <Container>

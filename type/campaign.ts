@@ -26,3 +26,16 @@ export interface CampaignListParamsProps {
     currentSessionUser: SessionUserProps;
 
 }
+
+export interface MerchantUpdateCampaignProps{
+    campaign: CampaignProps;
+    stores: StoreDetailProps[];
+    currentSessionUser: SessionUserProps;
+}
+
+export interface CusCampaignListParamsProps {
+    cusCampaigns: CampaignProps[];
+    currentSessionUser: SessionUserProps;
+    storeName: string;
+
+}

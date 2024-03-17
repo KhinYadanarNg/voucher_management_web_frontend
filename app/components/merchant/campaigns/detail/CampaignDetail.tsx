@@ -1,4 +1,5 @@
 'use client';
+
 import { promoteCampaignByMerchant } from '@/app/service/campaign'
 import { CampaignProps } from '@/type/campaign'
 import { useRouter } from 'next/navigation';
@@ -6,7 +7,16 @@ import React from 'react'
 import toast from 'react-hot-toast'
 
 const CampaignDetail = ({ campaign }: { campaign: CampaignProps }) => {
+
     const router = useRouter();
+
+    const encodedData = encodeURIComponent(JSON.stringify(campaign));
+    const onCancel = () => {
+        router.back();
+    }
+    const updateCampaign = () => {
+        router.push(`/components/merchant/campaigns/updateCampaign?campaign=${encodedData}`)
+    }
 
     const onPromoteCampaign = async () => {
         try {
@@ -87,10 +97,12 @@ const CampaignDetail = ({ campaign }: { campaign: CampaignProps }) => {
                     </span>
                     <span></span>
                     <span className='flex justify-start gap-1'>
+
+                        
                         {campaign.campaignStatus == "CREATED" && (
                             <button onClick={onPromoteCampaign} className='campaigndetail__button  hover:bg-orange-100 text-orange-600 '>Promote</button>
                         )}
-                        <button className='campaigndetail__button '>Update</button>
+                        <button className='campaigndetail__button' onClick={updateCampaign}>Update</button>
                         <button className='campaigndetail__button  justify-end'>Cancel</button>
                     </span>
                 </div>

@@ -10,11 +10,13 @@ type CustomerStoreCardProps = {
 const CustomerStoreCard: React.FC<CustomerStoreCardProps> = ({ data }) => {
   const router = useRouter();
 
+  const handleClick = () => {
+    router.push(`/components/customer/campaigns/campaignsByStore/${data.storeId}/${encodeURIComponent(data.storeName)}`);
+  };
+
   return (
     <div
-      onClick={() =>
-        router.push(`/components/customer/campaigns/${data.storeId}`)
-      }
+    onClick={handleClick}
       className="col-span-1
     cursor-pointer
     border-[1.2px]
@@ -38,6 +40,7 @@ const CustomerStoreCard: React.FC<CustomerStoreCardProps> = ({ data }) => {
       "
       >
         <Image src={data.image} alt={''} width={220} height={200} />
+        <div>{data.storeName}</div>
         {/* <div className="aspect-square overflow-hidden relative w-full">{data.storeName}</div> */}
       </div>
     </div>
