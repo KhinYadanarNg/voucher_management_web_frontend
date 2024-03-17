@@ -2,7 +2,7 @@ import { StoreDetailProps } from "./store";
 import { SessionUserProps } from "./user";
 
 export interface CampaignProps {
-    "campaignId": number;
+    "campaignId": string;
     "description": string;
     "numberOfVouchers": number;
     "condition1": string;
@@ -24,5 +24,18 @@ export interface CreateCampaignParamsProps {
 export interface CampaignListParamsProps {
     campaigns: CampaignProps[];
     currentSessionUser: SessionUserProps;
+
+}
+
+export interface MerchantUpdateCampaignProps{
+    campaign: CampaignProps;
+    stores: StoreDetailProps[];
+    currentSessionUser: SessionUserProps;
+}
+
+export interface CusCampaignListParamsProps {
+    cusCampaigns: CampaignProps[];
+    currentSessionUser: SessionUserProps;
+    storeName: string;
 
 }
