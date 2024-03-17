@@ -59,3 +59,14 @@ export const createCampaign = async (description: string, startDate: string, end
   const data = await res.json()
   return data;
 }
+
+export const promoteCampaignByMerchant = async (campaignId: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/promote/${campaignId}`,
+    {
+      method: 'POST'
+    })
+  const data = await res.json();
+  return data;
+}
+

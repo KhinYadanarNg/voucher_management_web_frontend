@@ -2,7 +2,7 @@ import { StoreDetailProps } from "./store";
 import { SessionUserProps } from "./user";
 
 export interface CampaignProps {
-    "campaignId": number;
+    "campaignId": string;
     "description": string;
     "numberOfVouchers": number;
     "condition1": string;
