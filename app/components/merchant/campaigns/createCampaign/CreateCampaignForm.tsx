@@ -143,7 +143,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
             disabled={isLoading}
             register={register}
             errors={errors}
-            required={true}
+            required
           />
         </div>
       </div>
