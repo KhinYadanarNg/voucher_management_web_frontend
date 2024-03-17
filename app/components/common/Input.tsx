@@ -12,6 +12,7 @@ interface InputProps{
     errors: FieldErrors;
     placeholder?: string;
     min?: string;
+    testId?: string
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,7 +24,8 @@ const Input: React.FC<InputProps> = ({
     register,
     errors,
     placeholder,
-    min
+    min,
+    testId
     
 }) => {
 
@@ -40,6 +42,7 @@ const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         type={type}
         min={min}
+        data-testid={testId}
         {...type === "password" ?({...register(id, {required, pattern: { 
           value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
           message: "Password should not contain white space and contain at least one uppercase, lowercase and one digit.",
