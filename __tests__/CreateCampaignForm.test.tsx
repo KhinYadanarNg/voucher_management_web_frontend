@@ -3,23 +3,23 @@ import { render, waitFor, screen } from "@testing-library/react";
 
 jest.mock('next/navigation');
 
-describe('Campaign List Component', () => {
+describe('Create Campaign Form Component', () => {
 
-    it('renders Campaign List within container', async () => {
+    it('renders Create Campaign Form within container', async () => {
         render(<CreateCampaignForm stores={[]} currentSessionUser={{ email: "", name: "", role: "" }} />)
         await waitFor(() => {
-            const campaignListByMerchantElement = screen.getByTestId('create-campaignForm');
-            expect(campaignListByMerchantElement).toBeInTheDocument();
+            const campaignFormElement = screen.getByTestId('create-campaignForm');
+            expect(campaignFormElement).toBeInTheDocument();
         });
     })
 
-   
 
-  test('Login component should have button', () => {
-    render(<CreateCampaignForm stores={[]} currentSessionUser={{ email: "", name: "", role: "" }} />)
-    const conditionTextField = screen.getByTestId("condition1-textfield-id")
-    expect(conditionTextField).not.toBeRequired()
-  });
-    
+
+    it('Create campaign form required field', () => {
+        render(<CreateCampaignForm stores={[]} currentSessionUser={{ email: "", name: "", role: "" }} />)
+        const conditionTextField = screen.getByTestId("condition1-textfield-id")
+        expect(conditionTextField).not.toBeRequired();
+    });
+
 
 });
