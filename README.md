@@ -5,7 +5,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, change your backend api at ".env" file :  NEXT_PUBLIC_BACKEND_URL
 
 Second, install the node module: 
+```bash
 npm install
+```
 
 Run the development server:
 
