@@ -4,9 +4,9 @@ import NullData from '../../../common/NullData';
 import CreateCampaignForm from './CreateCampaignForm';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 
-const getStoreList = async () => {
+const getStoreList = async (email: string) => {
   try {
-    const storeList = await fetchStoreListByMerchant();
+    const storeList = await fetchStoreListByMerchant(email);
     return storeList;
   } catch (error) {
     console.log(error);
@@ -15,12 +15,13 @@ const getStoreList = async () => {
   }
 }
 export default async function CreateCampaign() {
-  const stores = await getStoreList();
   const currentUser = await getCurrentUser();
 
   if (!currentUser || currentUser.role !== "MERCHANT") {
     return <NullData title="Oops! Access denied" />;
   }
+  const stores = await getStoreList(currentUser.email);
+
   {
     return (
       stores ? (
