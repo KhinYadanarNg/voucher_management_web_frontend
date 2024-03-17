@@ -42,6 +42,7 @@ const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         type={type}
         min={min}
+        required={required}
         data-testid={testId}
         {...type === "password" ?({...register(id, {required, pattern: { 
           value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,

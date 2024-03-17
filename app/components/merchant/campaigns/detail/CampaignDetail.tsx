@@ -28,7 +28,7 @@ const CampaignDetail = ({ campaign }: { campaign: CampaignProps }) => {
         }
     }
     return (
-        <div>
+        <div data-testid='campaign-detail-id'>
             <div className='mt-10 ml-10'>
                 <div className='campaigndetail__maincolumn'>
                     <span>

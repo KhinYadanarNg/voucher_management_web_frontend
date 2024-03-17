@@ -19,6 +19,12 @@ describe('Create Campaign Form Component', () => {
         render(<CreateCampaignForm stores={[]} currentSessionUser={{ email: "", name: "", role: "" }} />)
         const conditionTextField = screen.getByTestId("condition1-textfield-id")
         expect(conditionTextField).not.toBeRequired();
+
+        const titleTextField = screen.getByTestId("title-textfield-id");
+        expect(titleTextField).toBeRequired();
+
+        const startDateTextField = screen.getByTestId("startdate-textfield-id");
+        expect(startDateTextField).toHaveAttribute('required');
     });
 
 
