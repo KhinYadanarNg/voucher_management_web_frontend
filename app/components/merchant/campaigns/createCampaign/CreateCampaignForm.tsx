@@ -83,10 +83,11 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
     });
 
   return (
-    <form>
+    <form data-testid='create-campaignForm'>
       <div style={{ display: "flex", gap: "5rem" }}>
         <div style={{ flex: 1 }}>
           <Input
+            testId='title-textfield-id'
             id="campaignTitle"
             label="Campaign Title"
             disabled={isLoading}
@@ -116,6 +117,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
             errors={errors}
             min={moment().format("YYYY-MM-DD[T]HH:mm")}
             required
+            testId='startdate-textfield-id'
           />
         </div>
         <div style={{ flex: 1 }}>
@@ -133,6 +135,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
             disabled={isLoading}
             register={register}
             errors={errors}
+            testId='condition1-textfield-id'
           />
 
           <Input
