@@ -26,11 +26,10 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
 
     try{
       const response = await redeemCampaignsClaimVouchers(campaign, claimedBy);
-      const{message, result} = response;
 
-      if(result>0){
+      if(response.success){
         toast.success("Your claim voucher is succesfully redeem.")
-        router.push(`/components/customer/vouchers?campaign=${encodedData}`);
+        router.push(`/components/customer/vouchers`);
       }else{
         toast.error("So sorry, your redeem is not success!")
       }

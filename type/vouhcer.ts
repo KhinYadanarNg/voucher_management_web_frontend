@@ -9,6 +9,8 @@ export interface VoucherProps {
     "amount": GLfloat;
     "claimTime": string;
     "consumedTime": string;
+    "storeName": string;
+    "validDate": string;
 }
 
 export interface VoucherListParamsProps {

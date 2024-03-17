@@ -16,21 +16,13 @@ const getVouchersByCustomerEmail = async (email: string) => {
   }
 };
 
-const RedeemCampaigns = async ({
-  searchParams,
-}: {
-  searchParams: {
-    campaign: CampaignProps;
-  };
-}) => {
+const RedeemCampaigns = async () => {
   const currentUser = await getCurrentUser();
-  const decodedCampaignData = searchParams.campaign
-    ? JSON.parse(searchParams.campaign.toString())
-    : null;
 
   if (!currentUser || currentUser.role !== "CUSTOMER") {
     return <NullData title="Oops! Access denied" />;
   }
+
   const vouchers = await getVouchersByCustomerEmail(currentUser.email);
 
   return (
@@ -38,6 +30,7 @@ const RedeemCampaigns = async ({
       {vouchers ? (
           <Container>
             <CustomerVouchersList vouchers={vouchers.data} currentSessionUser={currentUser}  />
+            {/* <VoucherList vouchers={vouchers.data} /> */}
           </Container>
       ) : (
         <NullData title="No vouchers record found" />
