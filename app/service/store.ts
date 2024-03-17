@@ -1,11 +1,14 @@
-import { getCurrentUser } from "../auth/getCurrentUser";
+import { getCurrentUserEmail } from "@/utils";
 
-export const fetchStoreListByMerchant = async () => {
-  const currentUser = await getCurrentUser();
-  const email = currentUser && currentUser.email;
-  const body = {
-    email
-  }
+export const fetchStoreListByMerchant = async (useremail: string) => {
+  let body = {}
+  let email = await getCurrentUserEmail(useremail);
+  if (email) {
+    body = {
+      email
+    }
+  } else throw new Error("Undefined email");
+
   const headers = {
     'Content-Type': 'application/json'
   };

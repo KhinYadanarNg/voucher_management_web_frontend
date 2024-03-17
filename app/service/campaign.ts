@@ -1,4 +1,4 @@
-import { getCurrentUser } from "../auth/getCurrentUser";
+import { getCurrentUserEmail } from "@/utils";
 
 export const fetchCampaignsByCustomer = async () => {
   const res = await fetch(
@@ -8,16 +8,19 @@ export const fetchCampaignsByCustomer = async () => {
   return data;
 }
 
-export const fetchCampaignsByMerchant = async () => {
+export const fetchCampaignsByMerchant = async (useremail: string) => {
+  let email = await getCurrentUserEmail(useremail);
+  let blob = new Blob();
+  if (email) {
+    blob = new Blob([JSON.stringify({
+      email
+    })], {
+      type: "application/json"
+    })
+
+  } else throw new Error("Undefined email")
+
   const formData = new FormData();
-  const currentUser = await getCurrentUser();
-  const email = currentUser && currentUser.email;
-  const blob = new Blob([JSON.stringify({
-    email
-  })], {
-    type: "application/json"
-  })
-  
   formData.append('email', blob);
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/user/email`,
