@@ -23,6 +23,10 @@ const CustomerNavBar =  () => {
             <Link href='/components/customer/showStores'>
             <SubNavItem label={'Stores'} selected={pathname === '/components/customer/showStores'}/>
             </Link>
+
+            <Link href='/components/customer/vouchers'>
+            <SubNavItem label={'My Vouchers'} selected={pathname === '/components/customer/vouchers'}/>
+            </Link>
             
           </div>
         </Container>
