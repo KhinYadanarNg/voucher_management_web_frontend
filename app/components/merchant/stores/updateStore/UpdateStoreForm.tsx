@@ -111,6 +111,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                         register={register}
                         errors={errors}
                         required
+                        testId="store-name"
                     />
                     <Input
                         id="description"
@@ -119,6 +120,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                         register={register}
                         errors={errors}
                         required
+                        testId="store-desc"
                     />
                     <Input
                         id="address1"

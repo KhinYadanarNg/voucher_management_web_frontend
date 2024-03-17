@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import { CampaignProps } from '@/type/campaign';
-import VouchersSpentProgressBar from '../common/VouchersSpentProgressBar';
 import Link from 'next/link';
+import VouchersSpentProgressBar from './VouchersSpentProgressBar';
 
 export interface CampaignCardProps {
     campaign: CampaignProps;
@@ -14,7 +14,7 @@ const Campaign = ({ campaign, userRole }: CampaignCardProps) => {
     return (
         <div className='border px-2 py-2'>
             <h3 className='pb-2'>{campaign.description}</h3>
-            <VouchersSpentProgressBar totalVouchers={campaign.numberOfVouchers}></VouchersSpentProgressBar>
+            <VouchersSpentProgressBar totalVouchers={campaign.numberOfVouchers} noOfClaimedVouchers={campaign.numberOfClaimedVouchers}></VouchersSpentProgressBar>
             <div className='border mt-3 px-2 grid grid-cols-2'>
                 <div className='border h-32 flex justify-center items-center bg-orange-500'>{campaign.store.storeName}</div>
                 <div>
