@@ -13,7 +13,7 @@ const DetailCampaign = async ({ searchParams }: {
 
     {
         return (
-            currentUser ? (<div>{decodedCampaignData && <CampaignDetail campaign={decodedCampaignData} />}</div>) : (
+            currentUser ? (<div>{decodedCampaignData && <CampaignDetail campaign={decodedCampaignData} currentSessionUser={currentUser} />}</div>) : (
                 <NullData title="Oops Access denied" />
             )
         );

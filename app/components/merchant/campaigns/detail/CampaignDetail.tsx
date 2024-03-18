@@ -1,11 +1,11 @@
 'use client';
 import { promoteCampaignByMerchant } from '@/app/service/campaign'
-import { CampaignProps } from '@/type/campaign'
+import { CampaignDetailProps} from '@/type/campaign'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import toast from 'react-hot-toast'
 
-const CampaignDetail = ({ campaign }: { campaign: CampaignProps }) => {
+const CampaignDetail = ({ campaign, currentSessionUser }: CampaignDetailProps) => {
 
     const router = useRouter();
 
@@ -19,8 +19,9 @@ const CampaignDetail = ({ campaign }: { campaign: CampaignProps }) => {
 
     const onPromoteCampaign = async () => {
         try {
-            if (campaign.campaignId.length > 0) {
-                const response = await promoteCampaignByMerchant(campaign.campaignId);
+            if (campaign.campaignId.length > 0 && currentSessionUser?.email) {
+                const updatedBy = { "email": currentSessionUser?.email }
+                const response = await promoteCampaignByMerchant(campaign.campaignId, updatedBy);
                 const { success, message, data } = response;
                 if (success) {
                     toast.success(message);
@@ -30,7 +31,7 @@ const CampaignDetail = ({ campaign }: { campaign: CampaignProps }) => {
                 }
 
             } else {
-                toast.error("Campaign id is invalid");
+                toast.error("Invalid request");
             }
         } catch {
             toast.error("failed to load response")
