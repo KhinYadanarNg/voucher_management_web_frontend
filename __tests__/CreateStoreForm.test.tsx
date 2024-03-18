@@ -1,8 +1,15 @@
-import CreateStoreForm from "@/app/components/merchant/stores/createStore/CreateStoreForm";
-import { render, screen, waitFor } from '@testing-library/react';
+import CreateCampaignForm from '@/app/components/merchant/campaigns/createCampaign/CreateCampaignForm';
+import { render, waitFor, screen } from "@testing-library/react";
 
 jest.mock('next/navigation');
 
-describe('Create store form Component', () => {
-    
+describe('Campaign List Component', () => {
+
+    it('renders Campaign List within container', async () => {
+        render(<CreateCampaignForm  stores={[]} currentSessionUser={{ email: "", name: "", role: "" }}></CreateCampaignForm>)
+        await waitFor(() => {
+            const campaignListByMerchantElement = screen.getByTestId('create-campaignForm');
+            expect(campaignListByMerchantElement).toBeInTheDocument();
+        });
+    })
 });
