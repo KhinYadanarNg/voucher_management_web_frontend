@@ -8,7 +8,7 @@ import moment from "moment";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
   campaign,
@@ -26,9 +26,11 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
       campaignTitle: campaign.description,
       campaignStartDate: campaign.startDate,
       campaignEndDate: campaign.endDate,
-      condition1: campaign.condition1,
-      condition2: campaign.condition2,
+      tandc: campaign.tandc,
       maxVouchers: campaign.numberOfVouchers,
+      numberOfLikes: campaign.numberOfLikes,
+      tagsJson: campaign.tagsJson,
+      amount: campaign.amount,
     },
   });
   const storeList: CustomFilterTypeProps[] = [
@@ -62,13 +64,11 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
   const onUpdate: SubmitHandler<FieldValues> = async (fieldValues) => {
     console.log("Start Work in Campaign update function.");
 
-    // if (selectedListBoxValue.id == "0") {
-    //   toast.error("Please choose a store");
-    //   return;
-    // }
-
-    const createdBy = { email: currentSessionUser.email };
+    const updatedBy = { email: currentSessionUser.email };
     const store = { storeId: selectedListBoxValue.id };
+    const numberOfLikes = 0;
+    const tagsJson = "";
+    const amount = 0;
 
       try {
       const response = await updateCampaign(
@@ -76,14 +76,17 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
         fieldValues.campaignTitle,
         fieldValues.campaignStartDate,
         fieldValues.campaignEndDate,
-        fieldValues.condition1,
-        fieldValues.condition2,
+        fieldValues.tandc,
+        numberOfLikes,
+        tagsJson,
         fieldValues.maxVouchers,
+        amount,
         store,
-        createdBy);
+        updatedBy);
       const { success, message, data } = response;
+
       if (success && data) {
-        setSelectedListBoxValue(storeList[0]);
+        //setSelectedListBoxValue(storeList[0]);
         toast.success(message);
         router.push("/components/merchant/campaigns");
       } else {
@@ -95,40 +98,6 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
 
     console.log("End Work in Campaign update function.");
   };
-
-  // const onUpdate: SubmitHandler<FieldValues> = async (fieldValues) => {
-  //   if (selectedListBoxValue.id == "0") {
-  //     toast.error('Please choose a store');
-  //     return;
-  //   }
-
-  //   const isUpdatedStore = isChangedStore();
-  //   const createdBy = { email: currentSessionUser.email };
-  //   const store = { storeId: selectedListBoxValue.id };
-
-  //   try {
-  //     const response = await updateCampaign(
-  //       fieldValues.campaignTitle,
-  //       fieldValues.campaignStartDate,
-  //       fieldValues.campaignEndDate,
-  //       fieldValues.condition1,
-  //       fieldValues.condition2,
-  //       fieldValues.maxVouchers,
-  //       store,
-  //       createdBy);
-  //     const { success, message, data } = response;
-  //     if (success && data) {
-  //       setSelectedListBoxValue(storeList[0]);
-  //       toast.success(message);
-  //       router.push("/components/merchant/campaigns");
-  //     } else {
-  //       toast.error(message);
-  //     }
-  //   } catch {
-  //     toast.error("Failed at Campaign Update!");
-  //   }
-
-  // }
 
   const onCancel = () => {
     router.back();
@@ -176,7 +145,7 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
         </div>
         <div style={{ flex: 1 }}>
           <Input
-            id="condition1"
+            id="tandc"
             label="Terms and Condition"
             disabled={isLoading}
             register={register}

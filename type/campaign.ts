@@ -5,8 +5,10 @@ export interface CampaignProps {
     "campaignId": string;
     "description": string;
     "numberOfVouchers": number;
-    "condition1": string;
-    "condition2": string;
+    "numberOfLikes": number;
+    "tagsJson": string;
+    "tandc": string;
+    "amount": GLfloat;
     "startDate": string;
     "endDate": string;
     "store": StoreDetailProps;

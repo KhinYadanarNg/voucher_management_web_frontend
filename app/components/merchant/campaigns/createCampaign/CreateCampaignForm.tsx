@@ -48,9 +48,22 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
 
     const createdBy = { email: currentSessionUser.email };
     const store = { storeId: selectedListBoxValue.id };
+    const numberOfLikes = 0;
+    const tagsJson = "";
+    const amount = 0;
 
     try {
-      const response = await createCampaign(fieldValues.campaignTitle, fieldValues.campaignStartDate, fieldValues.campaignEndDate, fieldValues.condition1, fieldValues.condition2, fieldValues.maxVouchers, store, createdBy);
+      const response = await createCampaign(
+        fieldValues.campaignTitle, 
+        fieldValues.campaignStartDate, 
+        fieldValues.campaignEndDate, 
+        fieldValues.tandc, 
+        numberOfLikes,
+        tagsJson,
+        fieldValues.maxVouchers, 
+        amount,
+        store, 
+        createdBy);
       const { success, message, data } = response;
       if (success && data) {
         setSelectedListBoxValue(storeList[0]);
@@ -76,8 +89,10 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
         campaignTitle: "",
         campaignStartDate: "",
         campaignEndDate: "",
-        condition1: "",
-        condition2: "",
+        tandc: "",
+        numberOfLikes: 0,
+        tagsJson: "",
+        amount: 0.00, 
         maxVouchers: ""
       },
     });
@@ -123,20 +138,20 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
         <div style={{ flex: 1 }}>
 
           <Input
-            id="condition1"
-            label="Condition 1"
+            id="tandc"
+            label="Terms and condition"
             disabled={isLoading}
             register={register}
             errors={errors}
           />
-          <Input
+          {/* <Input
             id="condition2"
             label="Condition2"
             disabled={isLoading}
             register={register}
             errors={errors}
             testId='condition1-textfield-id'
-          />
+          /> */}
 
           <Input
             id="maxVouchers"
