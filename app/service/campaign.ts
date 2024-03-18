@@ -90,6 +90,8 @@ export const updateCampaign = async (
     updatedBy,
   };
 
+  console.log("Reach at updateCampaign API call : JSON.stringify(requestBody) : ", JSON.stringify(requestBody));
+
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/update`,
     {
@@ -127,35 +129,24 @@ export const fetchCampaignsByCustomer = async () => {
 };
 
 export const getCustomerCampaignsByStoreId = async (storeId: string) => {
+  const requestBody = {
+    storeId: storeId,
+  };
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/store/${storeId}`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByStoreId`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    }
   );
+
   const data = await res.json();
   return data;
 };
 
-// export const getCustomerCampaignsByStoreId = async (storeId: string) => {
 
-//   let blob = new Blob();
-//   if (storeId) {
-//     blob = new Blob([JSON.stringify({
-//       storeId
-//     })], {
-//       type: "application/json"
-//     })
-
-//   } else throw new Error("Undefined store id.")
-
-//   const formData = new FormData();
-//   formData.append('storeId', blob);
-//   const res = await fetch(
-//     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/store`,
-//     {
-//       method: 'POST',
-//       body: formData,
-//     })
-
-//   const data = await res.json()
-//   return data;
-// }
 
