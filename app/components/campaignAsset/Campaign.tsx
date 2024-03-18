@@ -60,8 +60,7 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
           {campaign.store.storeName}
         </div>
         <div>
-          <p className="px-2 py-3">{campaign.condition1}</p>
-          <p className="px-2">{campaign.condition2}</p>
+          <p className="px-2 py-3">{campaign.tandc}</p>
         </div>
       </div>
       {/* <h3 className='mt-6'>{policy}</h3> */}
