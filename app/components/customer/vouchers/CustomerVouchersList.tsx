@@ -8,7 +8,7 @@ const CustomerVouchersList = ({ vouchers, currentSessionUser }: VoucherListParam
   const userEmail = currentSessionUser.email; //To apply in "Use" voucher function
 
   return (
-    <main data-testid='voucher-list-by-merchant'>
+    <div data-testid='voucher-list-by-customer'>
       {vouchers ? (
         <div>
           <div className='font-semibold mt-5 ml-4'>Vouchers Collection</div>
@@ -22,7 +22,7 @@ const CustomerVouchersList = ({ vouchers, currentSessionUser }: VoucherListParam
           </section></div>) : (
         <NullData title="There is no voucher list" />
       )}
-    </main>
+    </div>
   )
 }
 
