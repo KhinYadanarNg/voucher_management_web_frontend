@@ -9,7 +9,7 @@ const CustomerVouchersList = ({ vouchers, currentSessionUser }: VoucherListParam
 
   return (
     <main data-testid='voucher-list-by-merchant'>
-      {vouchers.length > 0 ? (
+      {vouchers ? (
         <div>
           <div className='font-semibold mt-5 ml-4'>Vouchers Collection</div>
           <section>
