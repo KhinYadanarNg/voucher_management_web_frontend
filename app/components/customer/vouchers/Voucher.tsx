@@ -27,11 +27,14 @@ const Voucher = ({ voucher }: VoucherCardProps) => {
         updateButtonText()
     }, [voucher.voucherStatus]);
 
-    const handleUseVoucher = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleUseVoucher = async () => {
         if (window.confirm('Are you sure you want to use this voucher?')) {
             try {
-                let useVoucherButton = event.target as HTMLInputElement;
-                const response = await consumeVoucherByCustomer(useVoucherButton.id);
+                if (voucher.voucherStatus == 'CONSUMED') {
+                    toast.error("This voucher has been consumed.");
+                    return;
+                }
+                const response = await consumeVoucherByCustomer(voucher.voucherId);
                 const { success, message, data } = response;
                 if (success) {
                     toast.success(message);
@@ -55,7 +58,7 @@ const Voucher = ({ voucher }: VoucherCardProps) => {
                     <p className='px-2'>Valid till: {validDate}</p>
                 </div>
             </div>
-            <button type='submit' id={voucher.voucherId} onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleUseVoucher(event)} className='border-2 hover:bg-orange-300 w-32 h-10 my-3 float-right rounded-3xl'>{buttonText}
+            <button onClick={handleUseVoucher} className='border-2 hover:bg-orange-300 w-32 h-10 my-3 float-right rounded-3xl'>{buttonText}
             </button>
         </div>
 
