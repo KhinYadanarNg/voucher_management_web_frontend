@@ -1,5 +1,4 @@
 import CampaignDetail from '@/app/components/merchant/campaigns/detail/CampaignDetail';
-import { promoteCampaignByMerchant } from '@/app/service/campaign';
 import { render, waitFor, screen } from "@testing-library/react";
 
 jest.mock('next/navigation');
@@ -10,8 +9,10 @@ describe('Campaign List Component', () => {
             campaignId: '',
             description: '',
             numberOfVouchers: 0,
-            condition1: '',
-            condition2: '',
+            numberOfLikes: 0,
+            tagsJson: '',
+            tandc: '',
+            amount: 0.0,
             startDate: '',
             endDate: '',
             store: {
@@ -32,7 +33,7 @@ describe('Campaign List Component', () => {
             campaignStatus: '',
             numberOfClaimedVouchers: 0,
             pin: ''
-        }}></CampaignDetail>)
+        }} currentSessionUser={{ email: "", name: "", role: "" }}></CampaignDetail>)
         await waitFor(() => {
             const campaignListByMerchantElement = screen.getByTestId('campaign-detail-id');
             expect(campaignListByMerchantElement).toBeInTheDocument();
