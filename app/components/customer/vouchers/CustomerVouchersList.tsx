@@ -16,7 +16,7 @@ const CustomerVouchersList = ({ vouchers, currentSessionUser }: VoucherListParam
             <div className='home__campaigns-wrapper'>
               {vouchers.map((voucher: VoucherProps) => (
 
-                <Voucher voucher={voucher} key={voucher.voucherId} userEmail={userEmail} />
+                <Voucher voucher={voucher} key={voucher.voucherId}/>
               ))}
             </div>
           </section></div>) : (

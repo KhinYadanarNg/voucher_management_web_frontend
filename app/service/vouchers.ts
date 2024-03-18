@@ -43,6 +43,26 @@ export const fetchVouchersByCustomerEmail = async (useremail: string) => {
   return data;
 };
 
+export const consumeVoucherByCustomer = async (voucherId: string) => {
+  const body = {
+    voucherId
+  }
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/consume`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    }
+  );
+  const data = await res.json();
+  return data;
+
+}
+
 export const fetchVouchersByCampaignId = async (campaignId: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/getByCampaignId/${campaignId}`
