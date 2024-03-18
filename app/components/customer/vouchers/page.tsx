@@ -1,5 +1,4 @@
 import { getCurrentUser } from "@/app/auth/getCurrentUser";
-import { CampaignProps } from "@/type/campaign";
 import React from "react";
 import NullData from "../../common/NullData";
 import CustomerVouchersList from "./CustomerVouchersList";

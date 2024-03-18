@@ -41,3 +41,8 @@ export interface CusCampaignListParamsProps {
     storeName: string;
 
 }
+
+export interface CampaignDetailProps {
+    campaign: CampaignProps;
+    currentSessionUser: SessionUserProps;
+}

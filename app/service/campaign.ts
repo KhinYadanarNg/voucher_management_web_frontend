@@ -1,4 +1,5 @@
 import { getCurrentUserEmail } from "@/utils";
+import { getCurrentUser } from "../auth/getCurrentUser";
 
 //For MERCHANT
 export const fetchCampaignsByMerchant = async (useremail: string) => {
@@ -107,11 +108,22 @@ export const updateCampaign = async (
   return data;
 };
 
-export const promoteCampaignByMerchant = async (campaignId: string) => {
+export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: { email: string }) => {
+  let body = {
+    campaignId,
+    updatedBy
+  }
+
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  console.log(body);
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/promote/${campaignId}`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/promote`,
     {
       method: "POST",
+      headers: headers,
+      body: JSON.stringify(body)
     }
   );
   const data = await res.json();
