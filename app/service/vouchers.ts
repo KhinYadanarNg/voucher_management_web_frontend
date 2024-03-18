@@ -2,37 +2,43 @@ export const redeemCampaignsClaimVouchers = async (
   campaign: { campaignId: string },
   claimedBy: { email: string }
 ) => {
-  const formData = new FormData();
-
-  const blob = new Blob(
-    [
-      JSON.stringify({
-        campaign,
-        claimedBy,
-      }),
-    ],
-    {
-      type: "application/json",
-    }
-  );
-
-  formData.append("voucher", blob);
+  const requestBody = {
+    campaign,
+    claimedBy,
+  };
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/claim`,
     {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
     }
   );
   const data = await res.json();
+  console.log("Checking the redeemCampaignsClaimVouchers response in API : ", data);
   return data;
 };
 
 export const fetchVouchersByCustomerEmail = async (useremail: string) => {
+
+  const requestBody = {
+    email: useremail,
+  };
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/getByEmail/${useremail}`
-  )
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/getByEmail`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    }
+  );
+  
   const data = await res.json()
   return data;
 };
