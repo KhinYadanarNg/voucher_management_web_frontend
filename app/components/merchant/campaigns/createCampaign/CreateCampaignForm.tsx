@@ -9,6 +9,7 @@ import moment from 'moment';
 import { createCampaign } from '@/app/service/campaign';
 import { CreateCampaignParamsProps } from '@/type/campaign';
 import toast from 'react-hot-toast';
+import NullData from '@/app/components/common/NullData';
 
 const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParamsProps) => {
 
@@ -83,95 +84,101 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
     });
 
   return (
-    <form data-testid='create-campaignForm'>
-      <div style={{ display: "flex", gap: "5rem" }}>
-        <div style={{ flex: 1 }}>
-          <Input
-            testId='title-textfield-id'
-            id="campaignTitle"
-            label="Campaign Title"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            required
-          />
-          <div className='pt-5'>Stores</div>
-          <ListBox setFilter={setSelectedListBoxValue} customFilterTypes={storeList} defaultValue=""></ListBox>
+    <div data-testid='create-campaignForm'>
+      {stores.length <= 0 ? (<NullData title="Please create a store first" />) : (
+        <form>
+          <div style={{ display: "flex", gap: "5rem" }}>
+            <div style={{ flex: 1 }}>
+              <Input
+                testId='title-textfield-id'
+                id="campaignTitle"
+                label="Campaign Title"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+              />
+              <div className='pt-5'>Stores</div>
+              <ListBox setFilter={setSelectedListBoxValue} customFilterTypes={storeList} defaultValue=""></ListBox>
 
-          <Input
-            id="campaignStartDate"
-            type='datetime-local'
-            label="Campaign Start Date"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            min={moment().format("YYYY-MM-DD[T]HH:mm")}
-            required
-          />
-          <Input
-            id="campaignEndDate"
-            type='datetime-local'
-            label="Campaign End Date"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            min={moment().format("YYYY-MM-DD[T]HH:mm")}
-            required
-            testId='startdate-textfield-id'
-          />
-        </div>
-        <div style={{ flex: 1 }}>
+              <Input
+                id="campaignStartDate"
+                type='datetime-local'
+                label="Campaign Start Date"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                min={moment().format("YYYY-MM-DD[T]HH:mm")}
+                required
+              />
+              <Input
+                id="campaignEndDate"
+                type='datetime-local'
+                label="Campaign End Date"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                min={moment().format("YYYY-MM-DD[T]HH:mm")}
+                required
+                testId='startdate-textfield-id'
+              />
+            </div>
+            <div style={{ flex: 1 }}>
 
-          <Input
-            id="condition1"
-            label="Condition 1"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-          />
-          <Input
-            id="condition2"
-            label="Condition2"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            testId='condition1-textfield-id'
-          />
+              <Input
+                id="condition1"
+                label="Condition 1"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+              />
+              <Input
+                id="condition2"
+                label="Condition2"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                testId='condition1-textfield-id'
+              />
 
-          <Input
-            id="maxVouchers"
-            type="number"
-            label="Maximum Vouchers"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            required
-          />
-        </div>
-      </div>
-      {/* <div>
-        <Input
-          id="campaignDetail"
-          label="Campaign Detail"
-          disabled={isLoading}
-          register={register}
-          errors={errors}
-          required
-        />
-      </div> */}
+              <Input
+                id="maxVouchers"
+                type="number"
+                label="Maximum Vouchers"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+              />
+            </div>
+          </div>
+          {/* <div>
+           <Input
+             id="campaignDetail"
+             label="Campaign Detail"
+             disabled={isLoading}
+             register={register}
+             errors={errors}
+             required
+           />
+         </div> */}
 
-      <div className="flex justify-end mt-10">
-        <button onClick={handleSubmit(onCreate)}
-          className="border-2 hover:bg-orange-300 text-orange-700  py-3 px-4 rounded-3xl mr-3">
-          Create
-        </button>
-        <button onClick={handleSubmit(onCancel)}
-          className="border-2 hover:bg-orange-300 text-orange-700  py-2 px-4 rounded-3xl mr-3"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
+          <div className="flex justify-end mt-10">
+            <button onClick={handleSubmit(onCreate)}
+              className="border-2 hover:bg-orange-300 text-orange-700  py-3 px-4 rounded-3xl mr-3">
+              Create
+            </button>
+            <button onClick={handleSubmit(onCancel)}
+              className="border-2 hover:bg-orange-300 text-orange-700  py-2 px-4 rounded-3xl mr-3"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      )
+      }
+
+    </div>
   )
 }
 
