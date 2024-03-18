@@ -1,5 +1,4 @@
 'use client';
-
 import { promoteCampaignByMerchant } from '@/app/service/campaign'
 import { CampaignProps } from '@/type/campaign'
 import { useRouter } from 'next/navigation';
@@ -98,12 +97,12 @@ const CampaignDetail = ({ campaign }: { campaign: CampaignProps }) => {
                     <span></span>
                     <span className='flex justify-start gap-1'>
 
-                        
+
                         {campaign.campaignStatus == "CREATED" && (
                             <button onClick={onPromoteCampaign} className='campaigndetail__button  hover:bg-orange-100 text-orange-600 '>Promote</button>
                         )}
                         <button className='campaigndetail__button' onClick={updateCampaign}>Update</button>
-                        <button className='campaigndetail__button  justify-end'>Cancel</button>
+                        <button className='campaigndetail__button  justify-end' onClick={onCancel}>Cancel</button>
                     </span>
                 </div>
             </div>
