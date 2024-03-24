@@ -102,7 +102,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
 
     return (
         <form data-testid='update-store-form'>
-            <div style={{ gap: "5rem" }} className="mx-3 mt-10 grid grid-cols-2">
+            <div style={{ gap: "5rem" }} className="store_from_postion">
                 <div>
                     <Input
                         id="storeName"
@@ -186,11 +186,11 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
 
                     <div className="flex justify-end mt-64">
                         <button onClick={handleSubmit(onSubmit)}
-                            className="border-2 hover:bg-orange-300 text-orange-700  py-3 px-4 rounded-3xl mr-3">
+                            className="updateStore__btn">
                             Update
                         </button>
                         <button onClick={handleSubmit(onCancel)}
-                            className="border-2 hover:bg-orange-300 text-orange-700  py-2 px-4 rounded-3xl mr-3"
+                            className="updateStore__btn"
                         >
                             Cancel
                         </button>

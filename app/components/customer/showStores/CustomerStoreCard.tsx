@@ -39,8 +39,12 @@ const CustomerStoreCard: React.FC<CustomerStoreCardProps> = ({ data }) => {
       gap-1
       "
       >
-        <Image src={data.image} alt={''} width={220} height={200} />
-        <div>{data.storeName}</div>
+        {data.image ? (
+          <Image src={data.image} alt={''} width={220} height={200} /> 
+         ):(
+         <Image src='/store-placeholder.png' alt={''} width={220} height={200} /> 
+         )}
+          <div className="text-center">{data.storeName}</div>
         {/* <div className="aspect-square overflow-hidden relative w-full">{data.storeName}</div> */}
       </div>
     </div>

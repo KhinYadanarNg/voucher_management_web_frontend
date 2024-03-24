@@ -37,15 +37,12 @@ const FeedCard = ({ feed }: FeedCardProps) => {
 
 
     return (
-        <div className='border px-2 py-2'>
-            <div className='border px-3 h-32 flex justify-center items-center bg-orange-500'>{feed.feedId}</div>
-
-            <button onClick={handleViewCampaignDetail} className='border-2 hover:bg-orange-300 w-28 h-10 my-3 float-right rounded-3xl'>View
+        <div className='card'>
+            <div className='sub_cardDetail px-3'>{feed.feedId}</div>
+            <button onClick={handleViewCampaignDetail} className='card_button w-20'>View
             </button>
 
         </div>
-
-
     )
 }
 export default FeedCard

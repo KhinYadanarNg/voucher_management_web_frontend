@@ -90,7 +90,7 @@ const Login = () => {
           <Link
             href={"/components/passwordReset"}
             className="
-                    text-slate-500 flex items-center gap-1 mt-6 text-sm
+            authentication_link
                     "
           >
             <span>Forgot your password?</span>

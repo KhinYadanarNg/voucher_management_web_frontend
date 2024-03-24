@@ -50,15 +50,15 @@ const Voucher = ({ voucher }: VoucherCardProps) => {
 
 
     return (
-        <div className='border px-2 py-2'>
-            <div className='border mt-3 px-2 grid grid-cols-2'>
-                <div className='border h-32 flex justify-center items-center bg-orange-500'>{voucher.campaign.store.storeName}</div>
+        <div className='card'>
+            <div className='sub_card'>
+                <div className='sub_cardDetail'>{voucher.campaign.store.storeName}</div>
                 <div>
-                    <p className='px-2 py-3'>${voucher.amount} off</p>
+                    <p className='card_padding'>${voucher.amount} off</p>
                     <p className='px-2'>Valid till: {validDate}</p>
                 </div>
             </div>
-            <button onClick={handleUseVoucher} className='border-2 hover:bg-orange-300 w-32 h-10 my-3 float-right rounded-3xl'>{buttonText}
+            <button onClick={handleUseVoucher} className='card_button w-32'>{buttonText}
             </button>
         </div>
 

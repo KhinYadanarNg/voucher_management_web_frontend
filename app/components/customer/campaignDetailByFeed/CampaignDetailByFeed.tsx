@@ -38,29 +38,29 @@ const CampaignDetailByFeed = ({ campaignDetail, feedStatus, userEmail }: Campaig
                     <span>
                         Campaign Title:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaignDetail.description}
                     </span>
                     <span>
                         Used vouchers:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaignDetail.numberOfClaimedVouchers} out of {campaignDetail.numberOfVouchers}
                     </span>
                     <span>
                         Store Name:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaignDetail.store.storeName}
                     </span>
                     <span>
                         T & C:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaignDetail.tandc}
                     </span>
                     <span></span>
-                    <span className='flex justify-start gap-1'>
+                    <span className='detail_button'>
                         {feedStatus === "false" && <button onClick={redeemCampaigns} className='storedetail__button hover:bg-orange-100 text-orange-600 '>Reedem</button>}
                         <button className='storedetail__button justify-end' onClick={onCancel}>Cancel</button>
                     </span>

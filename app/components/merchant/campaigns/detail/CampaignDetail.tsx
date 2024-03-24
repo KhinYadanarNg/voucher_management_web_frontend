@@ -44,49 +44,49 @@ const CampaignDetail = ({ campaign, currentSessionUser }: CampaignDetailProps) =
                     <span>
                         Campaign ID:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaign.campaignId}
                     </span>
                     <span>
                         Description:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaign.description}
                     </span>
                     <span>
                         Status:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaign.campaignStatus}
                     </span>
                     <span>
                         Maximum Vouchers:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaign.numberOfVouchers}
                     </span>
                     <span>
                         Claimed Vouchers:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaign.numberOfClaimedVouchers}
                     </span>
                     <span>
                         Pin:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaign.pin}
                     </span>
                     <span>
                         Campaign Start date:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaign.startDate}
                     </span>
                     <span>
                         Campaign End date:
                     </span>
-                    <span className='pb-3'>
+                    <span className='bottom_spacing'>
                         {campaign.endDate}
                     </span>
                     <span>
@@ -96,7 +96,7 @@ const CampaignDetail = ({ campaign, currentSessionUser }: CampaignDetailProps) =
                         {campaign.store.storeName}
                     </span>
                     <span></span>
-                    <span className='flex justify-start gap-1'>
+                    <span className='detail_button'>
 
 
                         {campaign.campaignStatus == "CREATED" && (
