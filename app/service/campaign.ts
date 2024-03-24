@@ -162,3 +162,22 @@ export const getCustomerCampaignsByStoreId = async (storeId: string) => {
 
 
 
+export const fetchCampaignByID = async (campaignId: string) => {
+  const requestBody = {
+    campaignId: campaignId,
+  };
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getById`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    }
+  );
+
+  const data = await res.json();
+  return data;
+}

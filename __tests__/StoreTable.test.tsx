@@ -24,7 +24,7 @@ describe('Store Table Component', () => {
         render(<StoreTable stores={[]} />);
         await waitFor(async () => {
             const data = await getStoreList();
-            expect(data).toBeNull;
+            expect(data).not.toBeNull;
         })
     });
 });

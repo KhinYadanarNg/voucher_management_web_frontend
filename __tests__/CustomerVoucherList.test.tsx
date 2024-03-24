@@ -16,7 +16,7 @@ describe('Customer Voucher List Component', () => {
         render(<CustomerVouchersList vouchers={[]} currentSessionUser={{ email: "", name: "", role: "" }}/>)
         await waitFor(async () => {
             const data = await getVouchersByCustomerEmail()
-            expect(data).toBeNull;
+            expect(data).not.toBeNull;
         })
     });
 
