@@ -15,7 +15,7 @@ describe('Campaign List Component', () => {
         render(<CampaignList campaigns={[]} currentSessionUser={{ email: "", name: "", role: "" }} />)
         await waitFor(async () => {
             const data = await getCampaignListByMerchant();
-            expect(data).toBeNull;
+            expect(data).not.toBeNull;
         })
     });
 
