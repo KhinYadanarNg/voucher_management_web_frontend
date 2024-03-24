@@ -135,7 +135,7 @@ const Registration = () => {
           <Link
             href={"/components/login"}
             className="
-                    text-slate-500 flex items-center gap-1 mt-6 text-sm
+            authentication_link
                     "
           >
             <span>Already have an account?</span>

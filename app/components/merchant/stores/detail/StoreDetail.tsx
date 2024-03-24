@@ -29,37 +29,37 @@ const StoreDetail: React.FC<StoreCard> = ({ store }) => {
                         <span>
                             Store Detail ID:
                         </span>
-                        <span className='pb-3'>
+                        <span className='bottom_spacing'>
                             {store.storeId}
                         </span>
                         <span>
                             Store Name:
                         </span>
-                        <span className='pb-3'>
+                        <span className='bottom_spacing'>
                             {store.storeName}
                         </span>
                         <span>
                             Description:
                         </span>
-                        <span className='pb-3'>
+                        <span className='bottom_spacing'>
                             {store.description}
                         </span>
                         <span>
                             Address1:
                         </span>
-                        <span className='pb-3'>
+                        <span className='bottom_spacing'>
                             {store.address}
                         </span>
                         <span>
                             Address2:
                         </span>
-                        <span className='pb-3'>
+                        <span className='bottom_spacing'>
                             {store.address2}
                         </span>
                         <span>
                             Country:
                         </span>
-                        <span className='pb-3'>
+                        <span className='bottom_spacing'>
                             {store.country}
                         </span>
                         <span>

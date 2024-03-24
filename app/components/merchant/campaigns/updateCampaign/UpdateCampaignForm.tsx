@@ -164,16 +164,16 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
         </div>
       </div>
 
-      <div className="flex justify-end mt-10">
+      <div className="form_btn_position">
         <button
           onClick={handleSubmit(onUpdate)}
-          className="border-2 hover:bg-orange-300 text-orange-700  py-3 px-4 rounded-3xl mr-3"
+          className="updateStore_btn"
         >
           Update
         </button>
         <button
           onClick={handleSubmit(onCancel)}
-          className="border-2 hover:bg-orange-300 text-orange-700  py-2 px-4 rounded-3xl mr-3"
+          className="updateStore_btn"
         >
           Cancel
         </button>

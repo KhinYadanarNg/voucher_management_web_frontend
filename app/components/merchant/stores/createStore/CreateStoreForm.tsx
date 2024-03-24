@@ -114,7 +114,7 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
 
     return (
         <form>
-            <div style={{ gap: "5rem" }} className="mx-3 mt-10 grid grid-cols-2">
+            <div style={{ gap: "5rem" }} className="store_from_postion">
                 <div>
                     <Input
                         id="storeName"
@@ -179,13 +179,13 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
 
                     <div className="flex justify-end mt-80">
                         <button
-                            className="bg-white border-2 hover:bg-orange-100 text-orange-600  py-2 px-4 rounded-3xl mr-2"
+                            className="createStore_btn bg-white hover:bg-orange-100 mr-2"
                             onClick={handleSubmit(onSubmit)}
                         >
                             Create
                         </button>
                         <button
-                            className="bg-slate-200 border-2 hover:bg-gray-300 text-orange-700  py-2 px-4 rounded-3xl"
+                            className="createStore_btn bg-slate-200  hover:bg-gray-300"
                             onClick={onCancel}
                         >
                             Cancel

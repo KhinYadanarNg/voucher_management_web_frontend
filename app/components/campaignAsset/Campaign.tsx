@@ -55,12 +55,12 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
         totalVouchers={campaign.numberOfVouchers}
         noOfClaimedVouchers={campaign.numberOfClaimedVouchers}
       ></VouchersSpentProgressBar>
-      <div className="border mt-3 px-2 grid grid-cols-2">
-        <div className="border h-32 flex justify-center items-center bg-orange-500">
+      <div className="sub_card">
+        <div className="sub_cardDetail">
           {campaign.store.storeName}
         </div>
         <div>
-          <p className="px-2 py-3">{campaign.tandc}</p>
+          <p className="card_padding">{campaign.tandc}</p>
         </div>
       </div>
       {/* <h3 className='mt-6'>{policy}</h3> */}
@@ -70,7 +70,7 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
           {userRole === "MERCHANT" ? (
             <div>
               <Link
-                className="border-2 hover:bg-orange-300 w-20 mt-3 float-right rounded-3xl text-center"
+                className="campaigncard_btn text-center"
                 href={`/components/merchant/campaigns/detail?campaign=${encodedData}`}
               >
                 View
@@ -78,7 +78,7 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
             </div>
           ) : (
             <button
-              className="border-2 hover:bg-orange-300 w-20 h-8 my-3 float-right rounded-3xl"
+              className="campaigncard_btn h-8"
               onClick={redeemCampaigns}
             >
               Redeem
@@ -88,7 +88,7 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
       ) : (
         <div>
           <button
-            className="border-2 hover:bg-orange-300 w-24 h-10 my-3 float-right rounded-3xl"
+            className="campaigncard_btn h-8"
             onClick={redeemCampaigns}
           >
             Redeem
