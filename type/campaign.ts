@@ -46,3 +46,9 @@ export interface CampaignDetailProps {
     campaign: CampaignProps;
     currentSessionUser: SessionUserProps;
 }
+
+export interface CampaignDetailPropsByFeed {
+    campaignDetail: CampaignProps;
+    feedStatus: string;
+    userEmail: string
+}
