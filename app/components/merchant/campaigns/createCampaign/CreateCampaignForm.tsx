@@ -178,7 +178,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
            />
          </div> */}
 
-          <div className="flex justify-end mt-10">
+          <div className="form_btn_position">
             <button onClick={handleSubmit(onCreate)}
               className="updateStore__btn">
               Create
