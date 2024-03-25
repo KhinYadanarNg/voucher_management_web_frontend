@@ -21,7 +21,7 @@ export default async function Stores() {
             stores ? (
                 <section className='py-24'>
                     <div className='container'>
-                        <StoreTable stores={stores.result}></StoreTable>
+                        <StoreTable stores={stores.data}></StoreTable>
                     </div>
                 </section>
             ) : (
