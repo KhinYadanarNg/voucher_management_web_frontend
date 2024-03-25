@@ -31,7 +31,7 @@ export default async function CreateCampaign() {
           </div>
         </section>
       ) : (
-        <NullData title="Fetch data failed" />
+        <NullData title="Fetch store data failed" />
       ))
   }
 
