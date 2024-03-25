@@ -160,8 +160,6 @@ export const getCustomerCampaignsByStoreId = async (storeId: string) => {
   return data;
 };
 
-
-
 export const fetchCampaignByID = async (campaignId: string) => {
   const requestBody = {
     campaignId: campaignId,
@@ -180,4 +178,4 @@ export const fetchCampaignByID = async (campaignId: string) => {
 
   const data = await res.json();
   return data;
-}
+};
