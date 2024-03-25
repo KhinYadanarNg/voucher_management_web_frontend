@@ -27,11 +27,11 @@ export default async function CreateCampaign() {
       stores ? (
         <section className='py-5'>
           <div className='container'>
-            <CreateCampaignForm stores={stores.result} currentSessionUser={currentUser}></CreateCampaignForm>
+            <CreateCampaignForm stores={stores.data} currentSessionUser={currentUser}></CreateCampaignForm>
           </div>
         </section>
       ) : (
-        <NullData title="Fetch data failed" />
+        <NullData title="Fetch store data failed" />
       ))
   }
 

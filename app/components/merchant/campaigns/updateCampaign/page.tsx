@@ -6,20 +6,20 @@ import Container from "@/app/components/Container";
 import { fetchStoreListByMerchant } from "@/app/service/store";
 
 const getStoreList = async (email: string) => {
-    try {
-      const storeList = await fetchStoreListByMerchant(email);
-      return storeList;
-    } catch (error) {
-      console.log(error);
-    } finally {
-  
-    }
+  try {
+    const storeList = await fetchStoreListByMerchant(email);
+    return storeList;
+  } catch (error) {
+    console.log(error);
+  } finally {
+
   }
-  
+}
+
 const UpdateCampaign = async ({ searchParams }: {
   searchParams: {
-        campaign: CampaignProps
-    }
+    campaign: CampaignProps
+  }
 }) => {
 
   const currentUser = await getCurrentUser();
@@ -33,9 +33,12 @@ const UpdateCampaign = async ({ searchParams }: {
 
   return (
     <div>
+      {stores ? (
         <Container>
-        <UpdateCampaignForm campaign={decodedCampaignData} stores={stores.result} currentSessionUser={currentUser} />
-        </Container>
+          <UpdateCampaignForm campaign={decodedCampaignData} stores={stores.data} currentSessionUser={currentUser} />
+        </Container>) : (
+        <NullData title="Please create a store first" />
+      )}
     </div>
   )
 };

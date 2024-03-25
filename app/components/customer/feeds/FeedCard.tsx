@@ -3,6 +3,7 @@ import { fetchCampaignByID } from '@/app/service/campaign';
 import { FeedProps } from '@/type/feed';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import NullData from '../../common/NullData';
 
 interface FeedCardProps {
     feed: FeedProps;
@@ -24,7 +25,7 @@ const FeedCard = ({ feed }: FeedCardProps) => {
 
     const handleViewCampaignDetail = async () => {
         try {
-            const campaign = await getCampaignByID(feed.campaignId)
+            const campaign = await getCampaignByID(feed.campaign.campaignId)
             if (campaign.success) {
                 const encodedCamapignData = encodeURIComponent(JSON.stringify(campaign.data));
                 const endcodeFeedStatus = encodeURIComponent(JSON.stringify(feed.read));
@@ -37,12 +38,19 @@ const FeedCard = ({ feed }: FeedCardProps) => {
 
 
     return (
-        <div className='card'>
-            <div className='sub_cardDetail px-3'>{feed.feedId}</div>
-            <button onClick={handleViewCampaignDetail} className='card_button w-20'>View
-            </button>
-
+        <div>
+            {
+                feed.campaign ? (
+                    <div className='card'>
+                        <div className='sub_cardDetail px-3'>{feed.campaign.description}</div>
+                        <button onClick={handleViewCampaignDetail} className='card_button w-20'>View
+                        </button>
+                    </div>
+                ) : (
+                    <NullData title="There is no feed data" />
+                )}
         </div>
+
     )
 }
 export default FeedCard

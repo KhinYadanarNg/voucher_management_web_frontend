@@ -44,16 +44,20 @@ export async function createStoreByMerchant(storeName: string, description: stri
     formData.append("image", image);
   }
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/create`,
-    {
-      method: 'POST',
-      body: formData
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/create`,
+      {
+        method: 'POST',
+        body: formData
 
-    });
+      });
 
-  const result = await response.json();
-  return result;
+    const result = await response.json();
+    return result;
+  } catch {
+    return { success: false, message: "Fetch data failed to create store." };
+  }
 }
 
 
