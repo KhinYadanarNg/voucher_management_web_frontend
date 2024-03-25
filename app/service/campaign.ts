@@ -146,7 +146,7 @@ export const getCustomerCampaignsByStoreId = async (storeId: string) => {
   };
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByStoreId`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByStoreId?status=PROMOTED`,
     {
       method: "POST",
       headers: {
