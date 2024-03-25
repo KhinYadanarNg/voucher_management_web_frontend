@@ -1,5 +1,7 @@
+import { CampaignProps } from "./campaign";
+
 export type FeedProps = {
     feedId: string;
-    campaignId: string;
+    campaign: CampaignProps;
     read: Boolean;
 }
