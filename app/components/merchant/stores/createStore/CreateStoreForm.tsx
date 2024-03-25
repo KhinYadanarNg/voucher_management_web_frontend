@@ -83,16 +83,15 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
                 createdBy
 
             );
-            const { message, result } = response;
 
-            if (result.length > 0) {
-                toast.success(message);
+            if (response.success) {
+                toast.success(response.message);
                 reset();
                 setImage(null);
                 setSelectedCountry(countryList[0]);
                 router.push("/components/merchant/stores");
             } else {
-                toast.error(message);
+                toast.error(response.message);
             }
         } catch { }
     };
