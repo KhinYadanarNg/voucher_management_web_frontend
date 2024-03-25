@@ -68,6 +68,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
 
         data.country = selectedCountry.id === "0" ? store.country : selectedCountry.value;
         data.image = updatedStoreImage
+        console.log(data.country)
         try {
             const response = await updateStoreByMerchant(
                 store.storeId,
@@ -82,15 +83,14 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                 updatedBy
 
             );
-            const { message, result } = response;
 
-            if (result.length > 0) {
-                toast.success(message);
+            if (response.success > 0) {
+                toast.success(response.message);
                 setUpdatedStoreImage(null);
                 setSelectedCountry(countryList[0]);
                 router.push("/components/merchant/stores");
             } else {
-                toast.error(message);
+                toast.error(response.message);
             }
         } catch { }
     }
