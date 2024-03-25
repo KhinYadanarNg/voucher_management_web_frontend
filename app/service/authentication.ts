@@ -84,3 +84,23 @@ export async function loginUser(email: string, password: string) {
     const result = await response.json();
     return result;
 }
+
+export const verifyUser = async (verifyId: string) => {
+    const requestBody = {
+      storeId: verifyId,
+    };
+  
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/verify/${verifyId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      }
+    );
+  
+    const data = await res.json();
+    return data;
+  };
