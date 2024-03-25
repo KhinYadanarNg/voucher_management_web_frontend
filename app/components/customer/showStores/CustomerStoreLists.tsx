@@ -14,8 +14,8 @@ const CustomerStoreLists = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { message, result } = await fetchAllActiveStore();
-        const allActiveStores = result;
+        const response = await fetchAllActiveStore();
+        const allActiveStores = response.data;
         console.log(
           "Printing the response from fetchAllActiveStore : ",
           allActiveStores
