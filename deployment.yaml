@@ -18,12 +18,6 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
-          env:
-            - name: NEXT_PUBLIC_BACKEND_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: my-configmap
-                  key: BACKEND_URL
 
 ---
 apiVersion: v1
