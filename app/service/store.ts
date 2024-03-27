@@ -1,6 +1,6 @@
 import { getCurrentUserEmail } from "@/utils";
 
-export const fetchStoreListByMerchant = async (useremail: string) => {
+export const fetchStoreListByMerchant = async (useremail: string, page?: number, size?: number) => {
   let body = {}
   let email = await getCurrentUserEmail(useremail);
   if (email) {
@@ -12,8 +12,18 @@ export const fetchStoreListByMerchant = async (useremail: string) => {
   const headers = {
     'Content-Type': 'application/json'
   };
+  
+  let url = ""
+  if (page != undefined){
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAllByUser?page=${page}&size=${size}`
+  } else {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAllByUser`
+  }
+
+  console.log(url)
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAllByUser`, {
+    `${url}`, {
     headers: headers,
     method: 'POST',
     body: JSON.stringify(body)

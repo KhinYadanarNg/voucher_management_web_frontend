@@ -1,10 +1,11 @@
 'use client';
 import React from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, RadioGroup, Radio, getKeyValue } from "@nextui-org/react";
-import { StoreDetailProps } from "@/type/store";
+import { StoreTableCard } from "@/type/store";
 import { renderCell, storeColumns } from "./storecolumns";
+import Link from "next/dist/client/link";
 
-const Store = ({ stores }: { stores: StoreDetailProps[] }) => {
+const Store = ({ stores, pageNumber, totalRecord }: StoreTableCard) => {
     return (
         <div>
             <Table
@@ -12,7 +13,33 @@ const Store = ({ stores }: { stores: StoreDetailProps[] }) => {
                 data-testid='store-list-table'
                 bottomContent={
                     <div className="flex w-full justify-center">
-                    </div>
+                    {pageNumber !== 1  && <Link
+                        href={{
+                            pathname: '/components/merchant/stores',
+                            query: {
+                                page: pageNumber - 1
+                            }
+
+                        }}
+                        className='rounded border bg-gray-100 px-3 py-1  text-sm text-gray-800'
+                    >
+                        Previous
+                    </Link>}
+                    <span>&nbsp; </span>
+                    {totalRecord > pageNumber * 5 && 
+                    <Link
+                        href={{
+                            pathname: '/components/merchant/stores',
+                            query: {
+                                page: pageNumber + 1
+                            }
+
+                        }}
+                        className='rounded border bg-gray-100 px-3 py-1 text-sm text-gray-800'
+                    >
+                        Next
+                    </Link>}
+                </div>
                 }
             >
                 <TableHeader columns={storeColumns}>
