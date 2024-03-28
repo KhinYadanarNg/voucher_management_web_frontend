@@ -3,10 +3,12 @@ import { getCurrentUser } from "../auth/getCurrentUser";
 
 //For MERCHANT
 export const fetchCampaignsByMerchant = async (useremail: string) => {
+  console.log("Printing fetchCampaignsByMerchant api call : ");
   const requestBody = {
     email: useremail,
   };
 
+  console.log("Printing fetchCampaignsByMerchant api call json request : ", JSON.stringify(requestBody));
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByEmail`,
     {
@@ -18,7 +20,9 @@ export const fetchCampaignsByMerchant = async (useremail: string) => {
     }
   );
 
+  console.log("Printing fetch campaign by merchant response : ", res);
   const data = await res.json();
+  console.log("Printing fetch campaign by merchant response json : ", data);
   return data;
 };
 
@@ -34,6 +38,7 @@ export const createCampaign = async (
   store: { storeId: string },
   createdBy: { email: string }
 ) => {
+  console.log("Printing createCampaign api call : ");
   const requestBody = {
     description,
     startDate,
@@ -47,6 +52,7 @@ export const createCampaign = async (
     createdBy,
   };
 
+  console.log("Printing createCampaign api call json request : ", JSON.stringify(requestBody));
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/create`,
     {
@@ -58,7 +64,9 @@ export const createCampaign = async (
     }
   );
 
+  console.log("Printing create campaign by merchant response : ", res);
   const data = await res.json();
+  console.log("Printing create campaign by merchant response json : ", data);
   return data;
 };
 
@@ -104,11 +112,14 @@ export const updateCampaign = async (
     }
   );
 
+  console.log("Printing update campaign by merchant response : ", res);
   const data = await res.json();
+  console.log("Printing update campaign by merchant response json : ", data);
   return data;
 };
 
 export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: { email: string }) => {
+  console.log("Printing promoteCampaignByMerchant api call : ");
   let body = {
     campaignId,
     updatedBy
@@ -117,7 +128,7 @@ export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: {
   const headers = {
     'Content-Type': 'application/json'
   };
-  console.log(body);
+  console.log("Printing promoteCampaignByMerchant api call json request : ", JSON.stringify(body));
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/promote`,
     {
@@ -126,25 +137,34 @@ export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: {
       body: JSON.stringify(body)
     }
   );
+
+  console.log("Printing promote campaign by merchant response : ", res);
   const data = await res.json();
+  console.log("Printing promote campaign by merchant response json : ", data);
   return data;
 };
 // *********** END of MERCHANT ***************** //
 
 // For Customer
 export const fetchCampaignsByCustomer = async () => {
+  console.log("fetchCampaignsByCustomer api call: ");
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/all/active`
   );
+
+  console.log("Printing fetch campaign by customer response : ", res);
   const data = await res.json();
+  console.log("Printing fetch campaign by customer response  : ", data);
   return data;
 };
 
 export const getCustomerCampaignsByStoreId = async (storeId: string) => {
+  console.log("getCustomerCampaignsByStoreId api call: ");
   const requestBody = {
     storeId: storeId,
   };
 
+  console.log("getCustomerCampaignsByStoreId api call json request: ", JSON.stringify(requestBody));
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByStoreId?status=PROMOTED`,
     {
@@ -156,15 +176,19 @@ export const getCustomerCampaignsByStoreId = async (storeId: string) => {
     }
   );
 
+  console.log("Printing getCustomerCampaignsByStoreId response : ", res);
   const data = await res.json();
+  console.log("Printing getCustomerCampaignsByStoreId response json : ", data);
   return data;
 };
 
 export const fetchCampaignByID = async (campaignId: string) => {
+  console.log("fetchCampaignByID api call: ");
   const requestBody = {
     campaignId: campaignId,
   };
 
+  console.log("fetchCampaignByID api call json request: ", JSON.stringify(requestBody));
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getById`,
     {
@@ -176,6 +200,8 @@ export const fetchCampaignByID = async (campaignId: string) => {
     }
   );
 
+  console.log("Printing fetchCampaignByID response : ", res);
   const data = await res.json();
+  console.log("Printing fetchCampaignByID response json : ", data);
   return data;
 };
