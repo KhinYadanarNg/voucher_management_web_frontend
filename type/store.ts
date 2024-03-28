@@ -33,3 +33,10 @@ export interface CountryFilter {
     setFilter: (setFilter: CountryProps) => void;
     defaultValue: string;
 }
+
+export type StoreTableCard = {
+    stores: StoreDetailProps[];
+    pageNumber: number;
+    totalRecord: number;
+    size: number;
+}

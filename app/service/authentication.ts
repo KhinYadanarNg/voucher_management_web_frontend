@@ -1,5 +1,6 @@
 
 export async function registerUser(email: string, username: string, password: string, role: string, image?: File) {
+    console.log("Printing registerUser api call : ");
     let formData = new FormData();
     const blob = new Blob([JSON.stringify({
 
@@ -19,7 +20,14 @@ export async function registerUser(email: string, username: string, password: st
 
     console.log("Printing the BackendURL : ", process.env.NEXT_PUBLIC_BACKEND_URL);
     console.log("Printing the Full BackendURL : ", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`);
+    console.log("Printing registerUser api call json request : ", JSON.stringify({
 
+        email,
+        username,
+        password,
+        role
+
+    }));
     try {
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`,
@@ -28,15 +36,18 @@ export async function registerUser(email: string, username: string, password: st
                 body: formData
 
             });
+        console.log("Printing registration response : ", response);
         const result = await response.json();
+        console.log("Printing registration response json : ", result);
         return result;
     } catch {
-        return { message: "Fetch data failed", result: []};
+        return { message: "Fetch data failed", result: [] };
     }
 
 }
 
 export async function forgotPassword(email: string, password: string) {
+    console.log("Printing forgotPassword api call : ");
 
     let body = {
         email,
@@ -47,6 +58,7 @@ export async function forgotPassword(email: string, password: string) {
         'Content-Type': 'application/json'
     };
 
+    console.log("Printing forgotPassword api call json request : ", JSON.stringify(body));
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/resetPassword`,
         {
@@ -56,12 +68,14 @@ export async function forgotPassword(email: string, password: string) {
 
         });
 
+    console.log("Printing forgot password response : ", response);
     const result = await response.json();
+    console.log("Printing forgot password response json : ", result);
     return result;
 }
 
 export async function loginUser(email: string, password: string) {
-
+    console.log("Printing loginUser api call : ");
     let body = {
         email,
         password
@@ -70,6 +84,7 @@ export async function loginUser(email: string, password: string) {
     const headers = {
         'Content-Type': 'application/json'
     };
+    console.log("Printing loginUser api call json request : ", JSON.stringify(body));
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/login`,
         {
@@ -81,26 +96,28 @@ export async function loginUser(email: string, password: string) {
 
     console.log("Printing the BackendURL : ", process.env.NEXT_PUBLIC_BACKEND_URL);
     console.log("Printing the Full BackendURL : ", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`);
+    console.log("Printing login response : ", response);
     const result = await response.json();
+    console.log("Printing login response json : ", result);
     return result;
 }
 
 export const verifyUser = async (verifyId: string) => {
     const requestBody = {
-      storeId: verifyId,
+        storeId: verifyId,
     };
-  
+
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/verify/${verifyId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      }
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/verify/${verifyId}`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+        }
     );
-  
+
     const data = await res.json();
     return data;
-  };
+};

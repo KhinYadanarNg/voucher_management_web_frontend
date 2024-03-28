@@ -22,7 +22,7 @@ const MerchantNavBar =  () => {
               <SubNavItem label={'Create Campaign'} selected={pathname === '/components/merchant/campaigns/createCampaign'}/>
             </Link>
 
-            <Link href='/components/merchant/stores'>
+            <Link href='/components/merchant/stores?page=1'>
             <SubNavItem label={'My Store'} selected={pathname === '/components/merchant/stores'}/>
             </Link>
 

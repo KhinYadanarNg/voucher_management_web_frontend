@@ -32,7 +32,7 @@ const RedeemCampaigns = async () => {
             {/* <VoucherList vouchers={vouchers.data} /> */}
           </Container>
       ) : (
-        <NullData title="No vouchers record found" />
+        <NullData title="Fetch data failed" />
       )}
     </div>
   );
