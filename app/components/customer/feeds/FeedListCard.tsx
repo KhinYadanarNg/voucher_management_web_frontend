@@ -8,7 +8,7 @@ const FeedListCard = ({ feeds }: { feeds: FeedProps[] }) => {
 
     return (
         <div data-testid='feed-list-by-customer'>
-            {feeds ? (
+            {feeds && feeds.length > 0 ? (
                 <div>
                     <section>
                         <div className='home__campaigns-wrapper'>
@@ -17,7 +17,7 @@ const FeedListCard = ({ feeds }: { feeds: FeedProps[] }) => {
                             ))}
                         </div>
                     </section></div>) : (
-                <NullData title="There is no voucher list" />
+                <NullData title="There is no feed list" />
             )}
         </div>
     )

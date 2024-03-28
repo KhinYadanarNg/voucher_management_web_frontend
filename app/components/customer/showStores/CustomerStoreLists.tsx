@@ -47,7 +47,7 @@ const CustomerStoreLists = () => {
 
   return (
     <div className="p-8">
-      {activeStores.length > 0 ? (
+      {activeStores && activeStores.length > 0 ? (
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
             {activeStores.map((store) => (

@@ -8,7 +8,7 @@ const CampaignList = ({ campaigns, currentSessionUser }: CampaignListParamsProps
     const userEmail = currentSessionUser.email;
     return (
         <div data-testid='campaign-list-by-merchant'>
-            {campaigns.length > 0 ? (
+            { campaigns && campaigns.length > 0 ? (
                 <section>
                     <div className='home__campaigns-wrapper'>
                         {campaigns.map((campaign: CampaignProps) => (
