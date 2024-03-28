@@ -21,13 +21,14 @@ export default async function Stores({ searchParams }: {
 }) {
     const page =
         typeof searchParams.page === 'string' ? Number(searchParams.page) : 0
-    const stores = await getStoreList(page, 5);
+        const size = 5
+    const stores = await getStoreList(page, size);
     {
         return (
             stores ? (
                 <section className='py-24'>
                     <div className='container'>
-                    <StoreTable stores={stores.data} pageNumber={page} totalRecord={stores.totalRecord}></StoreTable>
+                    <StoreTable stores={stores.data} pageNumber={page} totalRecord={stores.totalRecord} size={size}></StoreTable>
                     </div>
                 </section>
             ) : (

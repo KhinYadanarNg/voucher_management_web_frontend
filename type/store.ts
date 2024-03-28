@@ -38,4 +38,5 @@ export type StoreTableCard = {
     stores: StoreDetailProps[];
     pageNumber: number;
     totalRecord: number;
+    size: number;
 }

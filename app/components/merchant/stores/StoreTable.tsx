@@ -5,7 +5,7 @@ import { StoreTableCard } from "@/type/store";
 import { renderCell, storeColumns } from "./storecolumns";
 import Link from "next/dist/client/link";
 
-const Store = ({ stores, pageNumber, totalRecord }: StoreTableCard) => {
+const Store = ({ stores, pageNumber, totalRecord, size }: StoreTableCard) => {
     return (
         <div>
             <Table
@@ -26,7 +26,7 @@ const Store = ({ stores, pageNumber, totalRecord }: StoreTableCard) => {
                         Previous
                     </Link>}
                     <span>&nbsp; </span>
-                    {totalRecord > pageNumber * 5 && 
+                    {totalRecord > pageNumber * size && 
                     <Link
                         href={{
                             pathname: '/components/merchant/stores',
