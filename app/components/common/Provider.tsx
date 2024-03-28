@@ -6,9 +6,11 @@ interface Props {
     children: ReactNode;
 }
 
+const basePath = process.env.NEXTAUTH_URL;
+
 
 const Provider = ({ children }: Props) => {
-    return <SessionProvider >{children}</SessionProvider>;
+    return <SessionProvider  basePath={basePath}>{children}</SessionProvider>;
 };
 
 export default Provider;
