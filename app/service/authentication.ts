@@ -30,7 +30,7 @@ export async function registerUser(email: string, username: string, password: st
     }));
     try {
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`,
+            `${process.env.serverURL}/api/user/create`,
             {
                 method: 'POST',
                 body: formData
@@ -60,7 +60,7 @@ export async function forgotPassword(email: string, password: string) {
 
     console.log("Printing forgotPassword api call json request : ", JSON.stringify(body));
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/resetPassword`,
+        `${process.env.serverURL}/api/user/resetPassword`,
         {
             method: 'POST',
             headers: headers,
@@ -86,7 +86,7 @@ export async function loginUser(email: string, password: string) {
     };
     console.log("Printing loginUser api call json request : ", JSON.stringify(body));
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/login`,
+        `${process.env.serverURL}/api/user/login`,
         {
             method: 'POST',
             headers: headers,
@@ -103,18 +103,14 @@ export async function loginUser(email: string, password: string) {
 }
 
 export const verifyUser = async (verifyId: string) => {
-    const requestBody = {
-        storeId: verifyId,
-    };
 
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/verify/${verifyId}`,
+        `${process.env.serverURL}/api/user/verify?verifyid=${verifyId}`,
         {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(requestBody),
         }
     );
 

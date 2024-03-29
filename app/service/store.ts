@@ -59,7 +59,7 @@ export async function createStoreByMerchant(storeName: string, description: stri
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/create`,
+      `${process.env.serverURL}/api/store/create`,
       {
         method: 'POST',
         body: formData
@@ -101,7 +101,7 @@ export async function updateStoreByMerchant(storeId: string, storeName: string, 
   }
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/update`,
+    `${process.env.serverURL}/api/store/update`,
     {
       method: 'POST',
       body: formData
@@ -118,7 +118,7 @@ export async function updateStoreByMerchant(storeId: string, storeName: string, 
 export const fetchAllActiveStore = async () => {
   console.log("Printing fetchAllActiveStore api call : ");
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAll`);
+    const response = await fetch(`${process.env.serverURL}/api/store/getAll`);
     if (!response.ok) {
       throw new Error('Failed to fetch all active store data from the API');
     }

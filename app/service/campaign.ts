@@ -1,5 +1,3 @@
-import { getCurrentUserEmail } from "@/utils";
-import { getCurrentUser } from "../auth/getCurrentUser";
 
 //For MERCHANT
 export const fetchCampaignsByMerchant = async (useremail: string) => {
@@ -10,7 +8,7 @@ export const fetchCampaignsByMerchant = async (useremail: string) => {
 
   console.log("Printing fetchCampaignsByMerchant api call json request : ", JSON.stringify(requestBody));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByEmail`,
+    `${process.env.serverURL}/api/campaign/getAllByEmail`,
     {
       method: "POST",
       headers: {
@@ -54,7 +52,7 @@ export const createCampaign = async (
 
   console.log("Printing createCampaign api call json request : ", JSON.stringify(requestBody));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/create`,
+    `${process.env.serverURL}/api/campaign/create`,
     {
       method: "POST",
       headers: {
@@ -102,7 +100,7 @@ export const updateCampaign = async (
   console.log("Reach at updateCampaign API call : JSON.stringify(requestBody) : ", JSON.stringify(requestBody));
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/update`,
+    `${process.env.serverURL}/api/campaign/update`,
     {
       method: "POST",
       headers: {
@@ -130,7 +128,7 @@ export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: {
   };
   console.log("Printing promoteCampaignByMerchant api call json request : ", JSON.stringify(body));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/promote`,
+    `${process.env.serverURL}/api/campaign/promote`,
     {
       method: "POST",
       headers: headers,
@@ -149,7 +147,7 @@ export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: {
 export const fetchCampaignsByCustomer = async () => {
   console.log("fetchCampaignsByCustomer api call: ");
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/all/active`
+    `${process.env.serverURL}/api/campaign/all/active`
   );
 
   console.log("Printing fetch campaign by customer response : ", res);
@@ -166,7 +164,7 @@ export const getCustomerCampaignsByStoreId = async (storeId: string) => {
 
   console.log("getCustomerCampaignsByStoreId api call json request: ", JSON.stringify(requestBody));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByStoreId?status=PROMOTED`,
+    `${process.env.serverURL}/api/campaign/getAllByStoreId?status=PROMOTED`,
     {
       method: "POST",
       headers: {
@@ -190,7 +188,7 @@ export const fetchCampaignByID = async (campaignId: string) => {
 
   console.log("fetchCampaignByID api call json request: ", JSON.stringify(requestBody));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getById`,
+    `${process.env.serverURL}/api/campaign/getById`,
     {
       method: "POST",
       headers: {

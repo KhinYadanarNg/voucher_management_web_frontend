@@ -8,6 +8,8 @@ export default async function Home() {
   const currentUser = await getCurrentUser();
   const role = currentUser?.role || '';
 
+  console.log("Checking the api url : ", process.env.serverURL);
+
   return (
     <div data-testid='home'>
       <Container>
