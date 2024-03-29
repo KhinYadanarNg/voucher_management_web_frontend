@@ -117,7 +117,7 @@ export const updateCampaign = async (
 };
 
 export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: { email: string }) => {
-  console.log("Printing promoteCampaignByMerchant api call : ");
+  console.log("Printing promoteCampaignByMerchant api call : ", `${process.env.serverURL}/api/campaign/promote`);
   let body = {
     campaignId,
     updatedBy
@@ -126,6 +126,7 @@ export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: {
   const headers = {
     'Content-Type': 'application/json'
   };
+
   console.log("Printing promoteCampaignByMerchant api call json request : ", JSON.stringify(body));
   const res = await fetch(
     `${process.env.serverURL}/api/campaign/promote`,
@@ -147,7 +148,7 @@ export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: {
 export const fetchCampaignsByCustomer = async () => {
   console.log("fetchCampaignsByCustomer api call: ");
   const res = await fetch(
-    `${process.env.serverURL}/api/campaign/all/active`
+    `${process.env.serverAPIURL}/api/campaign/all/active`
   );
 
   console.log("Printing fetch campaign by customer response : ", res);
