@@ -18,8 +18,8 @@ export async function registerUser(email: string, username: string, password: st
         formData.append("image", image);
     }
 
-    console.log("Printing the BackendURL : ", process.env.NEXT_PUBLIC_BACKEND_URL);
-    console.log("Printing the Full BackendURL : ", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`);
+    console.log("Printing the BackendURL : ", process.env.serverURL);
+    console.log("Printing the Full BackendURL : ", `${process.env.serverURL}/api/user/create`);
     console.log("Printing registerUser api call json request : ", JSON.stringify({
 
         email,
@@ -94,8 +94,8 @@ export async function loginUser(email: string, password: string) {
 
         });
 
-    console.log("Printing the BackendURL : ", process.env.NEXT_PUBLIC_BACKEND_URL);
-    console.log("Printing the Full BackendURL : ", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`);
+    console.log("Printing the BackendURL : ", process.env.serverURL);
+    console.log("Printing the Full BackendURL : ", `${process.env.serverURL}/api/user/create`);
     console.log("Printing login response : ", response);
     const result = await response.json();
     console.log("Printing login response json : ", result);
