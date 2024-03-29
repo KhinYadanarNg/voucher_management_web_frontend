@@ -88,7 +88,7 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
                 toast.success(response.message);
                 setUpdatedStoreImage(null);
                 setSelectedCountry(countryList[0]);
-                router.push("/components/merchant/stores");
+                router.push("/components/merchant/stores?page=1");
             } else {
                 toast.error(response.message);
             }

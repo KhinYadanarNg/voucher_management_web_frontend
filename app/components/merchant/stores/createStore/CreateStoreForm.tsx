@@ -89,7 +89,7 @@ const CreateStoreForm: React.FC<CreateStoreFormProps> = ({ currentUser }) => {
                 reset();
                 setImage(null);
                 setSelectedCountry(countryList[0]);
-                router.push("/components/merchant/stores");
+                router.push("/components/merchant/stores?page=1");
             } else {
                 toast.error(response.message);
             }
