@@ -4,7 +4,7 @@ module.exports = () => {
 
   if (process.env.NODE_ENV === "production") {
     serverURL = process.env.NEXT_PUBLIC_BACKEND_URL_PRD;
-  } else if (process.env.NODE_ENV === "testing") {
+  } else if (process.env.NODE_ENV === "sit") {
     serverURL = process.env.NEXT_PUBLIC_BACKEND_URL;
   } else {
     serverURL = "http://localhost:8081"; // Assuming local server
