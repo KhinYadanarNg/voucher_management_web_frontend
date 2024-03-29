@@ -37,8 +37,6 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
     }catch{
       toast.error("Failed at Redeem Vouchers");
     }
-
-
         
     } else {
       toast.error(

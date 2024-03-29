@@ -11,7 +11,7 @@ export const redeemCampaignsClaimVouchers = async (
   console.log("Printing redeemCampaignsClaimVouchers api call json request : ", JSON.stringify(requestBody));
   try {
     const res = await fetch(
-      `${process.env.serverURL}/api/voucher/claim`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/claim`,
       {
         method: "POST",
         headers: {
