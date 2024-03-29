@@ -11,7 +11,7 @@ export const redeemCampaignsClaimVouchers = async (
   console.log("Printing redeemCampaignsClaimVouchers api call json request : ", JSON.stringify(requestBody));
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/claim`,
+      `${process.env.serverURL}/api/voucher/claim`,
       {
         method: "POST",
         headers: {
@@ -38,7 +38,7 @@ export const fetchVouchersByCustomerEmail = async (useremail: string) => {
 
   console.log("Printing fetchVouchersByCustomerEmail api json request : ", JSON.stringify(requestBody));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/getByEmail`,
+    `${process.env.serverURL}/api/voucher/getByEmail`,
     {
       method: "POST",
       headers: {
@@ -63,7 +63,7 @@ export const consumeVoucherByCustomer = async (voucherId: string) => {
   console.log("Printing consumeVoucherByCustomer api json request : ", JSON.stringify(body));
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/consume`,
+      `${process.env.serverURL}/api/voucher/consume`,
       {
         method: "POST",
         headers: {
@@ -86,7 +86,7 @@ export const consumeVoucherByCustomer = async (voucherId: string) => {
 export const fetchVouchersByCampaignId = async (campaignId: string) => {
   console.log("Printing fetchVouchersByCampaignId api call : ");
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/getByCampaignId/${campaignId}`
+    `${process.env.serverURL}/api/voucher/getByCampaignId/${campaignId}`
   )
   console.log("Printing fetchVouchersByCampaignId api response : ", res);
   const data = await res.json()
