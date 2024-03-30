@@ -18,8 +18,8 @@ export async function registerUser(email: string, username: string, password: st
         formData.append("image", image);
     }
 
-    console.log("Printing the NEXT_PUBLIC_BACKEND_URL : ", process.env.NEXT_PUBLIC_BACKEND_URL);
-    console.log("Printing the Full NEXT_PUBLIC_BACKEND_URL : ", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`);
+    console.log("Printing the backendAPIURL in register user creation : ", process.env.backendAPIURL);
+    console.log("Printing the Full backendAPIURL in register user creation : ", `${process.env.backendAPIURL}/api/user/create`);
     console.log("Printing registerUser api call json request : ", JSON.stringify({
 
         email,
@@ -30,7 +30,7 @@ export async function registerUser(email: string, username: string, password: st
     }));
     try {
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/create`,
+            `${process.env.backendAPIURL}/api/user/create`,
             {
                 method: 'POST',
                 body: formData
@@ -60,7 +60,7 @@ export async function forgotPassword(email: string, password: string) {
 
     console.log("Printing forgotPassword api call json request : ", JSON.stringify(body));
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/resetPassword`,
+        `${process.env.backendAPIURL}/api/user/resetPassword`,
         {
             method: 'POST',
             headers: headers,
@@ -86,7 +86,7 @@ export async function loginUser(email: string, password: string) {
     };
     console.log("Printing loginUser api call json request : ", JSON.stringify(body));
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL_INT}/api/user/login`,
+        `${process.env.backendAPIURL}/api/user/login`,
         {
             method: 'POST',
             headers: headers,
@@ -94,8 +94,8 @@ export async function loginUser(email: string, password: string) {
 
         });
 
-    console.log("Printing the BackendURL : ", process.env.NEXT_PUBLIC_BACKEND_URL_INT);
-    console.log("Printing the Full BackendURL : ", `${process.env.NEXT_PUBLIC_BACKEND_URL_INT}/api/user/create`);
+    console.log("Printing the BackendURL in login api : ", process.env.backendAPIURL);
+    console.log("Printing the Full BackendURL in login api : ", `${process.env.backendAPIURL}/api/user/login`);
     console.log("Printing login response : ", response);
     const result = await response.json();
     console.log("Printing login response json : ", result);
@@ -105,7 +105,7 @@ export async function loginUser(email: string, password: string) {
 export const verifyUser = async (verifyId: string) => {
 
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/verify?verifyid=${verifyId}`,
+        `${process.env.backendAPIURL}/api/user/verify?verifyid=${verifyId}`,
         {
             method: "GET",
             headers: {
