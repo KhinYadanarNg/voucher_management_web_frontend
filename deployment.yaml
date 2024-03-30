@@ -31,7 +31,7 @@ spec:
       volumes:
         - name: env-volume
           configMap:
-            name: nextjs-env
+            name: my-configmap
 
 ---
 apiVersion: v1
