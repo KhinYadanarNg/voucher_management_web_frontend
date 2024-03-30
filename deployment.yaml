@@ -24,6 +24,14 @@ spec:
                 configMapKeyRef:
                   name: my-configmap
                   key: NODE_ENV
+          volumeMounts:
+            - name: env-volume
+              mountPath: /app/.env
+              readOnly: true
+      volumes:
+        - name: env-volume
+          configMap:
+            name: nextjs-env
 
 ---
 apiVersion: v1
