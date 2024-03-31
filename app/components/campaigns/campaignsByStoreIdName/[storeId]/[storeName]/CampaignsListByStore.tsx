@@ -4,7 +4,7 @@ import { CusCampaignListParamsProps } from '@/type/campaign'
 import React from 'react'
 
 
-const CustomerCampaignsListByStore = ({cusCampaigns, storeName, currentSessionUser} : CusCampaignListParamsProps) => {
+const CampaignsListByStore = ({cusCampaigns, storeName, currentSessionUser} : CusCampaignListParamsProps) => {
   return (
     <div>
         <div className='font-semibold mt-5 ml-4'>{storeName}</div>
@@ -18,4 +18,4 @@ const CustomerCampaignsListByStore = ({cusCampaigns, storeName, currentSessionUs
   )
 }
 
-export default CustomerCampaignsListByStore
+export default CampaignsListByStore

@@ -2,6 +2,7 @@ import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import NullData from '@/app/components/common/NullData';
 import { getCustomerCampaignsByStoreId } from '@/app/service/campaign';
 import React from 'react';
+import CampaignsListByStore from './CampaignsListByStore';
 
 interface IParams {
   storeId?: string;
@@ -33,7 +34,7 @@ const CampaignsListByStoreIdName = async ({ params }: { params: IParams }) => {
     return (
       <div>
       { cusCampaignsByStoreIdData ? ( 
-      <CustomerCampaignsListByStore cusCampaigns={cusCampaignsByStoreIdData.data} storeName={decodedStoreName} currentSessionUser={currentUser}/>
+      <CampaignsListByStore cusCampaigns={cusCampaignsByStoreIdData.data} storeName={decodedStoreName} currentSessionUser={currentUser}/>
       ):(
         <NullData title="Fetch data failed" />
       )
