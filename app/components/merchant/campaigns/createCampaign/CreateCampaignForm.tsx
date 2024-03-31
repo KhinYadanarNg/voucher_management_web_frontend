@@ -51,19 +51,18 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
     const store = { storeId: selectedListBoxValue.id };
     const numberOfLikes = 0;
     const tagsJson = "";
-    const amount = 0;
 
     try {
       const response = await createCampaign(
-        fieldValues.campaignTitle, 
-        fieldValues.campaignStartDate, 
-        fieldValues.campaignEndDate, 
-        fieldValues.tandc, 
+        fieldValues.campaignTitle,
+        fieldValues.campaignStartDate,
+        fieldValues.campaignEndDate,
+        fieldValues.tandc,
         numberOfLikes,
         tagsJson,
-        fieldValues.maxVouchers, 
-        amount,
-        store, 
+        fieldValues.maxVouchers,
+        fieldValues.amount,
+        store,
         createdBy);
       const { success, message, data } = response;
       if (success && data) {
@@ -93,7 +92,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
         tandc: "",
         numberOfLikes: 0,
         tagsJson: "",
-        amount: 0.00, 
+        amount: "",
         maxVouchers: ""
       },
     });
@@ -140,14 +139,14 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
             </div>
             <div style={{ flex: 1 }}>
 
-          <Input
-            id="tandc"
-            label="Terms and condition"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-          />
-          {/* <Input
+              <Input
+                id="tandc"
+                label="Terms and condition"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+              />
+              {/* <Input
             id="condition2"
             label="Condition2"
             disabled={isLoading}
@@ -155,6 +154,18 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
             errors={errors}
             testId='condition1-textfield-id'
           /> */}
+              <Input
+                id="amount"
+                type="number"
+                label="Discount Amount"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+              />
+              {errors.amount && (
+                <p className="text-red-500">{`${errors.amount.message}`}</p>
+              )}
 
               <Input
                 id="maxVouchers"
@@ -165,6 +176,9 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
                 errors={errors}
                 required
               />
+              {errors.maxVouchers && (
+                <p className="text-red-500">{`${errors.maxVouchers.message}`}</p>
+              )}
             </div>
           </div>
           {/* <div>

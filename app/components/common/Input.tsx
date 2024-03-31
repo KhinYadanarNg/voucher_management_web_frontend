@@ -44,6 +44,10 @@ const Input: React.FC<InputProps> = ({
         min={min}
         required={required}
         data-testid={testId}
+        {...type === "number" ?({...register(id, {required, min: {
+          value: 1,
+          message: "Please ensure that the number provided is greater than 1",
+        }})}):( {...register(id, {required})})}
         {...type === "password" ?({...register(id, {required, pattern: { 
           value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
           message: "Password should not contain white space and contain at least one uppercase, lowercase and one digit.",

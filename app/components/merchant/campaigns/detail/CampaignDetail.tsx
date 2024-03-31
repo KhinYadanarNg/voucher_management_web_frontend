@@ -42,12 +42,6 @@ const CampaignDetail = ({ campaign, currentSessionUser }: CampaignDetailProps) =
             <div className='mt-10 ml-10'>
                 <div className='campaigndetail__maincolumn'>
                     <span>
-                        Campaign ID:
-                    </span>
-                    <span className='bottom_spacing'>
-                        {campaign.campaignId}
-                    </span>
-                    <span>
                         Description:
                     </span>
                     <span className='bottom_spacing'>
