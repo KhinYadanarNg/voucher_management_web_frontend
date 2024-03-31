@@ -28,7 +28,13 @@ const CustomerNavBar =  () => {
             </Link>
 
             <Link href='/components/customer/campaigns'>
-              <SubNavItem label={'Campaigns'} selected={basePath === '/components/customer/campaigns'}/>
+              
+              {
+                pathname ? (
+                <SubNavItem label={'Campaigns'} selected={pathname.startsWith('/components/campaigns/campaignsByStoreIdName')}/>
+                ) : 
+                <SubNavItem label={'Campaigns'} selected={basePath === '/components/customer/campaigns'}/>
+              }
             </Link>
 
             <Link href='/components/customer/vouchers'>
