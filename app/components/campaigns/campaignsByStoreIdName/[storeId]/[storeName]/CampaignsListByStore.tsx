@@ -1,4 +1,4 @@
-import CampaignList from '@/app/components/campaignAsset/CampaignList'
+import CampaignList from '@/app/components/campaigns/campaignAsset/CampaignList'
 import NullData from '@/app/components/common/NullData'
 import { CampaignListByStoreParamsProps } from '@/type/campaign'
 import React from 'react'

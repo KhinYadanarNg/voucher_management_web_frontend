@@ -1,7 +1,7 @@
 import React from 'react'
 import { CampaignListParamsProps, CampaignProps } from '@/type/campaign'
 import Campaign from './Campaign'
-import NullData from '../common/NullData';
+import NullData from '../../common/NullData';
 
 const CampaignList = ({ campaigns, currentSessionUser }: CampaignListParamsProps) => {
     const role = currentSessionUser.role;

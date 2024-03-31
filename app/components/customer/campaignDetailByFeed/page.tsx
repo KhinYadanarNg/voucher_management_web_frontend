@@ -1,7 +1,7 @@
 import NullData from "@/app/components/common/NullData";
 import { getCurrentUser } from "@/app/auth/getCurrentUser";
 import CampaignDetailByFeed from "./CampaignDetailByFeed";
-import { CampaignCardProps } from "../../campaignAsset/Campaign";
+import { CampaignCardProps } from "../../campaigns/campaignAsset/Campaign";
 
 const CampaignByFeed = async ({ searchParams }: {
     searchParams: {

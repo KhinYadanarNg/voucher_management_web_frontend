@@ -61,7 +61,7 @@ const CampaignDetailByFeed = ({ campaignDetail, feedStatus, userEmail }: Campaig
                     </span>
                     <span></span>
                     <span className='detail_button'>
-                        {feedStatus === "false" && <button onClick={redeemCampaigns} className='storedetail__button hover:bg-orange-100 text-orange-600 '>Reedem</button>}
+                        {feedStatus === "false" && <button onClick={redeemCampaigns} className='storedetail__button hover:bg-orange-100 text-orange-600 '>Redeem</button>}
                         <button className='storedetail__button justify-end' onClick={onCancel}>Cancel</button>
                     </span>
                 </div>
