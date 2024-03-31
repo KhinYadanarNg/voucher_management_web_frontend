@@ -28,16 +28,18 @@ const CampaignsByStore = async ({ params }: { params: IParams }) => {
       try {
         campaignsByStoreIdData = await getMerchantCampaignsByStoreId(storeId);
       } catch(error) {
-        console.log(error)
+        console.log(error);
+        toast.error(campaignsByStoreIdData.message);
       }
     }else if(currentUser?.role === 'CUSTOMER'){
       try {
         campaignsByStoreIdData = await getCustomerCampaignsByStoreId(storeId);
       } catch(error) {
-        console.log(error)
+        console.log(error);
+        toast.error(campaignsByStoreIdData.message);
       }
     }else{
-      toast.error("Role is being identified");
+      toast.error("Role is being undefined");
     }
   }else{
     console.error("Store ID is not defined.");

@@ -1,5 +1,5 @@
 import CampaignList from '@/app/components/campaigns/campaignAsset/CampaignList';
-import getCampaignListByMerchant from '@/app/components/merchant/campaigns/page';
+import getCampaignListByMerchant from '@/app/components/merchant/campaigns/campaignsList/page';
 import { render, waitFor, screen } from "@testing-library/react";
 
 describe('Campaign List Component', () => {

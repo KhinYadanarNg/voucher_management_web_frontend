@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from './components/Container';
 import { getCurrentUser } from './auth/getCurrentUser';
-import CampaignListByMerchant from './components/merchant/campaigns/page';
+import CampaignListByMerchant from './components/merchant/campaigns/campaignsList/page';
 import CampaignListByCustomer from './components/customer/campaigns/page';
 
 export default async function Home() {
