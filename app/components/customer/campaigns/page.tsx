@@ -2,7 +2,7 @@ import React from 'react'
 import { fetchCampaignsByCustomer} from '@/app/service/campaign';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import NullData from '../../common/NullData';
-import CampaignList from '../../campaignAsset/CampaignList';
+import CampaignList from '../../campaigns/campaignAsset/CampaignList';
 
 const getCampaignListByCustomer = async () => {
   try {
