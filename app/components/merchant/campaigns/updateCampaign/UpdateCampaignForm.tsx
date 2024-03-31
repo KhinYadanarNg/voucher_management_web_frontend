@@ -68,9 +68,8 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
     const store = { storeId: selectedListBoxValue.id };
     const numberOfLikes = 0;
     const tagsJson = "";
-    const amount = 0;
 
-      try {
+    try {
       const response = await updateCampaign(
         campaign.campaignId,
         fieldValues.campaignTitle,
@@ -80,7 +79,7 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
         numberOfLikes,
         tagsJson,
         fieldValues.maxVouchers,
-        amount,
+        fieldValues.amount,
         store,
         updatedBy);
       const { success, message, data } = response;
@@ -153,6 +152,19 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
           />
 
           <Input
+            id="amount"
+            type="number"
+            label="Discount Amount"
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required
+          />
+          {errors.amount && (
+            <p className="text-red-500">{`${errors.amount.message}`}</p>
+          )}
+
+          <Input
             id="maxVouchers"
             type="number"
             label="Maximum Vouchers"
@@ -161,6 +173,10 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
             errors={errors}
             required
           />
+
+          {errors.maxVouchers && (
+            <p className="text-red-500">{`${errors.maxVouchers.message}`}</p>
+          )}
         </div>
       </div>
 
