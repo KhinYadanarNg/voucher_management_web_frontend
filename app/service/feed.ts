@@ -6,7 +6,7 @@ export const fetchAllActiveFeedListByCustomer = async (email: string) => {
 
     console.log("Printing fetchAllActiveFeedListByCustomer api json request : ", JSON.stringify(requestBody));
     const res = await fetch(
-        `${process.env.backendAPIURL}/api/feed/getAllByEmail`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/feed/getAllByEmail`,
         {
             method: "POST",
             headers: {

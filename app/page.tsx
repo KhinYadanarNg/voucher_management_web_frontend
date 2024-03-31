@@ -8,9 +8,6 @@ export default async function Home() {
   const currentUser = await getCurrentUser();
   const role = currentUser?.role || '';
 
-  console.log("Priting the process.env.NODE_ENV in landing page : ", process.env.NODE_ENV);
-  console.log("Priting the process.env.backendAPIURL in landing page : ", process.env.backendAPIURL);
-
   return (
     <div data-testid='home'>
       <Container>
