@@ -115,10 +115,18 @@ export async function updateStoreByMerchant(storeId: string, storeName: string, 
 }
 
 //For Customer
-export const fetchAllActiveStore = async () => {
+export const fetchAllActiveStore = async ( page?: number, size?: number) => {
   console.log("Printing fetchAllActiveStore api call : ");
+  let url = ""
+  if (page != undefined) {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAll?page=${page}&size=${size}`
+  } else {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAll`
+  }
+
+  console.log("Printing fetchAllActiveStore api url : ", url);
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/store/getAll`);
+    const response = await fetch(`${url}`);
     if (!response.ok) {
       throw new Error('Failed to fetch all active store data from the API');
     }

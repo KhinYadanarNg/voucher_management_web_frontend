@@ -58,7 +58,7 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
           {campaign.store.storeName}
         </div>
         <div>
-          <p className="card_padding">{campaign.tandc}</p>
+          <p className="card_padding">{campaign.tandc} <br/> ${campaign.amount} off</p><br/>
         </div>
       </div>
       {/* <h3 className='mt-6'>{policy}</h3> */}

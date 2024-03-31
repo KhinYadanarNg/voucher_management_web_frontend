@@ -3,7 +3,7 @@ import React from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, RadioGroup, Radio, getKeyValue } from "@nextui-org/react";
 import { StoreTableCard } from "@/type/store";
 import { renderCell, storeColumns } from "./storecolumns";
-import Link from "next/dist/client/link";
+import PaginationLink from "../../common/PaginationLink";
 
 const Store = ({ stores, pageNumber, totalRecord, size }: StoreTableCard) => {
     return (
@@ -12,34 +12,7 @@ const Store = ({ stores, pageNumber, totalRecord, size }: StoreTableCard) => {
                 aria-label="Example table with dynamic content"
                 data-testid='store-list-table'
                 bottomContent={
-                    <div className="flex w-full justify-center">
-                    {pageNumber !== 1  && <Link
-                        href={{
-                            pathname: '/components/merchant/stores',
-                            query: {
-                                page: pageNumber - 1
-                            }
-
-                        }}
-                        className='rounded border bg-gray-100 px-3 py-1  text-sm text-gray-800'
-                    >
-                        Previous
-                    </Link>}
-                    <span>&nbsp; </span>
-                    {totalRecord > pageNumber * size && 
-                    <Link
-                        href={{
-                            pathname: '/components/merchant/stores',
-                            query: {
-                                page: pageNumber + 1
-                            }
-
-                        }}
-                        className='rounded border bg-gray-100 px-3 py-1 text-sm text-gray-800'
-                    >
-                        Next
-                    </Link>}
-                </div>
+                    <PaginationLink pageNumber={pageNumber} totalRecord={totalRecord} size={size} path={"/components/merchant/stores"}></PaginationLink>
                 }
             >
                 <TableHeader columns={storeColumns}>
