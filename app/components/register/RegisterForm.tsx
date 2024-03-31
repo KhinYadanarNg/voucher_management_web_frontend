@@ -72,22 +72,24 @@ const RegisterForm = () => {
 
           if (result.length > 0) {
             toast.success('Account created');
-            signIn('credentials', {
-              email: data.email,
-              password: data.password,
-              redirect: false,
-            }).then((callback) => {
+            toast.loading('Please verify your email!');
+            router.push('/components/login');
+            // signIn('credentials', {
+            //   email: data.email,
+            //   password: data.password,
+            //   redirect: false,
+            // }).then((callback) => {
 
-              if (callback?.ok) {
-                router.push('/');
-                router.refresh();
-                toast.success('Logged In');
-              }
+            //   if (callback?.ok) {
+            //     router.push('/');
+            //     router.refresh();
+            //     toast.success('Logged In');
+            //   }
 
-              if (callback?.error) {
-                toast.error("Logged In failed.");
-              }
-            });
+            //   if (callback?.error) {
+            //     toast.error("Logged In failed.");
+            //   }
+            // });
           } else {
             toast.error(message);
           }

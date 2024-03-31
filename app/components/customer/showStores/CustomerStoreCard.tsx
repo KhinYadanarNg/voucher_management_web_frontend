@@ -11,7 +11,9 @@ const CustomerStoreCard: React.FC<CustomerStoreCardProps> = ({ data }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/components/customer/campaigns/campaignsByStore/${data.storeId}/${encodeURIComponent(data.storeName)}`);
+    // router.push(`/components/customer/campaigns/campaignsByStore/${data.storeId}/${encodeURIComponent(data.storeName)}`);
+    router.push(`/components/campaigns/campaignsByStoreIdName/${data.storeId}/${encodeURIComponent(data.storeName)}`);
+
   };
 
   return (
