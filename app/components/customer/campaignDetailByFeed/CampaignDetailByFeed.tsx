@@ -48,6 +48,12 @@ const CampaignDetailByFeed = ({ campaignDetail, feedStatus, userEmail }: Campaig
                         {campaignDetail.numberOfClaimedVouchers} out of {campaignDetail.numberOfVouchers}
                     </span>
                     <span>
+                        Discount Amount:
+                    </span>
+                    <span className='bottom_spacing'>
+                        ${campaignDetail.amount}
+                    </span>
+                    <span>
                         Store Name:
                     </span>
                     <span className='bottom_spacing'>
