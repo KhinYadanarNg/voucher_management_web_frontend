@@ -26,7 +26,7 @@ describe('Store Table Component', () => {
             const data = await getStoreList({
                 searchParams: { page: "0" }
             });
-            expect(data).toBeNull;
+            expect(data).not.toBeNull;
         })
     });
 });
