@@ -6,10 +6,9 @@ import Container from "../../Container";
 import CustomerStoreCard from "./CustomerStoreCard";
 import { toast } from "react-toastify";
 import NullData from "../../common/NullData";
-import Link from "next/link";
 import PaginationLink from "../../common/PaginationLink";
 
-const CustomerStoreLists = ({stores, pageNumber, totalRecord, size }: StoreTableCard) => {
+const CustomerStoreLists = ({ stores, pageNumber, totalRecord, size }: StoreTableCard) => {
   // const [loading, setLoading] = useState(true);
 
 
@@ -29,7 +28,7 @@ const CustomerStoreLists = ({stores, pageNumber, totalRecord, size }: StoreTable
               <CustomerStoreCard data={store} key={store.storeId} />
             ))}
           </div>
-         <PaginationLink pageNumber={pageNumber} totalRecord={totalRecord} size={size} path={'/components/customer/showStores'}></PaginationLink>
+          <PaginationLink pageNumber={pageNumber} totalRecord={totalRecord} size={size} path={'/components/customer/showStores'}></PaginationLink>
         </Container>
       ) : (
         <NullData title="There is no store list" />)}

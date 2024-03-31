@@ -28,7 +28,7 @@ export default async function StoreListByCustomer({ searchParams }: {
     return <NullData title="Oops! Access denied" />;
   }
 
- const page =
+  const page =
     typeof searchParams.page === 'string' ? Number(searchParams.page) : 1
   const size = 6
   const stores = await getActiveStoreListByCustomer(page, size);
