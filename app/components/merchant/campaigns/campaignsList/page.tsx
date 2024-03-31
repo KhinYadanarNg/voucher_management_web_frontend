@@ -1,8 +1,8 @@
 import React from 'react'
 import { fetchCampaignsByMerchant } from '@/app/service/campaign';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
-import NullData from '../../common/NullData';
-import CampaignList from '../../campaigns/campaignAsset/CampaignList';
+import NullData from '../../../common/NullData';
+import CampaignList from '../../../campaigns/campaignAsset/CampaignList';
 import { Spinner } from '@nextui-org/react';
 
 const getCampaignListByMerchant = async (email:string) => {

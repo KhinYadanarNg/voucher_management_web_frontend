@@ -10,24 +10,23 @@ const MerchantNavBar =  () => {
 
   const pathname = usePathname();
 
-  let basePath = pathname?.split('/').slice(0, 4).join('/');
+  const basePath = '/components/merchant/campaigns/campaignsList';
 
-  console.log("Checking the basePath : ", basePath);
-
-  if(pathname === '/'){
-    basePath = '/components/merchant/campaigns';
-  }
+  console.log("Checking the basePath after overwrite : ", basePath);
 
   return (
     <div className='top-0 w-full bg-[#F07D13] z-30 shadow-none'>
         <Container>
           <div className='flex flex-row items-center justify-between md:justify-start overflow-auto flex-nowrap gap-2 md-gap-12'>
-            <Link href='/components/merchant/campaigns'>
+            <Link href='/components/merchant/campaigns/campaignsList'>
               {
                 pathname ? (
-                <SubNavItem label={'Campaign List'} selected={pathname.startsWith('/components/campaigns/campaignsByStoreIdName')}/>
+                  <SubNavItem
+                  label={'Campaign List'}
+                  selected={pathname === '/' || pathname.startsWith('/components/campaigns/campaignsByStoreIdName') || pathname === basePath}
+                />
                 ) : 
-                <SubNavItem label={'Campaign List'} selected={basePath === '/components/merchant/campaigns'}/>
+                <SubNavItem label={'Campaign List'} selected={basePath === '/components/merchant/campaigns/campaignsList'}/>
               }
               
             </Link>
