@@ -15,15 +15,20 @@ const StoreDetail: React.FC<StoreCard> = ({ store }) => {
         router.push(`/components/merchant/stores/updateStore?store=${encodedData}`)
     }
 
+    const handleClick = () => {
+        router.push(`/components/campaigns/campaignsByStoreIdName/${store.storeId}/${encodeURIComponent(store.storeName)}`);
+    
+      };
+
 
     return (
         <div data-testid="store-detail-id">
             <div className='mt-10'>
                 <div className='storedetail__maincolumn'>
                     {store.image.length > 0 ? (
-                        <span className='mx-5'><Image src={store.image} alt={''} width={220} height={200} /></span>
+                        <span className='mx-5 cursor-pointer hover:bg-gray-100' onClick={handleClick}><Image src={store.image} alt={''} width={220} height={200} /></span>
                     ) : (
-                        <span className='mx-5'><Image src='/store-placeholder.png' alt={''} width={220} height={200} /></span>
+                        <span className='mx-5 cursor-pointer hover:bg-gray-100' onClick={handleClick}><Image src='/store-placeholder.png' alt={''} width={220} height={200} /></span>
                     )}
                     <div className='storedetail__column'>
                         <span>

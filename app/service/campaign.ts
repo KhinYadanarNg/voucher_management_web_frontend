@@ -142,6 +142,31 @@ export const promoteCampaignByMerchant = async (campaignId: string, updatedBy: {
   console.log("Printing promote campaign by merchant response json : ", data);
   return data;
 };
+
+export const getMerchantCampaignsByStoreId = async (storeId: string) => {
+  console.log("getMerchantCampaignsByStoreId api call: ");
+  const requestBody = {
+    storeId: storeId,
+  };
+
+  console.log("getCustomerCampaignsByStoreId api call json request: ", JSON.stringify(requestBody));
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByStoreId`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    }
+  );
+
+  console.log("Printing getMerchantCampaignsByStoreId response : ", res);
+  const data = await res.json();
+  console.log("Printing getMerchantCampaignsByStoreId response json : ", data);
+  return data;
+};
+
 // *********** END of MERCHANT ***************** //
 
 // For Customer

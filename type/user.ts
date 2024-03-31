@@ -21,6 +21,5 @@ export interface SessionUserProps {
     email: string;
     name: string;
     role: string;
-
 }
 

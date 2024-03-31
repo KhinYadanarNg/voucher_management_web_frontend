@@ -167,13 +167,13 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
       <div className="form_btn_position">
         <button
           onClick={handleSubmit(onUpdate)}
-          className="updateStore_btn"
+          className="updateStore__btn"
         >
           Update
         </button>
         <button
           onClick={handleSubmit(onCancel)}
-          className="updateStore_btn"
+          className="updateStore__btn"
         >
           Cancel
         </button>

@@ -15,6 +15,7 @@ const Login = () => {
   const logIn = async () => {
     const isValidEmail = isValidateEmail(email);
     const hasPasswordWhiteSpace = hasWhiteSpace(password);
+
     if (!isValidEmail) {
       alert("Please provide valid email");
       return;
@@ -40,6 +41,7 @@ const Login = () => {
 
         console.log("Start working Login form callback block: ", callback);
         if (callback?.ok) {
+          toast.dismiss();
           router.push('/');
           router.refresh();
           toast.success('Logged In');
