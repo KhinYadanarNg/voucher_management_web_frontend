@@ -27,12 +27,6 @@ const StoreDetail: React.FC<StoreCard> = ({ store }) => {
                     )}
                     <div className='storedetail__column'>
                         <span>
-                            Store Detail ID:
-                        </span>
-                        <span className='bottom_spacing'>
-                            {store.storeId}
-                        </span>
-                        <span>
                             Store Name:
                         </span>
                         <span className='bottom_spacing'>
