@@ -3,6 +3,7 @@ import { fetchCampaignsByMerchant } from '@/app/service/campaign';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import NullData from '../../common/NullData';
 import CampaignList from '../../campaigns/campaignAsset/CampaignList';
+import { Spinner } from '@nextui-org/react';
 
 const getCampaignListByMerchant = async (email:string) => {
   try {
@@ -26,7 +27,10 @@ export default async function CampaignListByMerchant() {
       {campaigns ?
         (<CampaignList campaigns={campaigns.data} currentSessionUser={currentUser} />
         ) : (
-          <NullData title="Fetch data failed" />
+          <div className="flex flex-col justify-center items-center h-screen">
+            <Spinner color="warning" size="lg" />
+            <span>Campaigns list is loading</span>
+          </div>
         )}
     </div>
   )
