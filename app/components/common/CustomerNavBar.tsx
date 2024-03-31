@@ -23,7 +23,7 @@ const CustomerNavBar =  () => {
         <Container>
           <div className='flex flex-row items-center justify-between md:justify-start overflow-auto flex-nowrap gap-2 md-gap-12'>
             
-            <Link href='/components/customer/showStores'>
+            <Link href='/components/customer/showStores?page=1'>
             <SubNavItem label={'Stores'} selected={pathname === '/components/customer/showStores'}/>
             </Link>
 
