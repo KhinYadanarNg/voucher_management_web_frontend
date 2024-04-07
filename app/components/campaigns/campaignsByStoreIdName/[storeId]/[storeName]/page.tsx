@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 interface IParams {
   storeId?: string;
-  storeName?: string;
+  storeName?: string
 }
 
 const CampaignsByStore = async ({ params }: { params: IParams }) => {
@@ -36,7 +36,6 @@ const CampaignsByStore = async ({ params }: { params: IParams }) => {
         campaignsByStoreIdData = await getCustomerCampaignsByStoreId(storeId);
       } catch(error) {
         console.log(error);
-        toast.error(campaignsByStoreIdData.message);
       }
     }else{
       toast.error("Role is being undefined");

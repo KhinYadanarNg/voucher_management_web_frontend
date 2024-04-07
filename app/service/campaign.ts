@@ -1,14 +1,21 @@
 
 //For MERCHANT
-export const fetchCampaignsByMerchant = async (useremail: string) => {
+export const fetchCampaignsByMerchant = async (useremail: string, page?: number, size?: number) => {
   console.log("Printing fetchCampaignsByMerchant api call : ");
   const requestBody = {
     email: useremail,
   };
 
+  let url = ""
+  if (page != undefined) {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByEmail?page=${page}&size=${size}`
+  } else {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByEmail`
+  }
+  console.log("Printing fetchCampaignsByMerchant api call url: ", {url});
   console.log("Printing fetchCampaignsByMerchant api call json request : ", JSON.stringify(requestBody));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/getAllByEmail`,
+    `${url}`,
     {
       method: "POST",
       headers: {
@@ -170,10 +177,16 @@ export const getMerchantCampaignsByStoreId = async (storeId: string) => {
 // *********** END of MERCHANT ***************** //
 
 // For Customer
-export const fetchCampaignsByCustomer = async () => {
-  console.log("fetchCampaignsByCustomer api call: ", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/all/active`);
+export const fetchCampaignsByCustomer = async (page?: number, size?: number) => {
+  let url = ""
+  if (page != undefined) {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/all/active?page=${page}&size=${size}`
+  } else {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/all/active`
+  }
+  console.log("fetchCampaignsByCustomer api call: ", {url});
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/campaign/all/active`
+    `${url}`
   );
 
   console.log("Printing fetch campaign by customer response : ", res);

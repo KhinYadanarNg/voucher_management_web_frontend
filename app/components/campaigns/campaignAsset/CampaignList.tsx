@@ -2,8 +2,9 @@ import React from 'react'
 import { CampaignListParamsProps, CampaignProps } from '@/type/campaign'
 import Campaign from './Campaign'
 import NullData from '../../common/NullData';
+import PaginationLink from '../../common/PaginationLink';
 
-const CampaignList = ({ campaigns, currentSessionUser }: CampaignListParamsProps) => {
+const CampaignList = ({ campaigns, currentSessionUser, pageNumber, totalRecord, size, redirectPath }: CampaignListParamsProps) => {
     const role = currentSessionUser.role;
     const userEmail = currentSessionUser.email;
     return (
@@ -15,6 +16,7 @@ const CampaignList = ({ campaigns, currentSessionUser }: CampaignListParamsProps
                             <Campaign campaign={campaign} userRole={role} userEmail={userEmail} key={campaign.campaignId} />
                         ))}
                     </div>
+                    {pageNumber >= 0 && <PaginationLink pageNumber={pageNumber} totalRecord={totalRecord} size={size} path={redirectPath}></PaginationLink>}
                 </section>) : (
                 <NullData title="There is no campaign list" />
             )}
