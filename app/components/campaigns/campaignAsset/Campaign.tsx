@@ -21,22 +21,22 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
   //Redeem Campaigns to use Vouchers
   const redeemCampaigns = async () => {
     if (userRole === "CUSTOMER") {
-    const campaign = { campaignId:  campaignId};
-    const claimedBy = { email:  userEmail};
+      const campaign = { campaignId: campaignId };
+      const claimedBy = { email: userEmail };
 
-    try{
-      const response = await redeemCampaignsClaimVouchers(campaign, claimedBy);
-      if(response.success){
-        alert(response.message);
-        router.push(`/components/customer/vouchers`);
-      }else{
-        alert(response.message);
+      try {
+        const response = await redeemCampaignsClaimVouchers(campaign, claimedBy);
+        if (response.success) {
+          alert(response.message);
+          router.push(`/components/customer/vouchers`);
+        } else {
+          alert(response.message);
+        }
+
+      } catch {
+        toast.error("Failed at Redeem Vouchers");
       }
 
-    }catch{
-      toast.error("Failed at Redeem Vouchers");
-    }
-        
     } else {
       toast.error(
         "You are not logged in yet, please proceed to register or log-in!"
@@ -57,7 +57,7 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
           {campaign.store.storeName}
         </div>
         <div>
-          <p className="card_padding">{campaign.tandc} <br/> ${campaign.amount} off</p><br/>
+          <p className="card_padding">{campaign.tandc} <br /> ${campaign.amount} off</p><br />
         </div>
       </div>
       {/* <h3 className='mt-6'>{policy}</h3> */}

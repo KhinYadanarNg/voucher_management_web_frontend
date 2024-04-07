@@ -6,7 +6,7 @@ import CampaignList from '../../../campaigns/campaignAsset/CampaignList';
 import { Spinner } from '@nextui-org/react';
 import { pageSize } from '@/utils';
 
-const getCampaignListByMerchant = async (email:string, pageNumber: number, size: number) => {
+const getCampaignListByMerchant = async (email: string, pageNumber: number, size: number) => {
   try {
     const campaigns = await fetchCampaignsByMerchant(email, pageNumber - 1, size);
     return campaigns;

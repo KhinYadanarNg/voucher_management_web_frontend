@@ -4,16 +4,16 @@ import { CampaignListByStoreParamsProps } from '@/type/campaign'
 import React from 'react'
 
 
-const CampaignsListByStore = ({campaignsByStore, storeName, currentSessionUser} : CampaignListByStoreParamsProps) => {
+const CampaignsListByStore = ({ campaignsByStore, storeName, currentSessionUser }: CampaignListByStoreParamsProps) => {
   return (
     <div>
-        <div className='font-semibold mt-5 ml-4'>{storeName}</div>
-        { campaignsByStore && campaignsByStore.length > 0 ? ( 
-        <CampaignList campaigns={campaignsByStore} currentSessionUser={currentSessionUser} pageNumber={-1} totalRecord={0} size={0} redirectPath={''}/>
-        ):(
-          <NullData title="There is no campaign list." />
-        )}
-           
+      <div className='font-semibold mt-5 ml-4'>{storeName}</div>
+      {campaignsByStore && campaignsByStore.length > 0 ? (
+        <CampaignList campaigns={campaignsByStore} currentSessionUser={currentSessionUser} pageNumber={-1} totalRecord={0} size={0} redirectPath={''} />
+      ) : (
+        <NullData title="There is no campaign list." />
+      )}
+
     </div>
   )
 }

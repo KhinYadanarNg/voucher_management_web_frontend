@@ -32,11 +32,11 @@ export default async function CampaignListByCustomer({ searchParams }: {
 
   const page =
     typeof searchParams.page === 'string' ? Number(searchParams.page) : 1
-    const isHome =
+  const isHome =
     typeof searchParams.isHome === 'string' ? Boolean(searchParams.isHome) : false
   const size = pageSize;
   const campaigns = await getCampaignListByCustomer(page, size);
-  const path =  !isHome? '/components/customer/campaigns' : '/'
+  const path = !isHome ? '/components/customer/campaigns' : '/'
   {
     return (
       <div>
