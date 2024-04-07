@@ -3,6 +3,7 @@ import CustomerStoreLists from './CustomerStoreLists'
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import NullData from '../../common/NullData';
 import { fetchAllActiveStore } from '@/app/service/store';
+import { pageSize } from '@/utils';
 
 
 const getActiveStoreListByCustomer = async (pageNumber: number, size: number) => {
@@ -30,7 +31,7 @@ export default async function StoreListByCustomer({ searchParams }: {
 
   const page =
     typeof searchParams.page === 'string' ? Number(searchParams.page) : 1
-  const size = 6
+  const size = pageSize;
   const stores = await getActiveStoreListByCustomer(page, size);
 
   return (
