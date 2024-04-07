@@ -5,10 +5,6 @@ import Link from "next/link";
 
 export const storeColumns = [
   {
-    key: "storeId",
-    label: "Store ID",
-  },
-  {
     key: "storeName",
     label: "Store Name",
   },
