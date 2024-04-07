@@ -4,6 +4,7 @@ import NullData from "../../common/NullData";
 import Container from "../../Container";
 import FeedListCard from "./FeedListCard";
 import { fetchAllActiveFeedListByCustomer } from "@/app/service/feed";
+import FeedListTable from "./FeedListTable";
 
 const getAllActiveFeedListByCustomer = async (email: string) => {
     try {
@@ -28,7 +29,7 @@ export default async function FeedListByCustomer() {
         <div>
             {feeds ? (
                 <Container>
-                    <FeedListCard feeds={feeds.data} />
+                    <FeedListTable feeds={feeds.data} />
                 </Container>
             ) : (
                 <NullData title="Fetch Data failed" />
