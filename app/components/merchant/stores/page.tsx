@@ -2,6 +2,7 @@ import { fetchStoreListByMerchant } from '@/app/service/store';
 import React from 'react'
 import StoreTable from './StoreTable';
 import NullData from '../../common/NullData';
+import { pageSize } from '@/utils';
 
 const getStoreList = async (page: number, size: number) => {
     try {
@@ -21,7 +22,7 @@ export default async function Stores({ searchParams }: {
 }) {
     const page =
         typeof searchParams.page === 'string' ? Number(searchParams.page) : 0
-        const size = 5
+        const size = pageSize
     const stores = await getStoreList(page, size);
     {
         return (

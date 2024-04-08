@@ -25,3 +25,5 @@ export const getCurrentUserEmail = async (useremail: string) => {
     } else throw new Error('Undefined email')
   }
 }
+
+export const pageSize = 5;

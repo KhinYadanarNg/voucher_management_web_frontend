@@ -27,10 +27,10 @@ const RedeemCampaigns = async () => {
   return (
     <div>
       {vouchers ? (
-          <Container>
-            <CustomerVouchersList vouchers={vouchers.data} currentSessionUser={currentUser}  />
-            {/* <VoucherList vouchers={vouchers.data} /> */}
-          </Container>
+        <Container>
+          <CustomerVouchersList vouchers={vouchers.data} currentSessionUser={currentUser} />
+          {/* <VoucherList vouchers={vouchers.data} /> */}
+        </Container>
       ) : (
         <NullData title="Fetch data failed" />
       )}

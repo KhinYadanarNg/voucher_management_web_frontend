@@ -26,6 +26,10 @@ export interface CreateCampaignParamsProps {
 export interface CampaignListParamsProps {
     campaigns: CampaignProps[];
     currentSessionUser: SessionUserProps;
+    pageNumber: number;
+    totalRecord: number;
+    size: number;
+    redirectPath: string;
 
 }
 

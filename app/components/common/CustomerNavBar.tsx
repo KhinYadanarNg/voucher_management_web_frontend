@@ -27,7 +27,7 @@ const CustomerNavBar = () => {
             />
           </Link>
 
-          <Link href="/components/customer/campaigns">
+          <Link href="/components/customer/campaigns?page=1">
             {pathname ? (
               <SubNavItem
                 label={"Campaigns"}

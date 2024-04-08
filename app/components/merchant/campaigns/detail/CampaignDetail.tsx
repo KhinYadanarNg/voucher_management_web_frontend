@@ -25,7 +25,7 @@ const CampaignDetail = ({ campaign, currentSessionUser }: CampaignDetailProps) =
                 const { success, message, data } = response;
                 if (success) {
                     toast.success(message);
-                    router.push("/components/merchant/campaigns");
+                    router.push("/components/merchant/campaigns/campaignsList?page=1");
                 } else {
                     toast.error(message);
                 }

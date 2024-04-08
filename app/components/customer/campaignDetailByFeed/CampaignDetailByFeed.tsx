@@ -21,10 +21,10 @@ const CampaignDetailByFeed = ({ campaignDetail, feedStatus, userEmail }: Campaig
             const response = await redeemCampaignsClaimVouchers(campaign, claimedBy);
 
             if (response.success) {
-                toast.success("Your claim voucher is succesfully redeem.")
+                toast.success(response.message)
                 router.push(`/components/customer/vouchers`);
             } else {
-                toast.error("So sorry, your redeem is not success!")
+                toast.error(response.message)
             }
 
         } catch {
