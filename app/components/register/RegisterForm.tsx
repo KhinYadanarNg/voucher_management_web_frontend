@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import Button from "../common/Button";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
-import { signIn } from "next-auth/react";
 import { registerUser } from "@/app/service/authentication";
 import ListBox from "../common/ListBox";
 import { CustomFilterTypeProps } from "@/type/customListBox";
@@ -114,9 +113,10 @@ const RegisterForm = () => {
       <div data-testid="register-page" />
       <Heading title={"Welcome to IV Voucher Management"} center={true} />
       <hr className="bg-slate-300 w-full h-px" />
-      <Input id="name" label="Name" disabled={isLoading} placeholder="" register={register} errors={errors} required />
-      <Input id="email" label="Email" disabled={isLoading} placeholder="" register={register} errors={errors} required />
+      <Input testId="name-textField-id" id="name" label="Name" disabled={isLoading} placeholder="" register={register} errors={errors} required />
+      <Input testId="email-textField-id" id="email" label="Email" disabled={isLoading} placeholder="" register={register} errors={errors} required />
       <Input
+        testId="password-textField-id"
         id="password"
         label="Password"
         disabled={isLoading}
