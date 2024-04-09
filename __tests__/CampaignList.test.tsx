@@ -25,7 +25,7 @@ describe('Campaign List Component', () => {
     });
 
 
-    it('renders Campaign List has data', async () => {
+    it('renders Campaign card within container', async () => {
         render(<Campaign campaign={{
             campaignId: '',
             description: '',
