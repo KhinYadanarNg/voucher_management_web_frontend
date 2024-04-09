@@ -46,7 +46,7 @@ const Campaign = ({ campaign, userRole, userEmail }: CampaignCardProps) => {
   };
 
   return (
-    <div className="border px-2 py-2">
+    <div className="border px-2 py-2" data-testid='campaign-card-id'>
       <h3 className="pb-2">{campaign.description}</h3>
       <VouchersSpentProgressBar
         totalVouchers={campaign.numberOfVouchers}

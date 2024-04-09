@@ -9,7 +9,7 @@ export default function ListBox({ setFilter, customFilterTypes, defaultValue }: 
     const [defaultCountry, setDefaultValue] = useState(defaultValue);
     return (
 
-        <div>
+        <div data-testid='listbox-id'>
             <Listbox
                 value={selectedValue}
                 onChange={(e) => {

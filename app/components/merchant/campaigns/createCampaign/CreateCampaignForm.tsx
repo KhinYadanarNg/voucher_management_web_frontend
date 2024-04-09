@@ -116,6 +116,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
               <ListBox setFilter={setSelectedListBoxValue} customFilterTypes={storeList} defaultValue=""></ListBox>
 
               <Input
+                testId='startDate-textfield-id'
                 id="campaignStartDate"
                 type='datetime-local'
                 label="Campaign Start Date"
@@ -126,6 +127,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
                 required
               />
               <Input
+                testId='endDate-textfield-id'
                 id="campaignEndDate"
                 type='datetime-local'
                 label="Campaign End Date"
@@ -134,12 +136,12 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
                 errors={errors}
                 min={moment().format("YYYY-MM-DD[T]HH:mm")}
                 required
-                testId='startdate-textfield-id'
               />
             </div>
             <div style={{ flex: 1 }}>
 
               <Input
+                testId='tandc-textfield-id'
                 id="tandc"
                 label="Terms and condition"
                 disabled={isLoading}
@@ -155,6 +157,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
             testId='condition1-textfield-id'
           /> */}
               <Input
+                testId='amount-textfield-id'
                 id="amount"
                 type="number"
                 label="Discount Amount"
@@ -168,6 +171,7 @@ const CreateCampaignForm = ({ stores, currentSessionUser }: CreateCampaignParams
               )}
 
               <Input
+                testId='maxVouchers-textfield-id'
                 id="maxVouchers"
                 type="number"
                 label="Maximum Vouchers"

@@ -16,5 +16,8 @@ export interface VoucherProps {
 export interface VoucherListParamsProps {
     vouchers: VoucherProps[];
     currentSessionUser: SessionUserProps;
+    pageNumber: number;
+    totalRecord: number;
+    size: number;
 
 }

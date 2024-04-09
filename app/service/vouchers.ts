@@ -30,15 +30,22 @@ export const redeemCampaignsClaimVouchers = async (
 
 };
 
-export const fetchVouchersByCustomerEmail = async (useremail: string) => {
+export const fetchVouchersByCustomerEmail = async (useremail: string, page?: number, size?: number) => {
   console.log("Printing fetchVouchersByCustomerEmail api call : ");
   const requestBody = {
     email: useremail,
   };
 
+  let url = ""
+  if (page != undefined) {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/getByEmail?page=${page}&size=${size}`
+  } else {
+    url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/getByEmail`
+  }
+  console.log("Printing fetchVouchersByCustomerEmail api call : ", {url});
   console.log("Printing fetchVouchersByCustomerEmail api json request : ", JSON.stringify(requestBody));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/voucher/getByEmail`,
+    `${url}`,
     {
       method: "POST",
       headers: {

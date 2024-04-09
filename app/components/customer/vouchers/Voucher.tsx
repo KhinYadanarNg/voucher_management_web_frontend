@@ -50,7 +50,7 @@ const Voucher = ({ voucher }: VoucherCardProps) => {
 
 
     return (
-        <div className='card'>
+        <div className='card' data-testid='voucher-card'>
             <div className='sub_card'>
                 <div className='sub_cardDetail'>{voucher.campaign.store.storeName}</div>
                 <div>
