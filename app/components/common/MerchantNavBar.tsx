@@ -36,7 +36,7 @@ const MerchantNavBar = () => {
           </Link>
 
           <Link href='/components/merchant/stores?page=1'>
-            <SubNavItem label={'My Stores'} selected={pathname === '/components/merchant/stores'} />
+            <SubNavItem label={'My Stores'} selected={(pathname === '/components/merchant/stores') || (pathname?.startsWith('/components/merchant/stores/detail'))} />
           </Link>
 
           <Link href='/components/merchant/stores/createStore'>
