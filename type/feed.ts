@@ -5,3 +5,10 @@ export type FeedProps = {
     campaign: CampaignProps;
     read: Boolean;
 }
+
+export type FeedTableCard = {
+    feeds: FeedProps[];
+    pageNumber: number;
+    totalRecord: number;
+    size: number;
+}

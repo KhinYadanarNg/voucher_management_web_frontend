@@ -51,7 +51,7 @@ const CustomerNavBar = () => {
               selected={pathname === "/components/customer/vouchers"}
             />
           </Link>
-          <Link href="/components/customer/feeds">
+          <Link href="/components/customer/feeds?page=1">
             <SubNavItem
               label={"Feeds"}
               selected={pathname === "/components/customer/feeds"}
