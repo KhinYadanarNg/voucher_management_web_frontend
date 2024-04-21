@@ -3,8 +3,8 @@ import { fetchCampaignsByMerchant } from '@/app/service/campaign';
 import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import NullData from '../../../common/NullData';
 import CampaignList from '../../../campaigns/campaignAsset/CampaignList';
-import { Spinner } from '@nextui-org/react';
 import { pageSize } from '@/utils';
+import Loading from '@/app/components/common/Loading';
 
 const getCampaignListByMerchant = async (email: string, pageNumber: number, size: number) => {
   try {
@@ -40,10 +40,7 @@ export default async function CampaignListByMerchant({ searchParams }: {
       {campaigns ?
         (<CampaignList campaigns={campaigns.data} currentSessionUser={currentUser} pageNumber={page} totalRecord={campaigns.totalRecord} size={size} redirectPath={path} />
         ) : (
-          <div className="flex flex-col justify-center items-center h-screen">
-            <Spinner color="warning" size="lg" />
-            <span>Campaigns list is loading</span>
-          </div>
+         <Loading/>
         )}
     </div>
   )

@@ -4,6 +4,7 @@ import { getCurrentUser } from '@/app/auth/getCurrentUser';
 import NullData from '../../common/NullData';
 import { fetchAllActiveStore } from '@/app/service/store';
 import { pageSize } from '@/utils';
+import Loading from '../../common/Loading';
 
 
 const getActiveStoreListByCustomer = async (pageNumber: number, size: number) => {
@@ -38,7 +39,8 @@ export default async function StoreListByCustomer({ searchParams }: {
     <div>
       {stores ? (<CustomerStoreLists stores={stores.data} pageNumber={page} totalRecord={stores.totalRecord} size={size} />
       ) : (
-        <NullData title="Fetch data failed" />
+        // <NullData title="Fetch data failed" />
+        <Loading/>
       )}
 
     </div>
