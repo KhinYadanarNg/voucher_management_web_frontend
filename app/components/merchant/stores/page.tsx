@@ -3,6 +3,7 @@ import React from 'react'
 import StoreTable from './StoreTable';
 import NullData from '../../common/NullData';
 import { pageSize } from '@/utils';
+import Loading from '../../common/Loading';
 
 const getStoreList = async (page: number, size: number) => {
     try {
@@ -33,7 +34,8 @@ export default async function Stores({ searchParams }: {
                     </div>
                 </section>
             ) : (
-                <NullData title="Fetch data failed" />
+                // <NullData title="Fetch data failed" />
+                <Loading/>
             ))
     }
 

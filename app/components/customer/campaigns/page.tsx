@@ -5,6 +5,7 @@ import NullData from "../../common/NullData";
 import CampaignList from "../../campaigns/campaignAsset/CampaignList";
 import { Spinner } from "@nextui-org/react";
 import { pageSize } from "@/utils";
+import Loading from "../../common/Loading";
 
 const getCampaignListByCustomer = async (pageNumber: number, size: number) => {
   try {
@@ -50,10 +51,7 @@ export default async function CampaignListByCustomer({ searchParams }: {
             redirectPath={path}
           />
         ) : (
-          <div className="flex flex-col justify-center items-center h-screen">
-            <Spinner color="warning" size="lg" />
-            <span>Campaigns list is loading</span>
-          </div>
+           <Loading></Loading>
         )}
       </div>
     );

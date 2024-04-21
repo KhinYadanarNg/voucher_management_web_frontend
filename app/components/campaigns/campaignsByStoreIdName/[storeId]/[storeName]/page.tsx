@@ -4,6 +4,7 @@ import { getCurrentUser } from "@/app/auth/getCurrentUser";
 import NullData from "@/app/components/common/NullData";
 import CampaignsListByStore from "./CampaignsListByStore";
 import toast from "react-hot-toast";
+import Loading from "@/app/components/common/Loading";
 
 interface IParams {
   storeId?: string;
@@ -50,7 +51,8 @@ const CampaignsByStore = async ({ params }: { params: IParams }) => {
       {campaignsByStoreIdData ? (
         <CampaignsListByStore campaignsByStore={campaignsByStoreIdData.data} storeName={decodedStoreName} currentSessionUser={currentUser} />
       ) : (
-        <NullData title="Fetch data failed" />
+        // <NullData title="Fetch data failed" />
+        <Loading/>
       )
       }
 

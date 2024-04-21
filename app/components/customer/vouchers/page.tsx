@@ -1,10 +1,11 @@
 import { getCurrentUser } from "@/app/auth/getCurrentUser";
-import React from "react";
+import React  from "react";
 import NullData from "../../common/NullData";
 import CustomerVouchersList from "./CustomerVouchersList";
 import { fetchVouchersByCustomerEmail } from "@/app/service/vouchers";
 import Container from "../../Container";
 import { pageSize } from "@/utils";
+import Loading from "../../common/Loading";
 
 const getVouchersByCustomerEmail = async (email: string, pageNumber: number, size: number) => {
   try {
@@ -40,7 +41,8 @@ const RedeemCampaigns = async ({ searchParams }: {
           {/* <VoucherList vouchers={vouchers.data} /> */}
         </Container>
       ) : (
-        <NullData title="Fetch data failed" />
+        // <NullData title="Fetch data failed" />
+        <Loading/>
       )}
     </div>
   );

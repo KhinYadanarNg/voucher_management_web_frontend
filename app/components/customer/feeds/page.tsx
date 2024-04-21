@@ -5,6 +5,7 @@ import Container from "../../Container";
 import { fetchAllActiveFeedListByCustomer } from "@/app/service/feed";
 import FeedListTable from "./FeedListTable";
 import { pageSize } from "@/utils";
+import Loading from "../../common/Loading";
 
 const getAllActiveFeedListByCustomer = async (email: string, page: number, size: number) => {
     try {
@@ -39,7 +40,8 @@ export default async function FeedListByCustomer({ searchParams }: {
                     <FeedListTable feeds={feeds.data} pageNumber={page} totalRecord={feeds.totalRecord} size={size} />
                 </Container>
             ) : (
-                <NullData title="Fetch Data failed" />
+                // <NullData title="Fetch Data failed" />
+                <Loading/>
             )}
         </div>
     );
