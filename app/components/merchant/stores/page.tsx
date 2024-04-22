@@ -7,7 +7,6 @@ import Loading from '../../common/Loading';
 
 const getStoreList = async (page: number, size: number) => {
     try {
-        console.log(page)
         const storeList = await fetchStoreListByMerchant('', page - 1, size);
         return storeList;
     } catch (error) {

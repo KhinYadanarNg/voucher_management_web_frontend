@@ -15,8 +15,6 @@ const CampaignsByStore = async ({ params }: { params: IParams }) => {
   const currentUser = await getCurrentUser();
   const { storeId, storeName } = params;
   const decodedStoreName = storeName ? decodeURIComponent(storeName) : "";
-  console.log("decodedStoreName")
-  console.log(decodedStoreName)
   let campaignsByStoreIdData;
 
   if (!currentUser) {

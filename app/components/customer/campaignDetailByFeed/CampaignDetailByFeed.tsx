@@ -7,7 +7,6 @@ import toast from 'react-hot-toast';
 
 const CampaignDetailByFeed = ({ campaignDetail, feedStatus, userEmail }: CampaignDetailPropsByFeed) => {
     const router = useRouter();
-    console.log(feedStatus)
 
     const onCancel = () => {
         router.back()

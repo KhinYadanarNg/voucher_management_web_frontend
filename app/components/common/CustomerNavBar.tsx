@@ -10,8 +10,6 @@ const CustomerNavBar = () => {
 
   let basePath = pathname?.split("/").slice(0, 4).join("/");
 
-  console.log("Checking the pathName : ", pathname);
-
   if (pathname === "/") {
     basePath = "/components/customer/campaigns";
   }

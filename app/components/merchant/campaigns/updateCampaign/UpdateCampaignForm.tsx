@@ -62,7 +62,6 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
   };
 
   const onUpdate: SubmitHandler<FieldValues> = async (fieldValues) => {
-    console.log("Start Work in Campaign update function.");
 
     const updatedBy = { email: currentSessionUser.email };
     const store = { storeId: selectedListBoxValue.id };
@@ -94,8 +93,6 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
     } catch {
       toast.error("Failed at Campaign Update!");
     }
-
-    console.log("End Work in Campaign update function.");
   };
 
   const onCancel = () => {

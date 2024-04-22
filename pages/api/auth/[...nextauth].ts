@@ -17,7 +17,6 @@ export const authOptions: AuthOptions = {
         const passwordCredentials : string = credentials?.password || '';
         
         const apiResponse = await loginUser(emailCredentials, passwordCredentials);
-        console.log("Printing the apiResponse at authOptions.ts ===> ", apiResponse);
         const res = apiResponse.result[0];
         const message = apiResponse.message;
 
@@ -51,16 +50,13 @@ callbacks: {
       // If there's a user, add it to the token
       if (user) {
         token.user = user
-        console.log("Printing the token.user in jwt block at authOptions.ts ===> ", token.user);
         // Add other user properties as needed
       }
       return token;
     },
     async session({session, token}) {
-      // console.log("Priting the token in session block at authOptions.ts ===> ", token);
       
       session.user = token.user as User || '';
-      // console.log("Priting the session in session block at authOptions.ts ===> ", session);
       return session;
     }
   },
