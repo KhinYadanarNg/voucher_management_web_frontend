@@ -23,8 +23,6 @@ const RegisterForm = () => {
   const [selectedUserType, setSelectedUserType] = useState(userTypes[0]);
   const [image, setImage] = useState<File>();
 
-  console.log("Check in useState function: Selected Role is :", selectedUserType.value);
-
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -43,12 +41,10 @@ const RegisterForm = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
-    console.log(data);
     data.role = selectedUserType.value.toUpperCase();
 
     try {
 
-      console.log(selectedUserType)
       if (!isValidateEmail(data.email)) {
         alert("Please provide valid email");
         return;
@@ -63,7 +59,6 @@ const RegisterForm = () => {
         return;
       }
 
-      console.log("Printing the JSON value: ", JSON.stringify(data));
       registerUser(data.email, data.name, data.password, data.role).then(
         (callback) => {
 

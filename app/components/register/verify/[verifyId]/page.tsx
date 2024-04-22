@@ -34,7 +34,6 @@ const VerifyPage = ({ params }: { params: urlParams }) => {
     verify();
   }, [verifyId, router]);
 
-  console.log("Reaching at verification page");
   return (
     <>
       <Heading title={`Loading ... `} center={true} />

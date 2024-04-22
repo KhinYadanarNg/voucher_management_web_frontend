@@ -21,17 +21,6 @@ const Login = () => {
       return;
     }
     if (password.length > 0 && !hasPasswordWhiteSpace) {
-      // try {
-      //   const response = await loginUser(email, password);
-      //   const { message, result } = response;
-      //   alert(message);
-      //   if (result.length > 0) {
-      //     router.push("/");
-      //   }
-      // } catch (error) {
-      //   alert(error);
-      // } finally {
-      // }
 
       signIn('credentials', {
         email,
@@ -39,7 +28,6 @@ const Login = () => {
         redirect: false,
       }).then((callback) => {
 
-        console.log("Start working Login form callback block: ", callback);
         if (callback?.ok) {
           toast.dismiss();
           router.push('/');
@@ -49,9 +37,7 @@ const Login = () => {
         }
 
         if (callback?.error) {
-          console.log("in callback ok, callback?.error :", callback?.error);
           toast.error(callback.error);
-          console.log("After LoggedIn, working callback error: update");
         }
       });
 

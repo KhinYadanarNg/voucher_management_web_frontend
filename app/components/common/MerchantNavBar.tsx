@@ -12,8 +12,6 @@ const MerchantNavBar = () => {
 
   const basePath = '/components/merchant/campaigns/campaignsList';
 
-  console.log("Checking the basePath after overwrite : ", basePath);
-
   return (
     <div className='top-0 w-full bg-[#F07D13] z-30 shadow-none'>
       <Container>

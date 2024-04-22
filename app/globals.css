@@ -79,11 +79,11 @@
 }
 
 .sub_card {
-  @apply border mt-3 px-2 grid grid-cols-2
+  @apply border mt-3 px-2 grid grid-cols-2 rounded-sm
 }
 
 .sub_cardDetail {
-  @apply border h-32 flex justify-center items-center bg-orange-500
+  @apply border h-32 flex justify-center items-center bg-orange-500 rounded-md
 }
 
 .campaigncard_btn {

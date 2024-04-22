@@ -68,7 +68,6 @@ const UpdateStoreForm: React.FC<UpdateStoreCard> = ({ store, currentSessionUser 
 
         data.country = selectedCountry.id === "0" ? store.country : selectedCountry.value;
         data.image = updatedStoreImage
-        console.log(data.country)
         try {
             const response = await updateStoreByMerchant(
                 store.storeId,
