@@ -86,7 +86,7 @@ const UpdateCampaignForm: React.FC<MerchantUpdateCampaignProps> = ({
       if (success && data) {
         //setSelectedListBoxValue(storeList[0]);
         toast.success(message);
-        router.push("/components/merchant/campaigns");
+        router.push("/components/merchant/campaigns/campaignsList?page=1");
       } else {
         toast.error(message);
       }
