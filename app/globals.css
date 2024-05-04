@@ -2,3 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
+.logintext__input {
+  @apply h-[35px] w-[250px] pl-10 outline-none cursor-pointer text-sm border-2 border-black focus:border-black;
+}
+
+.wrapper {
+  @apply flex flex-col items-center justify-center;
+}
+
+.authentication__btn {
+  @apply flex flex-row relative justify-center items-center py-3 px-6 outline h-[35px] w-[250px] bg-orange-500;
+}
+
+.registration__input {
+  @apply justify-items-start pt-5;
+}
+
+.customfilter__btn {
+  @apply flex justify-between outline-none border-2 pt-1 px-2 border-black h-[46px] w-full;
+}
+
+.progressBar {
+  @apply w-44 h-1 bg-slate-200;
+}
+
+.progressBarFill {
+  @apply h-full bg-orange-500;
+}
+
+.home__error-container {
+  @apply mt-16 flex justify-center items-center flex-col gap-2;
+}
+
+.home__campaigns-wrapper {
+  @apply grid md:grid-cols-3 grid-cols-1 w-full gap-8 pt-14 px-10;
+}
+
+.storedetail__button {
+  @apply border-2 hover:bg-orange-100 text-orange-600 rounded-3xl h-10 w-24;
+}
+
+.storedetail__column {
+  @apply w-fit h-10 pt-1 grid grid-cols-[170px_auto];
+}
+
+.storedetail__maincolumn {
+  @apply w-full h-40 mt-3 grid grid-cols-[220px_auto];
+}
+
+.campaigndetail__button {
+  @apply border-2 hover:bg-orange-100 text-orange-600 rounded-3xl h-[35px] w-24 text-center
+}
+
+.campaigndetail__maincolumn {
+  @apply w-full h-40 mt-3 grid grid-cols-[200px_auto];
+}
+
+.bottom_spacing {
+  @apply pb-3
+}
+
+.detail_button {
+  @apply flex justify-start gap-1
+}
+
+.card {
+  @apply border px-2 py-2
+}
+
+.card_button {
+  @apply border-2 hover:bg-orange-300 h-10 my-3 float-right rounded-3xl
+}
+
+.updateStore__btn {
+  @apply border-2 hover:bg-orange-300 text-orange-700  py-3 px-4 rounded-3xl mr-3
+}
+
+.sub_card {
+  @apply border mt-3 px-2 grid grid-cols-2 rounded-sm
+}
+
+.sub_cardDetail {
+  @apply border h-32 flex justify-center items-center bg-orange-500 rounded-md
+}
+
+.campaigncard_btn {
+  @apply border-2 hover:bg-orange-300 mt-3 float-right rounded-3xl w-20 
+}
+
+.card_padding {
+  @apply px-2 py-3
+}
+
+.createStore_btn {
+  @apply border-2 text-orange-700 mb-5 px-4 h-10 rounded-3xl
+}
+
+.authentication_link {
+  @apply text-slate-500 flex items-center gap-1 mt-6 text-sm
+}
+
+.form_btn_position {
+  @apply flex justify-end mt-10
+}
+
+.store_from_postion {
+  @apply mx-3 mt-10 grid grid-cols-2
+}
+
+
+
